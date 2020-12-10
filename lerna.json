@@ -1,0 +1,14 @@
+{
+  "packages": [
+    "projects/*"
+  ],
+  "command": {
+    "publish": {
+      "conventionalCommits": true
+    },
+    "version": {
+      "message": "chore(release): prepare %s"
+    }
+  },
+  "version": "0.0.0"
+}

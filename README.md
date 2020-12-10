@@ -1,5 +1,7 @@
 # AnyshopFramework
 
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.12.
 
 ## Development server
