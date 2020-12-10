@@ -18,7 +18,6 @@
     "rxjs": "^6.6.3"
   },
   "dependencies": {
-    "@anyshop/core": "^1.0.0",
     "angular-svg-round-progressbar": "^3.0.1",
     "tslib": "^1.10.0"
   }
