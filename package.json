@@ -9,9 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
 
-    "prerelease": "npx lerna version --no-push",
-    "release": "npx lerna publish from-git --yes",
-    "postrelease": "git push --follow-tags"
+    "release": "npx lerna publish --yes"
   },
   "private": true,
   "dependencies": {
