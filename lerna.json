@@ -12,7 +12,8 @@
       "conventionalCommits": true
     },
     "version": {
-      "message": "chore(release): prepare %s"
+      "message": "chore(release): prepare %s",
+      "allowBranch": ["main"]
     }
   },
   "version": "0.1.3"
