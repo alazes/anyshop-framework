@@ -1,6 +1,6 @@
 {
   "name": "@anyshop/core",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "peerDependencies": {
     "@angular/common": "^9.1.12",
     "@angular/core": "^9.1.12",
