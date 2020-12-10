@@ -15,6 +15,6 @@
     "directory": "../../../dist/anyshop/core"
   },
   "scripts": {
-    "version": "ng build --prod"
+    "prepublish": "ng build --prod"
   }
 }
