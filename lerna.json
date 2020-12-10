@@ -1,7 +1,10 @@
 {
   "packages": [
-    "projects/*"
+    "projects/anyshop/*"
   ],
+  "bootstrap": {
+    "npmClientArgs": ["--no-package-lock"]
+  },
   "command": {
     "publish": {
       "conventionalCommits": true
