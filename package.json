@@ -7,7 +7,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+
+    "prerelease": "npx lerna version --no-push",
+    "release": "npx lerna publish from-git --yes",
+    "postrelease": "git push --follow-tags"
   },
   "private": true,
   "dependencies": {
