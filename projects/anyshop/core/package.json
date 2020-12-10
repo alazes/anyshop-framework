@@ -1,0 +1,13 @@
+{
+  "name": "@anyshop/core",
+  "version": "0.0.0",
+  "peerDependencies": {
+    "@angular/common": "^9.1.12",
+    "@angular/core": "^9.1.12",
+    "@angular/fire": "6.0.3",
+    "firebase": "^7.23.0"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  }
+}
