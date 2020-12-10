@@ -4,8 +4,7 @@
   ],
   "bootstrap": {
     "npmClientArgs": [
-      "--no-package-lock",
-      "--access public"
+      "--no-package-lock"
     ]
   },
   "command": {
