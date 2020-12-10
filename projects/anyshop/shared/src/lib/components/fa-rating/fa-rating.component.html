@@ -1,0 +1,15 @@
+<ion-grid>
+  <ion-row class="ion-nowrap ion-center-content ion-text-center">
+    <ion-col *ngIf="value === undefined; else valueDefined">
+      <ion-spinner name="dots" color="emptyColor"></ion-spinner>
+    </ion-col>
+
+    <ng-template #valueDefined>
+    <ion-col *ngFor="let val of items">
+      <ion-text [color]="val <= value ? filledColor : emptyColor">
+        <fa-icon [icon]="val <= value ? filledIcon : emptyIcon" [fixedWidth]="true" [size]="size"></fa-icon>
+      </ion-text>
+    </ion-col>
+    </ng-template>
+  </ion-row>
+</ion-grid>

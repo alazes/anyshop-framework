@@ -1,0 +1,33 @@
+/**
+ * Organiza un bloque de forma que se alineen verticalmente en filas, expandiendo los espacios entre sí y abarcando todo el contenido.
+ *
+ * @blame Nelson Martell <nelson6e65@gmail.com>
+ */
+.vertical-flex {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+/** Clases extra **/
+.ion-no-padding-bottom {
+  padding-bottom: 0;
+}
+
+.ion-no-padding-top {
+  padding-top: 0;
+}
+
+.ion-no-padding-left {
+  padding-left: 0;
+}
+
+.ion-no-padding-right {
+  padding-right: 0;
+}
+
+.ion-text-normal {
+  text-transform: none;
+}

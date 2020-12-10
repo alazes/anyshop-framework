@@ -1,0 +1,8 @@
+:host {
+  --ion-grid-column-padding: 0;
+  --spacing: 0; // Personaliza el espaciado entre íconos
+
+  ion-grid {
+    --ion-grid-column-padding: var(--spacing);
+  }
+}

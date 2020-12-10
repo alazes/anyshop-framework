@@ -1,0 +1,133 @@
+<ion-card [class]="innerClass">
+  <ion-grid>
+    <ion-row class="ion-align-items-stretch">
+      <ion-col size="4" class="ion-align-self-center ion-text-center">
+        <ion-img
+          [title]="item.product.name || item.product.brand"
+          [text]="item.product.description"
+          [src]="item.product.picture || '/assets/img/food-and-restaurant.png'"
+          [srcHighRes]="item.product.picture"
+          ionImgViewer
+        >
+        </ion-img>
+      </ion-col>
+
+      <ion-col class="ion-no-padding vertical-flex">
+        <ion-row>
+          <ion-col>
+            <ion-text color="dark" class="title">
+              {{ item.product.name || item.product.brand }}
+            </ion-text>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-text class="ion-text-justify">
+              {{ item.product.description || item.product.product }}
+            </ion-text>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col class="vertical-flex">
+            <div *ngIf="quantity === 0">
+              <strong class="app-currency">{{ item.price | currency: currencyCode }}</strong>
+
+              <span *ngIf="hasOptions"> (+ <span translate class="ion-text-lowercase">Extras</span>) </span>
+            </div>
+
+            <ion-row *ngIf="quantity !== 0">
+              <ion-col size="auto">
+                <ion-text>
+                  <fa-layers [fixedWidth]="true" size="2x">
+                    <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
+                    <fa-layers-counter [content]="quantity" style="font-size: 1.5em;"></fa-layers-counter>
+                  </fa-layers>
+                </ion-text>
+              </ion-col>
+
+              <ion-col class="ion-text-left">
+                <ion-text color="dark" style="font-size: 1.2em;">
+                  <strong class="app-currency">{{ total | currency: currencyCode }}</strong>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+
+      <ion-col *ngIf="!readonly" size="auto" class="[ buttons ] vertical-flex">
+        <ng-container *ngIf="quantity; else noQuantity">
+          <ng-container *ngIf="hasOptions; else noOptions">
+            <div tappable (click)="openFormModal()" class="ion-activatable">
+              <ion-text color="warning">
+                <fa-icon [fixedWidth]="true" [icon]="['fas', 'edit']" size="lg"></fa-icon>
+              </ion-text>
+
+              <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+            </div>
+          </ng-container>
+
+          <ng-template #noOptions>
+            <div *ngIf="quantity < max" tappable (click)="increaseQuantity()" class="ion-activatable">
+              <ion-text>
+                <fa-icon [fixedWidth]="true" [icon]="['fas', 'plus']" size="lg"></fa-icon>
+              </ion-text>
+
+              <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+            </div>
+
+            <div *ngIf="quantity > min" tappable (click)="decreaseQuantity()" class="ion-activatable">
+              <ion-text>
+                <fa-icon [fixedWidth]="true" [icon]="['fas', 'minus']" size="lg"></fa-icon>
+              </ion-text>
+
+              <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+            </div>
+          </ng-template>
+
+          <div tappable (click)="handleDelete()" class="ion-activatable">
+            <ion-text color="danger">
+              <fa-icon [fixedWidth]="true" [icon]="['fas', 'trash-alt']" size="lg"></fa-icon>
+            </ion-text>
+
+            <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+          </div>
+        </ng-container>
+
+        <ng-template #noQuantity>
+          <div tappable (click)="handleAdd()" class="ion-activatable">
+            <ion-text color="success">
+              <fa-icon [fixedWidth]="true" [icon]="['fas', 'plus-circle']" size="2x"></fa-icon>
+            </ion-text>
+
+            <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+          </div>
+        </ng-template>
+      </ion-col>
+
+      <ion-col
+        *ngIf="readonly && quantity > 0 && (hasOptions || favorited !== null)"
+        size="auto"
+        class="[ buttons ] vertical-flex"
+      >
+        <div *ngIf="hasOptions" tappable (click)="openFormModal()" class="ion-activatable">
+          <ion-text color="secondary">
+            <fa-icon [fixedWidth]="true" [icon]="['fas', 'info-circle']" size="2x"></fa-icon>
+          </ion-text>
+
+          <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+        </div>
+
+        <div *ngIf="favorited !== null" tappable (click)="toggleFavorited()" class="ion-activatable">
+          <ion-text color="primary">
+            <fa-icon [fixedWidth]="true" [icon]="[favorited ? 'fas' : 'far', 'bookmark']" size="2x"></fa-icon>
+          </ion-text>
+
+          <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>

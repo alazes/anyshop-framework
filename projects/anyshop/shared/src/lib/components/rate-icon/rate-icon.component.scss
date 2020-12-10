@@ -1,0 +1,13 @@
+:host {
+  font-size: var(--size, 1em);
+
+  .face-bg {
+    color: var(--ion-color-shade);
+  }
+
+  .selected {
+    .face-front {
+      color: var(--ion-color-tint);
+    }
+  }
+}

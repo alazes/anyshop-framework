@@ -1,0 +1,43 @@
+:host {
+  --ion-margin: 8px;
+  --border-radius: 8px;
+  // --ion-grid-padding: 0;
+  // --ion-grid-column-padding: 0;
+
+  ion-card {
+    --border-radius: inherit;
+    border-radius: var(--border-radius);
+  }
+
+  .key {
+    font-weight: bold;
+  }
+
+  .info-icon {
+    font-size: 1.5em;
+    color: var(--ion-color-medium);
+  }
+
+  .name-title {
+    // https://css-tricks.com/flexbox-truncated-text/
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    color: var(--ion-color-dark);
+  }
+
+  .icon-button {
+    --border-radius: 8px;
+    --border-width: 1px;
+    --min-height: 20px;
+    --padding-end: 4px;
+    --padding-start: 4px;
+    max-height: 48px;
+  }
+
+  .status-text {
+    // font-style: italic;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,11 @@
+<ion-card [class]="class" [color]="color">
+  <ion-item button (click)="toggleContent()" lines="none" detail="false" [color]="headerColor">
+    <ion-label>
+      {{ title }}
+    </ion-label>
+
+    <ion-icon [name]="isOpen ? 'caret-down' : 'caret-forward'" slot="end"></ion-icon>
+  </ion-item>
+
+  <ng-content *ngIf="isOpen"></ng-content>
+</ion-card>

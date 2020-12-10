@@ -1,0 +1,7 @@
+:host {
+  --image-height: 130px;
+
+  ion-img {
+    height: var(--image-height);
+  }
+}

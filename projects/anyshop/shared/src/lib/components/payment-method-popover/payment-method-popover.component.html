@@ -1,0 +1,104 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="--min-height: 32px;">
+    <ion-title mode="ios" class="ion-no-padding">
+      {{ header | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="confirm()">
+    <ion-list lines="none">
+      <ng-container *ngFor="let method of availableMethodsList">
+        <ion-item
+          class="[ pyment-method-item ]"
+          *ngIf="!keyboardActive || (!multiple && isCash(method.value) && selected.hasFlag(method.value))"
+          (click)="select(method)"
+          button
+          [detail]="false"
+          style="--min-height: 48px;"
+        >
+          <payment-method-icon [value]="method" slot="start" simple></payment-method-icon>
+
+          <ion-label class="ion-text-wrap">
+            <div>{{ 'PaymentMethod.' + method.name() | translate }}</div>
+
+            <div>
+              <ion-text
+                *ngIf="!multiple && isCash(method.value) && selected.hasFlag(method.value)"
+                class="app-currency"
+              >
+                <small class="ion_small_label">{{ howMuchPay | currency: currencyCode }}</small>
+              </ion-text>
+            </div>
+          </ion-label>
+
+          <ion-icon
+            *ngIf="selected.hasFlag(method.value)"
+            name="checkmark-circle"
+            color="primary"
+            slot="end"
+          ></ion-icon>
+        </ion-item>
+      </ng-container>
+
+      <!-- <ion-item-divider *ngIf="!multiple && isCash(selected.value)">
+      <ion-label>
+        Pago en efectivo
+      </ion-label>
+    </ion-item-divider> -->
+
+      <ion-item
+        *ngIf="!multiple && isCash(selected.value)"
+        style="background: transparent; --background: transparent; margin-left: 0.8em; margin-right: 0.8em;"
+        lines="inset"
+      >
+        <!-- <ion-text slot="start" class="app-currency" class="ion-no-margin ion-margin-start">
+        S./&nbsp;
+      </ion-text> -->
+        <ion-label position="floating">
+          {{ 'HOW_MANY_PAY' | translate }}
+        </ion-label>
+
+        <ion-input
+          style="background: transparent;"
+          class="app-currency"
+          [(ngModel)]="howMuchPay"
+          [ngModelOptions]="{ standalone: true }"
+          (ionFocus)="keyboardActive = true"
+          (ionBlur)="keyboardActive = false"
+          inputmode="numeric"
+          type="number"
+          min="1"
+          max="999"
+          clear-on-edit
+          enterkeyhint="send"
+          required
+        >
+        </ion-input>
+      </ion-item>
+
+      <ion-item style="background: transparent; --background: transparent;" *ngIf="!availableMethods.value">
+        <ion-label><em translate>There are not available options</em>.</ion-label>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>
+
+<ion-footer *ngIf="availableMethods.value" class="ion-no-border">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          expand="full"
+          shape="round"
+          [disabled]="!selected.value || (!multiple && isCash(selected.value) && !howMuchPay)"
+          (click)="confirm()"
+          translate
+        >
+          Accept
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

@@ -1,0 +1,27 @@
+:host {
+  font-family: "Montserrat";
+  font-weight: 600;
+
+  ion-text {
+    line-height: 1;
+
+    .icon {
+      vertical-align: middle;
+
+    }
+
+    .time-loading {
+      vertical-align: middle;
+
+    }
+
+    .time {
+      vertical-align: middle;
+    }
+
+    .measure-unit {
+      vertical-align: text-bottom;
+      font-size: .5em;
+    }
+  }
+}

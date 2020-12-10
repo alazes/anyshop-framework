@@ -1,0 +1,7 @@
+<ion-text [color]="value.color()" class="selected ? 'selected' ? ''">
+  <fa-layers [fixedWidth]="true">
+    <fa-icon [icon]="['fas', 'circle']" class="face-bg" [transform]="selected ? 'grow-5' : ''"></fa-icon>
+
+    <fa-icon [icon]="value.faIcon('fas')" class="face-front" [transform]="selected ? 'grow-4' : ''"></fa-icon>
+  </fa-layers>
+</ion-text>

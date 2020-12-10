@@ -1,0 +1,223 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="!readonly" translate mode="ios">
+      Add product to order
+    </ion-title>
+
+    <ion-title *ngIf="readonly" translate mode="ios">
+      Order product details
+    </ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button (click)="dismiss('close')">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-img [src]="item.product.picture"></ion-img>
+
+    <ion-card-header>
+      <ion-grid style="--ion-grid-column-padding: 0; --ion-grid-padding: 0;">
+        <ion-row>
+          <ion-col>
+            <ion-card-title>{{ item.product.name || item.product.brand }}</ion-card-title>
+          </ion-col>
+
+          <ion-col size="auto" class="ion-align-self-center" style="font-size: 1.1em;">
+            <ion-text color="success" class="app-currency bold">
+              {{ currentItem.product.price | currency: 'PEN' }}
+            </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-card-subtitle>{{ item.product.description || item.product.product }}</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header [class]="{ 'ion-no-padding-bottom': !readonly }">
+      <ion-card-title>
+        <span translate>Quantity</span>
+
+        <ion-text color="primary" class="ion-float-right app-currency">
+          {{ quantityRange.value }}
+        </ion-text>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-range
+      *ngIf="!readonly"
+      color="primary"
+      [(ngModel)]="quantityRange.value"
+      min="1"
+      [max]="quantityRange.max"
+      snaps
+      pin
+      (mouseup)="syncQuantityRangeWithForm($event)"
+      (touchend)="syncQuantityRangeWithForm($event)"
+    >
+      <ion-label slot="end" style="font-size: 1.2em;">
+        <ion-text color="medium">{{ quantityRange.max }}<span *ngIf="quantityRange.max < max">+</span></ion-text>
+      </ion-label>
+    </ion-range>
+  </ion-card>
+
+  <ion-card>
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="dismiss('submit')">
+      <ion-card-header>
+        <ion-grid style="--ion-grid-column-padding: 0; --ion-grid-padding: 0;">
+          <ion-row>
+            <ion-col>
+              <ion-card-title translate>
+                Options
+              </ion-card-title>
+            </ion-col>
+
+            <ion-col size="auto" class="ion-align-self-center" style="font-size: 1.1em;">
+              <ion-text color="danger" class="app-currency bold">
+                <span>+</span>
+                {{ currentItem.getExtrasTotal() | currency: 'PEN' }}
+              </ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-header>
+
+      <ion-list formArrayName="options">
+        <ng-container *ngFor="let option of optionsForm.controls; index as i">
+          <ng-container [formGroupName]="i">
+            <ion-item-group>
+              <ion-item-divider sticky>
+                <ion-label>
+                  <ion-text color="dark">
+                    {{ item.product.options[i].name }}
+                  </ion-text>
+                </ion-label>
+
+                <ion-text
+                  *ngIf="option.get('required').value"
+                  slot="end"
+                  color="danger"
+                  class="ion-margin-horizontal"
+                  style="font-size: 0.6em;"
+                >
+                  <em translate>Mandatory</em>
+                </ion-text>
+              </ion-item-divider>
+
+              <ng-container *ngIf="option.get('multiple').value; else noMultiple">
+                <ng-container formArrayName="values">
+                  <ng-container *ngFor="let value of option.get('values')['controls']; index as j">
+                    <ng-container [formGroupName]="j">
+                      <ion-item style="--min-height: 32px;" lines="none">
+                        <ion-label>{{ value.value.name }}</ion-label>
+
+                        <ion-text
+                          *ngIf="value.value.price"
+                          slot="end"
+                          [color]="value.value.selected ? 'danger' : 'medium'"
+                        >
+                          + <em class="app-currency">{{ value.value.price | currency: 'PEN' }}</em>
+                        </ion-text>
+
+                        <ion-text
+                          *ngIf="!value.value.price"
+                          slot="end"
+                          [color]="value.value.selected ? 'danger' : 'medium'"
+                        >
+                          <em translate>Free</em>
+                        </ion-text>
+
+                        <ion-checkbox slot="end" formControlName="selected"></ion-checkbox>
+                      </ion-item>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+
+              <ng-template #noMultiple>
+                <ion-radio-group
+                  formControlName="selectedIndex"
+                  (ionChange)="syncRadioSelectionWithForm($event, option.get('values')['controls'])"
+                  [allowEmptySelection]="!option.get('required').value"
+                >
+                  <ng-container formArrayName="values">
+                    <ng-container *ngFor="let value of option.get('values')['controls']; index as j">
+                      <ng-container [formGroupName]="j">
+                        <ion-item style="--min-height: 32px;" lines="none">
+                          <ion-label>
+                            {{ value.value.name }}
+                          </ion-label>
+
+                          <ion-text
+                            *ngIf="value.value.price"
+                            slot="end"
+                            [color]="value.value.selected ? 'danger' : 'medium'"
+                          >
+                            + <em class="app-currency">{{ value.value.price | currency: 'PEN' }}</em>
+                          </ion-text>
+
+                          <ion-text
+                            *ngIf="!value.value.price"
+                            slot="end"
+                            [color]="value.value.selected ? 'danger' : 'medium'"
+                            translate
+                          >
+                            <em translate>Free</em>
+                          </ion-text>
+
+                          <ion-radio slot="end" [value]="j" [disabled]="readonly"></ion-radio>
+                        </ion-item>
+                      </ng-container>
+                    </ng-container>
+                  </ng-container>
+                </ion-radio-group>
+              </ng-template>
+            </ion-item-group>
+          </ng-container>
+        </ng-container>
+      </ion-list>
+    </form>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-card>
+    <ion-card-content class="ion-text-right">
+      <strong>Total:</strong>
+
+      <span class="app-currency">
+        (
+        <ion-text color="success">{{ currentItem.product.price | currency: 'PEN' }}</ion-text>
+        +
+        <ion-text color="danger">{{ currentItem.getExtrasTotal() | currency: 'PEN' }}</ion-text>
+        )
+      </span>
+
+      <span class="app-currency"> x {{ currentItem.quantity }}</span>
+
+      <strong class="app-currency" style="font-size: 1.6em;"> = {{ currentItem.getTotal() | currency: 'PEN' }}</strong>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid>
+    <ion-row *ngIf="!readonly" class="ion-align-items-center">
+      <ion-col>
+        <ion-button
+          expand="full"
+          type="submit"
+          (click)="dismiss('submit')"
+          [disabled]="!isValid"
+          translate="Add {n}"
+          [translateParams]="{ n: currentItem.quantity }"
+        >
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

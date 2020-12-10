@@ -19,6 +19,10 @@
       "@anyshop/core": [
         "dist/anyshop/core/anyshop-core",
         "dist/anyshop/core"
+      ],
+      "@anyshop/shared": [
+        "dist/anyshop/shared/anyshop-shared",
+        "dist/anyshop/shared"
       ]
     }
   },

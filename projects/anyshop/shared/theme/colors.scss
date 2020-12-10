@@ -1,0 +1,39 @@
+/*! @anyshop/shared colors*/
+/*
+ * https://ionicframework.com/docs/theming/colors#new-color-creator
+ */
+:root {
+  // rating-filled
+  --ion-color-rating-filled: #ffff20;
+  --ion-color-rating-filled-rgb: 255, 255, 32;
+  --ion-color-rating-filled-contrast: #000000;
+  --ion-color-rating-filled-contrast-rgb: 0, 0, 0;
+  --ion-color-rating-filled-shade: #e0e01c;
+  --ion-color-rating-filled-tint: #ffff36;
+
+  // rating-empty
+  --ion-color-rating-empty: #989aa2;
+  --ion-color-rating-empty-rgb: 152, 154, 162;
+  --ion-color-rating-empty-contrast: #000000;
+  --ion-color-rating-empty-contrast-rgb: 0, 0, 0;
+  --ion-color-rating-empty-shade: #86888f;
+  --ion-color-rating-empty-tint: #a2a4ab;
+}
+
+.ion-color-rating-filled {
+  --ion-color-base: var(--ion-color-rating-filled);
+  --ion-color-base-rgb: var(--ion-color-rating-filled-rgb);
+  --ion-color-contrast: var(--ion-color-rating-filled-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-rating-filled-contrast-rgb);
+  --ion-color-shade: var(--ion-color-rating-filled-shade);
+  --ion-color-tint: var(--ion-color-rating-filled-tint);
+}
+
+.ion-color-rating-empty {
+  --ion-color-base: var(--ion-color-rating-empty);
+  --ion-color-base-rgb: var(--ion-color-rating-empty-rgb);
+  --ion-color-contrast: var(--ion-color-rating-empty-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-rating-empty-contrast-rgb);
+  --ion-color-shade: var(--ion-color-rating-empty-shade);
+  --ion-color-tint: var(--ion-color-rating-empty-tint);
+}

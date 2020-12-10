@@ -1,0 +1,13 @@
+<ion-card [color]="color" [class]="innerClass" [button]="routerLink !== undefined">
+  <ion-img [src]="image"></ion-img>
+
+  <ion-card-header>
+    <ion-card-subtitle
+      *ngIf="counter !== undefined"
+      translate="{count} products"
+      [translateParams]="{ count: counter }"
+    ></ion-card-subtitle>
+
+    <ion-card-title>{{ title }}</ion-card-title>
+  </ion-card-header>
+</ion-card>

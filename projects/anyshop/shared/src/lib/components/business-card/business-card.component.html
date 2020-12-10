@@ -1,0 +1,66 @@
+<ion-card [class]="class" [button]="button">
+  <ion-card-content class="ion-no-padding ion-no-margin">
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-justify-content-stretch" nowrap>
+        <ion-col size="4" class="ion-align-self-center img-col">
+          <!-- con size="4" funcionaria más dinámico, pero no carga bien las imágenes no cuadradas -->
+          <!-- <ion-avatar>
+            <ion-img [src]="picture || './assets/img/img-bodega/tienda.jpg'"></ion-img>
+          </ion-avatar> -->
+
+          <!-- Forzar imágenes cuadradas fijas -->
+
+          <!-- <ion-thumbnail>
+            <ion-img [src]="picture || './assets/img/img-bodega/tienda.jpg'"></ion-img>
+          </ion-thumbnail> -->
+
+          <div
+            class="business-avatar"
+            [ngStyle]="{ 'background-image': 'url(' + (picture || './assets/img/img-bodega/tienda.jpg') + ')' }"
+          ></div>
+        </ion-col>
+
+        <ion-col size="8" class="ion-align-items-stretch data-col">
+          <ion-grid class="ion-no-padding">
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                <ion-item lines="none" style="--min-height: 0px; --padding-start: 0;">
+                  <ion-text class="business-tittle ion-no-margin ion-text-nowrap">
+                    {{ name || '{name}' }}
+                  </ion-text>
+                </ion-item>
+
+                <ion-item
+                  lines="none"
+                  style="--min-height: 16px; --padding-start: 0; --inner-padding-end: 0; margin-top: 0;"
+                >
+                  <ion-label class="ion-no-margin category">
+                    {{ category || 'Minimarket' }}
+                  </ion-label>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row style="text-align: center;" class="ion-nowrap">
+              <ion-col>
+                <fa-rating
+                  total="5"
+                  [value]="stars"
+                  [filledIcon]="['fas', 'star']"
+                  [emptyIcon]="['far', 'star']"
+                  [filledColor]="ratingColor"
+                  size="lg"
+                >
+                </fa-rating>
+              </ion-col>
+
+              <ion-col size="auto" class="ion-align-self-end">
+                <ion-text class="[ rating-number ]" [color]="ratingColor">{{ stars | number: '1.1-1' }}</ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>

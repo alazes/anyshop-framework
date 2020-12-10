@@ -42,6 +42,46 @@
           }
         }
       }
+    },
+    "@anyshop/shared": {
+      "projectType": "library",
+      "root": "projects/anyshop/shared",
+      "sourceRoot": "projects/anyshop/shared/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/anyshop/shared/tsconfig.lib.json",
+            "project": "projects/anyshop/shared/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/anyshop/shared/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/anyshop/shared/src/test.ts",
+            "tsConfig": "projects/anyshop/shared/tsconfig.spec.json",
+            "karmaConfig": "projects/anyshop/shared/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/anyshop/shared/tsconfig.lib.json",
+              "projects/anyshop/shared/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "@anyshop/core"
 }

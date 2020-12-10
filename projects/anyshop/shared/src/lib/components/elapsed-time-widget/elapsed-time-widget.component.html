@@ -1,0 +1,11 @@
+<ion-text [color]="color" class="ion-text-nowrap">
+  <fa-icon *ngIf="icon" [icon]="icon" class="icon" [fixedWidth]="true"></fa-icon>
+
+  <ion-spinner *ngIf="elapsedTime === undefined; else elapsedTimeLoaded" [color]="color" class="time-loading" name="dots">
+  </ion-spinner>
+
+  <ng-template #elapsedTimeLoaded>
+    <span class="time">{{ elapsedTime }}</span>
+    <span class="measure-unit">{{ measureUnitLabel }}</span>
+  </ng-template>
+</ion-text>

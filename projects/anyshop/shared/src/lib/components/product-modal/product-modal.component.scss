@@ -1,0 +1,62 @@
+:host {
+  ion-header {
+    ion-toolbar {
+      ion-title {
+        &.ios {
+          padding-left: 56px;
+          padding-right: 56px;
+        }
+      }
+    }
+  }
+
+  ion-select {
+    max-width: 100%;
+
+    min-width: 100%;
+
+    &::part(icon) {
+      // display: none !important;
+    }
+  }
+
+  ion-card {
+    & > ion-img {
+      max-height: 200px;
+      overflow: hidden;
+    }
+  }
+
+  ion-item {
+    ion-checkbox,
+    ion-label,
+    ion-radio {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    [slot='end'] {
+      margin-inline-start: 16px;
+    }
+  }
+
+  form {
+    ion-item-group {
+      &:not(:first-child) {
+        margin-top: 16px;
+      }
+
+      ion-item-divider {
+        border: none;
+        border-top-width: 1px;
+        border-top-style: solid;
+        border-top-color: var(--ion-color-light);
+        font-size: 1.2em;
+
+        ion-label {
+          // font-weight: bold;
+        }
+      }
+    }
+  }
+}

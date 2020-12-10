@@ -1,0 +1,25 @@
+{
+  "name": "@anyshop/shared",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^9.1.12",
+    "@angular/core": "^9.1.12",
+    "@arxis/api": "^0.0.5",
+    "@arxis/fireauth": "^2.3.0",
+    "@fortawesome/angular-fontawesome": "^0.6.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.19",
+    "@fortawesome/free-brands-svg-icons": "^5.9.0",
+    "@fortawesome/free-regular-svg-icons": "^5.9.0",
+    "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "@ionic/angular": "^5.0.5",
+    "lodash": "*",
+    "moment": "^2.24.0",
+    "ngx-ionic-image-viewer": "^0.7.4",
+    "rxjs": "^6.6.3"
+  },
+  "dependencies": {
+    "@anyshop/core": "^1.0.0",
+    "angular-svg-round-progressbar": "^3.0.1",
+    "tslib": "^1.10.0"
+  }
+}
