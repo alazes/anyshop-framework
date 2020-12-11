@@ -8,8 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-
-    "release": "npx lerna publish --yes"
+    "release": "npx lerna publish --yes",
+    "tslint-config-check": "tslint-config-prettier-check ./tslint.json ./projects/anyshop/core/tslint.json ./projects/anyshop/shared/tslint.json"
   },
   "private": true,
   "dependencies": {
@@ -51,6 +51,7 @@
     "@angular/compiler-cli": "~9.1.12",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@prettier/plugin-xml": "^0.12.0",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/lodash": "^4.14.165",
@@ -67,13 +68,18 @@
     "karma-jasmine-html-reporter": "^1.4.2",
     "lerna": "^3.22.1",
     "ng-packagr": "^9.0.0",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.3.0",
     "typescript": "~3.8.3"
   },
   "husky": {
     "hooks": {
+      "pre-commit": "pretty-quick --staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },

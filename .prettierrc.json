@@ -1,0 +1,13 @@
+{
+  "tabWidth": 2,
+  "xmlWhitespaceSensitivity": "ignore",
+
+  "overrides": [
+    {
+      "files": "projects/**/*.html",
+      "options": {
+        "parser": "angular"
+      }
+    }
+  ]
+}
