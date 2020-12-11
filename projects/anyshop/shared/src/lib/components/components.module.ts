@@ -86,6 +86,9 @@ export class ComponentsModule {
 }
 
 export {
+  AppLoadingComponent,
+  OrderCardComponent,
+  OrderProductCardComponent,
   ComponentsModule as PideloComponentsModule,
   BusinessCardComponent,
   CategoryCardComponent,
