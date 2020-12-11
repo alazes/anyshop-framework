@@ -1,5 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Color } from '@ionic/core';
+
 import { normalizeBooleanAttribute } from '../../helpers';
 
 @Component({

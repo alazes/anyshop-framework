@@ -1,7 +1,17 @@
 <ion-text [color]="color" class="ion-text-nowrap">
-  <fa-icon *ngIf="icon" [icon]="icon" class="icon" [fixedWidth]="true"></fa-icon>
+  <fa-icon
+    *ngIf="icon"
+    [icon]="icon"
+    class="icon"
+    [fixedWidth]="true"
+  ></fa-icon>
 
-  <ion-spinner *ngIf="elapsedTime === undefined; else elapsedTimeLoaded" [color]="color" class="time-loading" name="dots">
+  <ion-spinner
+    *ngIf="elapsedTime === undefined; else elapsedTimeLoaded"
+    [color]="color"
+    class="time-loading"
+    name="dots"
+  >
   </ion-spinner>
 
   <ng-template #elapsedTimeLoaded>

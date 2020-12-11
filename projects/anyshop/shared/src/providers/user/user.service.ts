@@ -1,6 +1,12 @@
 import { Inject, Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+  AngularFirestoreDocument,
+} from '@angular/fire/firestore';
+import { UserAccountInterface } from '@anyshop/core';
+import { Account, Address, Business } from '@anyshop/core';
 import { ApiService } from '@arxis/api';
 import {
   ArxisDeviceService,
@@ -9,13 +15,11 @@ import {
   ROUTE_FCM_DOC,
 } from '@arxis/fireauth';
 import { Platform } from '@ionic/angular';
-import { UserAccountInterface } from '@anyshop/core';
-import { Account, Address, Business } from '@anyshop/core';
 // import { Pro } from '@ionic/pro';
-import { auth, User } from 'firebase/app';
+import { User, auth } from 'firebase/app';
 import 'firebase/auth';
 import * as _ from 'lodash';
-import { of, BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { first, map, switchMap } from 'rxjs/operators';
 
 /**
@@ -81,7 +85,9 @@ export class UserService extends ArxisUser {
                 switchMap((business: Business) => {
                   console.log('negocio encontrado', business);
                   if (business) {
-                    this.primaryBusinessDoc = this.afs.collection('businesses').doc(business.key);
+                    this.primaryBusinessDoc = this.afs
+                      .collection('businesses')
+                      .doc(business.key);
                     this.primaryBusiness = business;
                     this.primaryAddress = business.address;
                   }
@@ -102,14 +108,18 @@ export class UserService extends ArxisUser {
    */
   async syncPrimaryBusiness(): Promise<Business | null> {
     if (this.currentUserId) {
-      const business = await this.getPrimaryBusiness(this.currentUserId).pipe(first()).toPromise();
+      const business = await this.getPrimaryBusiness(this.currentUserId)
+        .pipe(first())
+        .toPromise();
 
       if (!business || !business.key) {
         this.primaryBusinessDoc = null;
         this.primaryBusiness = null;
         this.primaryAddress = null;
       } else {
-        this.primaryBusinessDoc = this.afs.collection('businesses').doc(business.key);
+        this.primaryBusinessDoc = this.afs
+          .collection('businesses')
+          .doc(business.key);
         this.primaryBusiness = business;
         this.primaryAddress = business.address;
       }
@@ -123,8 +133,12 @@ export class UserService extends ArxisUser {
   }
 
   getPrimaryBusiness(currentUserId: string): Observable<null | Business> {
-    const primaryBusinessFilteFunction = (ref) => ref.where('owner', '==', currentUserId).limit(1);
-    const primaryBusinessQuery = this.afs.collection<Business>('businesses', primaryBusinessFilteFunction);
+    const primaryBusinessFilteFunction = (ref) =>
+      ref.where('owner', '==', currentUserId).limit(1);
+    const primaryBusinessQuery = this.afs.collection<Business>(
+      'businesses',
+      primaryBusinessFilteFunction
+    );
 
     return primaryBusinessQuery.snapshotChanges().pipe(
       map((list) => {
@@ -162,7 +176,10 @@ export class UserService extends ArxisUser {
       });
   }
 
-  sendSMSVerification(phone: string, verifier?: firebase.auth.RecaptchaVerifier): Promise<string> {
+  sendSMSVerification(
+    phone: string,
+    verifier?: firebase.auth.RecaptchaVerifier
+  ): Promise<string> {
     return this.sms.sendSMSVerification(phone, verifier);
   }
 
@@ -177,7 +194,10 @@ export class UserService extends ArxisUser {
     return this.sms.sendSMSVerificationIOS(phone);
   }
 
-  async confirm(code: string, verificationId: string): Promise<auth.UserCredential> {
+  async confirm(
+    code: string,
+    verificationId: string
+  ): Promise<auth.UserCredential> {
     const phoneCredential = await this.sms.confirm(code, verificationId);
     let userCredential: auth.UserCredential;
     try {
@@ -210,7 +230,11 @@ export class UserService extends ArxisUser {
 
     await userCredential.user.reload();
 
-    await this.updateUserData(data, userCredential.user as UserAccountInterface, true);
+    await this.updateUserData(
+      data,
+      userCredential.user as UserAccountInterface,
+      true
+    );
 
     return userCredential;
   }
@@ -424,7 +448,11 @@ export class UserService extends ArxisUser {
   /**
    * Agrega o elimina al elemento de la colección especificada como favorito para el usuario actual.
    */
-  async setFavorite(collection: 'businesses' | 'orders' | 'stock', id: string, isFavorite: boolean): Promise<void> {
+  async setFavorite(
+    collection: 'businesses' | 'orders' | 'stock',
+    id: string,
+    isFavorite: boolean
+  ): Promise<void> {
     const user = this.currentUserId;
 
     const data = {

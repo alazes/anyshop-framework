@@ -1,5 +1,5 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar style="--min-height: 32px;">
+  <ion-toolbar style="--min-height: 32px">
     <ion-title mode="ios" class="ion-no-padding">
       {{ header | translate }}
     </ion-title>
@@ -12,23 +12,38 @@
       <ng-container *ngFor="let method of availableMethodsList">
         <ion-item
           class="[ pyment-method-item ]"
-          *ngIf="!keyboardActive || (!multiple && isCash(method.value) && selected.hasFlag(method.value))"
+          *ngIf="
+            !keyboardActive ||
+            (!multiple &&
+              isCash(method.value) &&
+              selected.hasFlag(method.value))
+          "
           (click)="select(method)"
           button
           [detail]="false"
-          style="--min-height: 48px;"
+          style="--min-height: 48px"
         >
-          <payment-method-icon [value]="method" slot="start" simple></payment-method-icon>
+          <payment-method-icon
+            [value]="method"
+            slot="start"
+            simple
+          ></payment-method-icon>
 
           <ion-label class="ion-text-wrap">
-            <div>{{ 'PaymentMethod.' + method.name() | translate }}</div>
+            <div>{{ "PaymentMethod." + method.name() | translate }}</div>
 
             <div>
               <ion-text
-                *ngIf="!multiple && isCash(method.value) && selected.hasFlag(method.value)"
+                *ngIf="
+                  !multiple &&
+                  isCash(method.value) &&
+                  selected.hasFlag(method.value)
+                "
                 class="app-currency"
               >
-                <small class="ion_small_label">{{ howMuchPay | currency: currencyCode }}</small>
+                <small class="ion_small_label">{{
+                  howMuchPay | currency: currencyCode
+                }}</small>
               </ion-text>
             </div>
           </ion-label>
@@ -50,18 +65,23 @@
 
       <ion-item
         *ngIf="!multiple && isCash(selected.value)"
-        style="background: transparent; --background: transparent; margin-left: 0.8em; margin-right: 0.8em;"
+        style="
+          background: transparent;
+          --background: transparent;
+          margin-left: 0.8em;
+          margin-right: 0.8em;
+        "
         lines="inset"
       >
         <!-- <ion-text slot="start" class="app-currency" class="ion-no-margin ion-margin-start">
         S./&nbsp;
       </ion-text> -->
         <ion-label position="floating">
-          {{ 'HOW_MANY_PAY' | translate }}
+          {{ "HOW_MANY_PAY" | translate }}
         </ion-label>
 
         <ion-input
-          style="background: transparent;"
+          style="background: transparent"
           class="app-currency"
           [(ngModel)]="howMuchPay"
           [ngModelOptions]="{ standalone: true }"
@@ -78,8 +98,13 @@
         </ion-input>
       </ion-item>
 
-      <ion-item style="background: transparent; --background: transparent;" *ngIf="!availableMethods.value">
-        <ion-label><em translate>There are not available options</em>.</ion-label>
+      <ion-item
+        style="background: transparent; --background: transparent"
+        *ngIf="!availableMethods.value"
+      >
+        <ion-label
+          ><em translate>There are not available options</em>.</ion-label
+        >
       </ion-item>
     </ion-list>
   </form>
@@ -92,7 +117,10 @@
         <ion-button
           expand="full"
           shape="round"
-          [disabled]="!selected.value || (!multiple && isCash(selected.value) && !howMuchPay)"
+          [disabled]="
+            !selected.value ||
+            (!multiple && isCash(selected.value) && !howMuchPay)
+          "
           (click)="confirm()"
           translate
         >

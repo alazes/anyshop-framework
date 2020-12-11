@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { GeoIpResponse } from '@anyshop/core';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'any' })
 export class GeoIPDetectorService {
@@ -19,12 +19,15 @@ export class GeoIPDetectorService {
 
   getIPData(): Observable<GeoIpResponse> {
     const promiseData = this.http.get(this.url) as Observable<GeoIpResponse>;
-    const promiseDataSub = promiseData.subscribe((res: GeoIpResponse) => {
-      this.geoIPData = res;
-      promiseDataSub.unsubscribe();
-    }, (error) => {
-      console.error(error);
-    });
+    const promiseDataSub = promiseData.subscribe(
+      (res: GeoIpResponse) => {
+        this.geoIPData = res;
+        promiseDataSub.unsubscribe();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
 
     return promiseData;
   }

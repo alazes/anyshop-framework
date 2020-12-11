@@ -1,7 +1,11 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { PaymentMethod } from '@anyshop/core';
 import * as Moment from 'moment';
-import { normalizeBooleanAttribute, PaymentMethodExtension } from '../../helpers';
+
+import {
+  PaymentMethodExtension,
+  normalizeBooleanAttribute,
+} from '../../helpers';
 
 const moment = Moment; // https://github.com/rollup/rollup/issues/670#issuecomment-355945073
 
@@ -74,7 +78,13 @@ export class BusinessCardComponent implements OnInit, OnDestroy {
     flags:
       | PaymentMethod
       | PaymentMethodExtension
-      | Array<PaymentMethodExtension | PaymentMethod | number | string | IPaymentMethodWithKeys>
+      | Array<
+          | PaymentMethodExtension
+          | PaymentMethod
+          | number
+          | string
+          | IPaymentMethodWithKeys
+        >
   ): PaymentMethodExtension {
     let pm = PaymentMethodExtension.for(0);
 

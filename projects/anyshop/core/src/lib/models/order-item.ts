@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+
 import IOrderItem from './order-item.interface';
 import Product from './product';
 import IProductData from './product-data.interface';
@@ -42,7 +43,8 @@ class OrderItem implements IOrderItem {
   }
 
   constructor(data: IOrderItem = {}) {
-    let product: Product | IProductData = data.product || ({ options: [], name: '', category: '' } as IProductData);
+    let product: Product | IProductData =
+      data.product || ({ options: [], name: '', category: '' } as IProductData);
 
     if (!(product instanceof Product)) {
       this.product = product = new Product(product);

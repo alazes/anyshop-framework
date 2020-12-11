@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+} from '@angular/fire/firestore';
+import { Business, Stock } from '@anyshop/core';
 import { ApiService } from '@arxis/api';
 import { firestore } from 'firebase/app';
 import 'firebase/firestore';
 import { Observable } from 'rxjs';
-import { Business, Stock } from '@anyshop/core';
+
 import { FirebaseItemsAbstractService } from '../firebase/firebase-items-abstract.service';
 import { StockService } from '../stock/stock.service';
 
 @Injectable({ providedIn: 'any' })
 export class BusinessesService extends FirebaseItemsAbstractService<Business> {
-  constructor(public db: AngularFirestore, public stock: StockService, private api: ApiService) {
+  constructor(
+    public db: AngularFirestore,
+    public stock: StockService,
+    private api: ApiService
+  ) {
     super('/businesses', db);
   }
 
@@ -39,7 +47,10 @@ export class BusinessesService extends FirebaseItemsAbstractService<Business> {
     return this.stock.query(stockFilterFunction);
   }
 
-  getStockBusinessByCategory(businessId: string, categoryName: string): Observable<Stock[]> {
+  getStockBusinessByCategory(
+    businessId: string,
+    categoryName: string
+  ): Observable<Stock[]> {
     const businessRef = this.itemsCollection.doc(businessId).ref;
     const stockFilterFunction = (ref) =>
       ref
@@ -65,8 +76,19 @@ export class BusinessesService extends FirebaseItemsAbstractService<Business> {
   getOrdersAverages(
     business: string,
     includes: string = 'all',
-    options: { limit?: number; precision?: number; default?: number; max?: number } = {}
-  ): Observable<{ totalMatches: number; data: { deliveryDuration?: number; rating?: number } } | ArrayBuffer> {
+    options: {
+      limit?: number;
+      precision?: number;
+      default?: number;
+      max?: number;
+    } = {}
+  ): Observable<
+    | {
+        totalMatches: number;
+        data: { deliveryDuration?: number; rating?: number };
+      }
+    | ArrayBuffer
+  > {
     return this.api.get('businessOrdersAverages', {
       business,
       includes,

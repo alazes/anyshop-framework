@@ -1,11 +1,7 @@
 {
-  "packages": [
-    "projects/anyshop/*"
-  ],
+  "packages": ["projects/anyshop/*"],
   "bootstrap": {
-    "npmClientArgs": [
-      "--no-package-lock"
-    ]
+    "npmClientArgs": ["--no-package-lock"]
   },
   "command": {
     "publish": {
@@ -13,9 +9,7 @@
     },
     "version": {
       "message": "chore(release): prepare %s",
-      "allowBranch": [
-        "main"
-      ]
+      "allowBranch": ["main"]
     }
   },
   "version": "0.2.0"

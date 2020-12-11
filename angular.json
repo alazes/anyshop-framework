@@ -36,9 +36,7 @@
               "projects/anyshop/core/tsconfig.lib.json",
               "projects/anyshop/core/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -76,12 +74,11 @@
               "projects/anyshop/shared/tsconfig.lib.json",
               "projects/anyshop/shared/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "@anyshop/core"
 }

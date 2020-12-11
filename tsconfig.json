@@ -11,15 +11,9 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "lib": ["es2018", "dom"],
     "paths": {
-      "@anyshop/core": [
-        "dist/anyshop/core/anyshop-core",
-        "dist/anyshop/core"
-      ],
+      "@anyshop/core": ["dist/anyshop/core/anyshop-core", "dist/anyshop/core"],
       "@anyshop/shared": [
         "dist/anyshop/shared/anyshop-shared",
         "dist/anyshop/shared"

@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { OrderStatus } from '@anyshop/core';
-import { OrderStatusExtension } from '../../helpers';
 import { IStatusStepInfo } from '@anyshop/core';
+
+import { OrderStatusExtension } from '../../helpers';
 
 @Component({
   selector: 'full-order-status-widget',

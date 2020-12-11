@@ -2,8 +2,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PaymentMethod } from '@anyshop/core';
 import { PopoverController } from '@ionic/angular';
 import { Color, OverlayEventDetail } from '@ionic/core';
+
 import { ComponentsConfigService } from '../../components-config.service';
-import { normalizeBooleanAttribute, PaymentMethodExtension } from '../../helpers';
+import {
+  PaymentMethodExtension,
+  normalizeBooleanAttribute,
+} from '../../helpers';
 import {
   IPaymentMethodData,
   PaymentMethodPopoverComponent,
@@ -120,14 +124,20 @@ export class PaymentMethodWidgetComponent implements OnInit {
   @Output()
   readonly selectedChange = new EventEmitter<PaymentMethodExtension>();
 
-  constructor(private popoverController: PopoverController, config: ComponentsConfigService) {
+  constructor(
+    private popoverController: PopoverController,
+    config: ComponentsConfigService
+  ) {
     this.currencyCode = config.defaultCurrency;
   }
 
   ngOnInit() {}
 
   parsePaymentMethodsHtmlAttribute(
-    flags: PaymentMethod | PaymentMethodExtension | Array<PaymentMethodExtension | PaymentMethod | number | string>
+    flags:
+      | PaymentMethod
+      | PaymentMethodExtension
+      | Array<PaymentMethodExtension | PaymentMethod | number | string>
   ): PaymentMethodExtension {
     let pm = PaymentMethodExtension.for(0);
 

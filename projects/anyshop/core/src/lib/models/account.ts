@@ -1,4 +1,5 @@
 import { UserAccountInterface } from '../interfaces';
+
 import { Model } from './abstract-model';
 import { Roles } from './roles';
 

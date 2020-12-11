@@ -1,7 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+
 import { ComponentsConfigService } from '../../components-config.service';
-import { ProductStockSavedEvent, ProductStockSavingEvent, ProductStockValue } from '../../events';
+import {
+  ProductStockSavedEvent,
+  ProductStockSavingEvent,
+  ProductStockValue,
+} from '../../events';
 import { normalizeBooleanAttribute } from '../../helpers';
 
 @Component({
@@ -84,8 +89,14 @@ export class ProductStockCardComponent implements OnInit {
   constructor(config: ComponentsConfigService) {
     this.currencyCode = config.defaultCurrency;
 
-    this.priceFormControl = new FormControl(0, [Validators.required, Validators.min(0)]);
-    this.quantityFormControl = new FormControl(0, [Validators.required, Validators.min(0)]);
+    this.priceFormControl = new FormControl(0, [
+      Validators.required,
+      Validators.min(0),
+    ]);
+    this.quantityFormControl = new FormControl(0, [
+      Validators.required,
+      Validators.min(0),
+    ]);
   }
 
   ngOnInit() {
@@ -140,7 +151,9 @@ export class ProductStockCardComponent implements OnInit {
   }
 
   incrementQuantity() {
-    this.quantityFormControl.setValue((+this.quantityFormControl.value || 0) + 1);
+    this.quantityFormControl.setValue(
+      (+this.quantityFormControl.value || 0) + 1
+    );
   }
 
   decrementQuantity() {

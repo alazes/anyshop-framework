@@ -1,13 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { IProductOption } from '@anyshop/core';
+import { IOrderItem, OrderItem, ProductOption } from '@anyshop/core';
 import { ModalController } from '@ionic/angular';
 import * as _ from 'lodash';
 import { startWith } from 'rxjs/operators';
-import { ProductOptionFormGroup, ProductOptionValueFormGroup } from './product-option.form-group';
 
 import { normalizeBooleanAttribute } from '../../helpers';
-import { IProductOption } from '@anyshop/core';
-import { IOrderItem, OrderItem, ProductOption } from '@anyshop/core';
+
+import {
+  ProductOptionFormGroup,
+  ProductOptionValueFormGroup,
+} from './product-option.form-group';
 
 export interface IOrderItemModalData {
   options: IProductOption[];
@@ -57,7 +61,8 @@ export class ProductModalComponent implements OnInit {
   }
   @Input()
   set max(max) {
-    this._max = _.min([max, Number.MAX_SAFE_INTEGER]) || Number.MAX_SAFE_INTEGER;
+    this._max =
+      _.min([max, Number.MAX_SAFE_INTEGER]) || Number.MAX_SAFE_INTEGER;
   }
 
   quantityRange = {
@@ -81,17 +86,19 @@ export class ProductModalComponent implements OnInit {
   ngOnInit() {
     this.currentItem = new OrderItem(this.item as IOrderItem);
 
-    const options = this.item.product.options.map((o: ProductOption | IProductOption) => {
-      let productOption: ProductOption;
+    const options = this.item.product.options.map(
+      (o: ProductOption | IProductOption) => {
+        let productOption: ProductOption;
 
-      if (o instanceof ProductOption) {
-        productOption = o;
-      } else {
-        productOption = new ProductOption(o);
+        if (o instanceof ProductOption) {
+          productOption = o;
+        } else {
+          productOption = new ProductOption(o);
+        }
+
+        return new ProductOptionFormGroup(productOption);
       }
-
-      return new ProductOptionFormGroup(productOption);
-    });
+    );
 
     this.form = new FormGroup({
       quantity: new FormControl(this.item.quantity || 1, [
@@ -120,7 +127,10 @@ export class ProductModalComponent implements OnInit {
         // console.log(v.options);
 
         this.currentItem.product.options = v.options.map((o) => {
-          return new ProductOption(o.name, o.values, { multiple: o.multiple, required: o.required });
+          return new ProductOption(o.name, o.values, {
+            multiple: o.multiple,
+            required: o.required,
+          });
         });
 
         this.currentItem.quantity = v.quantity;
@@ -156,7 +166,10 @@ export class ProductModalComponent implements OnInit {
     return this.modalController.dismiss(data, role);
   }
 
-  syncRadioSelectionWithForm({ detail }: CustomEvent<{ value: number }>, formArray: ProductOptionValueFormGroup[]) {
+  syncRadioSelectionWithForm(
+    { detail }: CustomEvent<{ value: number }>,
+    formArray: ProductOptionValueFormGroup[]
+  ) {
     formArray.forEach((f, i) => {
       f.patchValue({ selected: detail.value === i });
     });
@@ -165,8 +178,14 @@ export class ProductModalComponent implements OnInit {
   syncQuantityRangeWithForm(_ev: MouseEvent | TouchEvent) {
     this.form.patchValue({ quantity: this.quantityRange.value });
 
-    if (this.currentItem.quantity >= this.quantityRange.max && this.currentItem.quantity < this.max) {
-      this.quantityRange.max = _.min([this.quantityRange.max + 5, this.max]) as number;
+    if (
+      this.currentItem.quantity >= this.quantityRange.max &&
+      this.currentItem.quantity < this.max
+    ) {
+      this.quantityRange.max = _.min([
+        this.quantityRange.max + 5,
+        this.max,
+      ]) as number;
     }
   }
 }

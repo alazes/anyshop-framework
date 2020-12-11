@@ -16,7 +16,10 @@
 
           <div
             class="business-avatar"
-            [ngStyle]="{ 'background-image': 'url(' + (picture || './assets/img/img-bodega/tienda.jpg') + ')' }"
+            [ngStyle]="{
+              'background-image':
+                'url(' + (picture || './assets/img/img-bodega/tienda.jpg') + ')'
+            }"
           ></div>
         </ion-col>
 
@@ -24,24 +27,34 @@
           <ion-grid class="ion-no-padding">
             <ion-row>
               <ion-col class="ion-no-padding">
-                <ion-item lines="none" style="--min-height: 0px; --padding-start: 0;">
-                  <ion-text class="business-tittle ion-no-margin ion-text-nowrap">
-                    {{ name || '{name}' }}
+                <ion-item
+                  lines="none"
+                  style="--min-height: 0px; --padding-start: 0"
+                >
+                  <ion-text
+                    class="business-tittle ion-no-margin ion-text-nowrap"
+                  >
+                    {{ name || "{name}" }}
                   </ion-text>
                 </ion-item>
 
                 <ion-item
                   lines="none"
-                  style="--min-height: 16px; --padding-start: 0; --inner-padding-end: 0; margin-top: 0;"
+                  style="
+                    --min-height: 16px;
+                    --padding-start: 0;
+                    --inner-padding-end: 0;
+                    margin-top: 0;
+                  "
                 >
                   <ion-label class="ion-no-margin category">
-                    {{ category || 'Minimarket' }}
+                    {{ category || "Minimarket" }}
                   </ion-label>
                 </ion-item>
               </ion-col>
             </ion-row>
 
-            <ion-row style="text-align: center;" class="ion-nowrap">
+            <ion-row style="text-align: center" class="ion-nowrap">
               <ion-col>
                 <fa-rating
                   total="5"
@@ -55,7 +68,9 @@
               </ion-col>
 
               <ion-col size="auto" class="ion-align-self-end">
-                <ion-text class="[ rating-number ]" [color]="ratingColor">{{ stars | number: '1.1-1' }}</ion-text>
+                <ion-text class="[ rating-number ]" [color]="ratingColor">{{
+                  stars | number: "1.1-1"
+                }}</ion-text>
               </ion-col>
             </ion-row>
           </ion-grid>

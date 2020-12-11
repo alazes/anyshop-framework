@@ -1,7 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { PaymentMethod } from '@anyshop/core';
-import { normalizeBooleanAttribute, PaymentMethodExtension } from '../../helpers';
+import { SizeProp } from '@fortawesome/fontawesome-svg-core';
+
+import {
+  PaymentMethodExtension,
+  normalizeBooleanAttribute,
+} from '../../helpers';
 
 @Component({
   selector: 'payment-method-icon',
@@ -9,7 +13,9 @@ import { normalizeBooleanAttribute, PaymentMethodExtension } from '../../helpers
   styleUrls: ['./payment-method-icon.component.scss'],
 })
 export class PaymentMethodIconComponent implements OnInit {
-  private _value: PaymentMethodExtension = new PaymentMethodExtension(PaymentMethod.None);
+  private _value: PaymentMethodExtension = new PaymentMethodExtension(
+    PaymentMethod.None
+  );
   private _simple = false;
 
   @Input()

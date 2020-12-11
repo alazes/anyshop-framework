@@ -1,12 +1,20 @@
 <ion-card [button]="true" [routerLink]="['/orders', key]" [class]="classes">
-  <ion-progress-bar *ngIf="!rated" [color]="rejected ? 'danger' : 'success'" [value]="currentProgress">
+  <ion-progress-bar
+    *ngIf="!rated"
+    [color]="rejected ? 'danger' : 'success'"
+    [value]="currentProgress"
+  >
   </ion-progress-bar>
 
   <ion-grid>
     <ion-row class="ion-align-items-center ion-nowrap">
       <ion-col class="key" size="auto">
         <ion-text [color]="rejected ? 'danger' : 'success'">
-          <fa-icon *ngIf="completed" [icon]="statusIcon" [fixedWidth]="true"></fa-icon>
+          <fa-icon
+            *ngIf="completed"
+            [icon]="statusIcon"
+            [fixedWidth]="true"
+          ></fa-icon>
         </ion-text>
 
         <samp>#{{ order.key }}</samp>
@@ -22,12 +30,21 @@
       </ion-col>
 
       <ion-col size="auto" *ngIf="rated" class="ion-no-padding">
-        <fa-rating [value]="order.rate" size="lg" [filledColor]="ratingColor"></fa-rating>
+        <fa-rating
+          [value]="order.rate"
+          size="lg"
+          [filledColor]="ratingColor"
+        ></fa-rating>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <ion-progress-bar *ngIf="!rated" [color]="rejected ? 'danger' : 'success'" [value]="currentProgress" [buffer]="0">
+  <ion-progress-bar
+    *ngIf="!rated"
+    [color]="rejected ? 'danger' : 'success'"
+    [value]="currentProgress"
+    [buffer]="0"
+  >
   </ion-progress-bar>
 
   <ion-grid>
@@ -39,10 +56,16 @@
         </ion-col> -->
 
       <!-- https://css-tricks.com/flexbox-truncated-text/ -->
-      <ion-col style="min-width: 0;">
-        <ion-row class="ion-align-items-center" style="--ion-grid-column-padding: 4px;">
+      <ion-col style="min-width: 0">
+        <ion-row
+          class="ion-align-items-center"
+          style="--ion-grid-column-padding: 4px"
+        >
           <ion-col class="name-title">
-            <fa-icon [icon]="['fas', forBusiness ? 'user-tag' : 'store-alt']" [fixedWidth]="true"></fa-icon>
+            <fa-icon
+              [icon]="['fas', forBusiness ? 'user-tag' : 'store-alt']"
+              [fixedWidth]="true"
+            ></fa-icon>
             <!-- TEST: Un nombre muy largo asgdjhgas hgasdjhgasdhg asjdgh sagdj shgad asd as dasd -->
 
             <span *ngIf="forBusiness; else isBusiness">
@@ -67,7 +90,7 @@
       </ion-col>
 
       <ion-col class="ion-text-right">
-        {{ order.createdAt | date: 'd, MMM yy' }}
+        {{ order.createdAt | date: "d, MMM yy" }}
       </ion-col>
     </ion-row>
 
@@ -78,7 +101,7 @@
           class="info-icon"
           [startTime]="order.createdAt"
           [endTime]="completedAt"
-          style="font-size: 1.3em;"
+          style="font-size: 1.3em"
           [measureUnit]="unitOfTime"
           [fixedUnitOfTime]="fixedUnitOfTime"
         >
@@ -86,13 +109,17 @@
       </ion-col>
 
       <ion-col size="auto" class="info-icon">
-        <payment-method-icon [value]="order.paymentMethod" simple> </payment-method-icon>
+        <payment-method-icon [value]="order.paymentMethod" simple>
+        </payment-method-icon>
       </ion-col>
 
       <ion-col size="auto" class="info-icon">
         <fa-layers [fixedWidth]="true">
           <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
-          <fa-layers-counter [content]="totalProducts" style="font-size: 1.5em;"></fa-layers-counter>
+          <fa-layers-counter
+            [content]="totalProducts"
+            style="font-size: 1.5em"
+          ></fa-layers-counter>
         </fa-layers>
       </ion-col>
 

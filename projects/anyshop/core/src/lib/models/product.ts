@@ -1,5 +1,6 @@
 import { DocumentReference } from '@angular/fire/firestore';
 import * as _ from 'lodash';
+
 import { Model } from './abstract-model';
 import IProductData from './product-data.interface';
 import ProductOption from './product-option';
@@ -71,7 +72,10 @@ class Product extends Model implements IProductData {
     this.price = data.price || 0;
 
     this.options = options.map((opt) => {
-      return new ProductOption(opt.name, opt.values, { required: opt.required, multiple: opt.multiple });
+      return new ProductOption(opt.name, opt.values, {
+        required: opt.required,
+        multiple: opt.multiple,
+      });
     });
   }
 

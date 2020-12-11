@@ -1,4 +1,5 @@
 import { IFirebaseData } from '../interfaces';
+
 import { SerializableModel } from './serializable-model';
 // import Category from './category';
 

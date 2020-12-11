@@ -1,14 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { includes, replace, trim, truncate, upperCase } from 'lodash';
 
-
 // TODO: Mover interfaces a @pidelo/contracts
 
 /*
   Maps Static API
   https://developers.google.com/maps/documentation/maps-static/dev-guide
  */
-
 
 export interface IStaticMapParams {
   key: string;
@@ -34,7 +32,18 @@ export interface IMapMarker {
 
 export interface IMapMarkerStyle {
   size?: 'tiny' | 'mid' | 'small';
-  color?: 'black' | 'brown' | 'green' | 'purple' | 'yellow' | 'blue' | 'gray' | 'orange' | 'red' | 'white' | string;
+  color?:
+    | 'black'
+    | 'brown'
+    | 'green'
+    | 'purple'
+    | 'yellow'
+    | 'blue'
+    | 'gray'
+    | 'orange'
+    | 'red'
+    | 'white'
+    | string;
   label?: string;
 }
 
@@ -52,10 +61,10 @@ export class MapMarkerComponent implements OnInit {
   private _marker: IMapMarker = {
     location: {
       latitude: 0,
-      longitude: 0
+      longitude: 0,
     },
     scale: 1,
-    style: { },
+    style: {},
   };
 
   public get data() {
@@ -86,7 +95,10 @@ export class MapMarkerComponent implements OnInit {
     if (includes([1, 2, 4], +value)) {
       this.data.scale = +value;
     } else {
-      console.warn('Invalid value for scale (expected 1, 2 or 4). Ignoring.', value);
+      console.warn(
+        'Invalid value for scale (expected 1, 2 or 4). Ignoring.',
+        value
+      );
     }
   }
   get scale() {
@@ -105,7 +117,11 @@ export class MapMarkerComponent implements OnInit {
 
     if (char.length > 1) {
       char = truncate(char, { length: 1, omission: '' });
-      console.warn('Invalid value for label (1 character length expected). Truncated.', value, char);
+      console.warn(
+        'Invalid value for label (1 character length expected). Truncated.',
+        value,
+        char
+      );
     }
 
     this.data.style.label = char;
@@ -130,7 +146,7 @@ export class MapMarkerComponent implements OnInit {
     return this.data.style.size;
   }
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     if (!this.data.location.latitude) {

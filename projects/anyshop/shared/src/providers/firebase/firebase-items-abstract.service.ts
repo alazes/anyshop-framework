@@ -11,9 +11,12 @@ import { firestore } from 'firebase/app';
 import { clone } from 'lodash';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
 import { FirebaseItems } from './firebase-items';
 
-export abstract class FirebaseItemsAbstractService<T extends IKeyable | IFirebaseData> implements FirebaseItems<T> {
+export abstract class FirebaseItemsAbstractService<
+  T extends IKeyable | IFirebaseData
+> implements FirebaseItems<T> {
   itemsCollection: AngularFirestoreCollection<T>;
   items: Observable<T[]>;
   filteredCollection: AngularFirestoreCollection<T>;
@@ -38,7 +41,10 @@ export abstract class FirebaseItemsAbstractService<T extends IKeyable | IFirebas
       return this.getItems();
     }
 
-    this.filteredCollection = this.afs.collection<T>(this.firebaseRoute, params);
+    this.filteredCollection = this.afs.collection<T>(
+      this.firebaseRoute,
+      params
+    );
 
     return this.filteredCollection.snapshotChanges().pipe(
       map((list) => {
@@ -48,7 +54,9 @@ export abstract class FirebaseItemsAbstractService<T extends IKeyable | IFirebas
   }
 
   async add(item: T): Promise<firestore.DocumentReference<T>> {
-    return (await this.itemsCollection.add(item)) as firestore.DocumentReference<T>;
+    return (await this.itemsCollection.add(
+      item
+    )) as firestore.DocumentReference<T>;
   }
 
   async set(item: any, data: any) {
@@ -59,13 +67,20 @@ export abstract class FirebaseItemsAbstractService<T extends IKeyable | IFirebas
     return this.itemsCollection.doc(key);
   }
 
-  findBy(field: string, value: string | number | boolean | DocumentReference): Observable<T[]> {
-    const findByFilterFunction: QueryFn = (ref) => ref.where(field, '==', value);
+  findBy(
+    field: string,
+    value: string | number | boolean | DocumentReference
+  ): Observable<T[]> {
+    const findByFilterFunction: QueryFn = (ref) =>
+      ref.where(field, '==', value);
 
     return this.query(findByFilterFunction);
   }
 
-  findOneBy(field: string, value: string | number | boolean | DocumentReference): Observable<T> {
+  findOneBy(
+    field: string,
+    value: string | number | boolean | DocumentReference
+  ): Observable<T> {
     return this.findBy(field, value).pipe(
       map((elements: T[]) => {
         if (elements) {

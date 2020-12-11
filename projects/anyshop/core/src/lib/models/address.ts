@@ -1,4 +1,5 @@
 import { firestore } from 'firebase/app';
+
 import { Model } from './abstract-model';
 
 class Address extends Model {

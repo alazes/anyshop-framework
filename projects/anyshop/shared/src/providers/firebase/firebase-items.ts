@@ -1,4 +1,8 @@
-import { AngularFirestore, AngularFirestoreCollection, QueryFn } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+  QueryFn,
+} from '@angular/fire/firestore';
 import { firestore } from 'firebase/app';
 import { Observable } from 'rxjs';
 

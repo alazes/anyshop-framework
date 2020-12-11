@@ -26,12 +26,12 @@ export class LoadingService {
       'auth/code-expired',
       'auth/credential-already-in-use',
       'auth/too-many-requests',
-      'auth/requires-recent-login'
+      'auth/requires-recent-login',
     ];
     const defaultMessages = ['WAIT_PLEASE'];
     this.translateService
       .get(defaultMessages.concat(loginErrors))
-      .subscribe(values => {
+      .subscribe((values) => {
         this.messages = values;
       });
   }
@@ -45,7 +45,7 @@ export class LoadingService {
     }
 
     this.loading = await this.loadingCtrl.create({
-      message
+      message,
     });
 
     return await this.loading.present();
@@ -55,29 +55,40 @@ export class LoadingService {
     return await this.loadingCtrl.dismiss();
   }
 
-  async showAlert(message: string, position?: 'top' | 'bottom' | 'middle', duration?: number) {
+  async showAlert(
+    message: string,
+    position?: 'top' | 'bottom' | 'middle',
+    duration?: number
+  ) {
     message = await this.translateService.get(message).toPromise();
 
     const toast = await this.toastCtrl.create({
       message,
       duration: duration || 3000,
-      position: position || 'bottom'
+      position: position || 'bottom',
     });
 
     await toast.present();
   }
 
-  async showError(errorCode?: string, onErrorUnkwonMessage?: string, position?: 'top' | 'bottom' | 'middle', duration?: number) {
+  async showError(
+    errorCode?: string,
+    onErrorUnkwonMessage?: string,
+    position?: 'top' | 'bottom' | 'middle',
+    duration?: number
+  ) {
     let message = this.messages[errorCode];
 
     if (!message) {
-      message = await this.translateService.get(onErrorUnkwonMessage).toPromise();
+      message = await this.translateService
+        .get(onErrorUnkwonMessage)
+        .toPromise();
     }
 
     const toast = await this.toastCtrl.create({
       message,
       duration: duration || 3000,
-      position: position || 'top'
+      position: position || 'top',
     });
 
     await toast.present();

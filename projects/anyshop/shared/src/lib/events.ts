@@ -1,13 +1,10 @@
-
 export interface ProductStockValue {
   quantity: number;
   price: number;
 }
 
 export class ProductStockSavedEvent {
-  constructor(
-    public readonly value: ProductStockValue
-  ) {
+  constructor(public readonly value: ProductStockValue) {
     if (isNaN(value.quantity) || value.quantity < 0) {
       throw new Error('La cantidad no puede ser negativa.');
     }

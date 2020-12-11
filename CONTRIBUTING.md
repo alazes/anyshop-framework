@@ -12,7 +12,6 @@ Any case, there is a git hook configured with Husky for linting the commit messa
 
 > Some IDEs may not be compatible with commit hooks.
 
-
 ## Release process
 
 - Run `npm run release`.

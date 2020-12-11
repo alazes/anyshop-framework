@@ -1,4 +1,5 @@
 import { PaymentMethod } from '@anyshop/core';
+
 import Flags from './flags';
 
 /* tslint:disable:no-bitwise */
@@ -25,7 +26,6 @@ export default class PaymentMethodExtension extends Flags<PaymentMethod> {
 
     return new this(pm);
   }
-
 
   faIcon(mode?: 'fas' | 'far'): string[] {
     let iconValue: string[];
@@ -89,7 +89,6 @@ export default class PaymentMethodExtension extends Flags<PaymentMethod> {
     return text;
   }
 
-
   name(flagsSeparator?: string): string | undefined {
     if (this.value === 0) {
       return PaymentMethod[this.value]; // Cuando es none
@@ -97,14 +96,12 @@ export default class PaymentMethodExtension extends Flags<PaymentMethod> {
 
     const names: string[] = [];
 
-    this.getFlags()
-      .map((pm) => {
-        names.push(PaymentMethod[pm]);
-      });
+    this.getFlags().map((pm) => {
+      names.push(PaymentMethod[pm]);
+    });
 
     return names.join(flagsSeparator || ' | ');
   }
-
 
   color() {
     const name = this.name();
@@ -120,9 +117,8 @@ export default class PaymentMethodExtension extends Flags<PaymentMethod> {
    * Obtiene cada instancia individual de los flags como array.
    */
   toArray(): PaymentMethodExtension[] {
-    return this.getFlags()
-      .map((method) => {
-        return PaymentMethodExtension.for(method);
-      });
+    return this.getFlags().map((method) => {
+      return PaymentMethodExtension.for(method);
+    });
   }
 }

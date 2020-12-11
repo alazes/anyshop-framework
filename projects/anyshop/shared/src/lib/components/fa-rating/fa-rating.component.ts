@@ -19,11 +19,9 @@ export class FaRatingComponent implements OnInit {
   private _emptyIcon: string | string[] = DEFAULT_EMPTY_ICON;
   private _value: number | undefined;
 
-
   private _items = Array(5)
     .fill(0)
     .map((_x, i) => i + 1);
-
 
   /**
    * Tamaño interno del ícono.
@@ -69,7 +67,6 @@ export class FaRatingComponent implements OnInit {
     return this._emptyColor;
   }
 
-
   /**
    * Ícono de FA para relleno.
    */
@@ -92,8 +89,6 @@ export class FaRatingComponent implements OnInit {
     return this._emptyIcon;
   }
 
-
-
   /**
    * Total de íconos para el rating.
    */
@@ -109,12 +104,9 @@ export class FaRatingComponent implements OnInit {
     return this._total;
   }
 
-
   get items() {
     return this._items;
   }
-
-
 
   // Aliases ----
 
@@ -152,7 +144,6 @@ export class FaRatingComponent implements OnInit {
   get inactiveColor() {
     return this.emptyColor;
   }
-
 
   /**
    * @deprecated Usar filledIcon

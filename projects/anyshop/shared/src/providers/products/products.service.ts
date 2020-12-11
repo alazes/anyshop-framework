@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Business, IProductData, Product } from '@anyshop/core';
 import * as firebase from 'firebase/app';
 import { firestore } from 'firebase/app';
-import { Business, IProductData, Product } from '@anyshop/core';
+
 import { FileStorageService } from '../file-storage/file-storage.service';
 import { FirebaseItemsAbstractService } from '../firebase/firebase-items-abstract.service';
 import { UserService } from '../user/user.service';
@@ -19,7 +20,11 @@ export class ProductsService extends FirebaseItemsAbstractService<Product> {
     super('/products', afs);
   }
 
-  async create(businessId: string, data: IProductData, imageData: { data: string; extension: string; type: string }) {
+  async create(
+    businessId: string,
+    data: IProductData,
+    imageData: { data: string; extension: string; type: string }
+  ) {
     const id = `${this.afs.createId()}`;
 
     if (!data.SKU) {
@@ -35,7 +40,9 @@ export class ProductsService extends FirebaseItemsAbstractService<Product> {
     const normalizedProduct: any = this.toJSON(data);
 
     const productDoc = this.itemsCollection.doc(id).ref;
-    const businessDoc = this.afs.collection<Business>('businesses').doc(businessId).ref;
+    const businessDoc = this.afs
+      .collection<Business>('businesses')
+      .doc(businessId).ref;
 
     normalizedProduct.createdBy = this.userService.currentUserId;
     normalizedProduct.owner = businessDoc.id;
@@ -57,7 +64,11 @@ export class ProductsService extends FirebaseItemsAbstractService<Product> {
     const uploadRef = `uploads/businesses/${businessId}/products/${id}`;
     const uploadFilename = `picture.${imageData.extension}`;
 
-    const { downloadURL } = await this.fileStorage.uploadFileFromString(uploadRef, uploadFilename, imageData.data);
+    const { downloadURL } = await this.fileStorage.uploadFileFromString(
+      uploadRef,
+      uploadFilename,
+      imageData.data
+    );
 
     return downloadURL as string;
   }
@@ -71,7 +82,9 @@ export class ProductsService extends FirebaseItemsAbstractService<Product> {
       const businessId = data.owner || data.ownerRef?.id;
 
       if (!businessId) {
-        throw new Error('Owner ID is not set in data (required for image upload)');
+        throw new Error(
+          'Owner ID is not set in data (required for image upload)'
+        );
       }
 
       data.picture = await this.uploadPicture(id, businessId, imageData);
@@ -90,7 +103,11 @@ export class ProductsService extends FirebaseItemsAbstractService<Product> {
    *
    * @deprecated Use create() method instead.
    */
-  async add(item: Product, businessId?: string, imageData?: { data: string; extension: string; type: string }) {
+  async add(
+    item: Product,
+    businessId?: string,
+    imageData?: { data: string; extension: string; type: string }
+  ) {
     if (!businessId) {
       throw new Error('Owner ID is mandatory');
     }
@@ -118,7 +135,9 @@ export class ProductsService extends FirebaseItemsAbstractService<Product> {
 
   async getProductImageSrc(prod: Product) {
     const storage = firebase.storage();
-    const pathReference = storage.ref(`products/Abarrotes/Aceites Comestibles/${prod.SKU}.png`);
+    const pathReference = storage.ref(
+      `products/Abarrotes/Aceites Comestibles/${prod.SKU}.png`
+    );
     const downloadURL = await pathReference.getDownloadURL();
 
     console.log('el link ahor a es', downloadURL);

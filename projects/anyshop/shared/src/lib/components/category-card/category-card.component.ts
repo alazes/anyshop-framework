@@ -6,7 +6,7 @@ import { Color } from '@ionic/core';
   templateUrl: './category-card.component.html',
   styleUrls: ['./category-card.component.scss'],
 })
-export class CategoryCardComponent  {
+export class CategoryCardComponent {
   private _counter: number | undefined;
 
   @Input()

@@ -1,4 +1,5 @@
 import { PaymentMethod } from '../enums';
+
 import { Model } from './abstract-model';
 import Address from './address';
 import DeliveryMethod from './delivery-method';

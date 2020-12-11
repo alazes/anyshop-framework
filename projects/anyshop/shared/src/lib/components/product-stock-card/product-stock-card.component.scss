@@ -3,7 +3,7 @@
   //   --background: #F4F5FA !important;
   // }
   ion-card {
-    --background: #FFFFFF;
+    --background: #ffffff;
     border-radius: var(--border-radius, 15px);
   }
 
@@ -26,7 +26,7 @@
   }
 
   .col-add-remove-product {
-    background: #F4F5FA !important;
+    background: #f4f5fa !important;
     border-radius: 8px;
     padding: 0 !important;
   }
@@ -45,6 +45,6 @@
 
   ion-chip.disabled {
     pointer-events: none;
-    filter: opacity(.5);
+    filter: opacity(0.5);
   }
 }

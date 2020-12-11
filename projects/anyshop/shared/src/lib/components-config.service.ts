@@ -17,7 +17,8 @@ export interface IComponentsModuleConfig {
   defaultCurrency?: 'USD' | 'PEN' | string; // TODO: Ampliar
 }
 
-export class ComponentsModuleConfig implements Required<IComponentsModuleConfig> {
+export class ComponentsModuleConfig
+  implements Required<IComponentsModuleConfig> {
   googleMapsApiKey: string;
   googleMapsStaticUrl: string;
   defaultCurrency: 'USD' | 'PEN' | string;
@@ -25,7 +26,9 @@ export class ComponentsModuleConfig implements Required<IComponentsModuleConfig>
   constructor(info: IComponentsModuleConfig = {}) {
     this.googleMapsApiKey = info.googleMapsApiKey ?? '';
 
-    this.googleMapsStaticUrl = info.googleMapsStaticUrl || 'https://maps.googleapis.com/maps/api/staticmap';
+    this.googleMapsStaticUrl =
+      info.googleMapsStaticUrl ||
+      'https://maps.googleapis.com/maps/api/staticmap';
 
     this.defaultCurrency = info.defaultCurrency || 'PEN';
   }

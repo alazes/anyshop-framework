@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, DocumentChangeAction } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  DocumentChangeAction,
+} from '@angular/fire/firestore';
+import { Product, Stock } from '@anyshop/core';
 import { firestore } from 'firebase/app';
 import 'firebase/firestore';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs';
-import { Product, Stock } from '@anyshop/core';
+
 import { FirebaseItemsAbstractService } from '../firebase/firebase-items-abstract.service';
 
 @Injectable({ providedIn: 'root' })
@@ -28,7 +32,9 @@ export class StockService extends FirebaseItemsAbstractService<Stock> {
   add(item: Stock): Promise<any> {
     const newStock = new Promise((resolve, reject) => {
       const productExistFunction = (ref) =>
-        ref.where('productRef', '==', item.productRef).where('businessRef', '==', item.businessRef);
+        ref
+          .where('productRef', '==', item.productRef)
+          .where('businessRef', '==', item.businessRef);
       const queryExist = this.query(productExistFunction);
       const queryExistSub = queryExist.subscribe(
         (currentStock: Stock[]) => {
@@ -75,7 +81,9 @@ export class StockService extends FirebaseItemsAbstractService<Stock> {
   modify(item: Stock): Promise<Stock> {
     const newStock: Promise<Stock> = new Promise((resolve, reject) => {
       const productExistFunction = (ref) =>
-        ref.where('productRef', '==', item.productRef).where('businessRef', '==', item.businessRef);
+        ref
+          .where('productRef', '==', item.productRef)
+          .where('businessRef', '==', item.businessRef);
       const queryExist = this.query(productExistFunction);
       const queryExistSub = queryExist.subscribe(
         (currentStock: Stock[]) => {
@@ -123,7 +131,9 @@ export class StockService extends FirebaseItemsAbstractService<Stock> {
     const businessRef = this.afs.collection('businesses').doc(businessId).ref;
 
     return this.query((ref) => {
-      return ref.where('businessRef', '==', businessRef).where('quantity', '<', 5);
+      return ref
+        .where('businessRef', '==', businessRef)
+        .where('quantity', '<', 5);
     });
   }
 
@@ -132,13 +142,18 @@ export class StockService extends FirebaseItemsAbstractService<Stock> {
    *
    * Se puede usar el tercer parámetro para filtrar según la cantidad mín/máx de productos en stock.
    */
-  filterByBusiness<C extends firestore.DocumentData, B extends firestore.DocumentData>(
+  filterByBusiness<
+    C extends firestore.DocumentData,
+    B extends firestore.DocumentData
+  >(
     businessRef: firestore.DocumentReference<B>,
     categoryRef: firestore.DocumentReference<C>,
     quantityOptions: { min?: number; max?: number } = {}
   ) {
     return this.query((ref) => {
-      let q = ref.where('categoryRef', '==', categoryRef).where('businessRef', '==', businessRef);
+      let q = ref
+        .where('categoryRef', '==', categoryRef)
+        .where('businessRef', '==', businessRef);
 
       if (quantityOptions.min) {
         q = q.where('quantity', '>=', quantityOptions.min);

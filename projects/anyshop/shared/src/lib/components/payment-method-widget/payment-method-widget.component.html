@@ -1,16 +1,32 @@
-<ion-item [lines]="lines" [button]="!readonly" (click)="selectPayment()" [detail]="!readonly" [class]="class">
-  <payment-method-icon slot="start" [value]="selected.value" class="ion-margin-end" simple></payment-method-icon>
+<ion-item
+  [lines]="lines"
+  [button]="!readonly"
+  (click)="selectPayment()"
+  [detail]="!readonly"
+  [class]="class"
+>
+  <payment-method-icon
+    slot="start"
+    [value]="selected.value"
+    class="ion-margin-end"
+    simple
+  ></payment-method-icon>
 
   <ion-label class="ion-no-margin ion-text-wrap">
     <ion-grid>
       <ion-row nowrap>
         <ion-col size="auto">
-          {{ (selected.value ? 'PaymentMethod.' + selected.name() : placeholder) | translate }}
+          {{
+            (selected.value ? "PaymentMethod." + selected.name() : placeholder)
+              | translate
+          }}
         </ion-col>
 
         <ion-col *ngIf="howMuchPay" class="ion-text-right">
           <ion-text color="medium">
-            <span class="app-currency">{{ howMuchPay | currency: currencyCode }}</span>
+            <span class="app-currency">{{
+              howMuchPay | currency: currencyCode
+            }}</span>
           </ion-text>
         </ion-col>
       </ion-row>

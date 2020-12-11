@@ -7,7 +7,9 @@ import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
+
 import { ComponentsModuleConfig } from '../components-config.service';
+
 import { AppLoadingComponent } from './app-loading/app-loading.component';
 import { BusinessCardComponent } from './business-card/business-card.component';
 import { CategoryCardComponent } from './category-card/category-card.component';
@@ -68,7 +70,9 @@ const all = [
   exports: all,
 })
 export class ComponentsModule {
-  static forRoot(config?: ComponentsModuleConfig): ModuleWithProviders<ComponentsModule> {
+  static forRoot(
+    config?: ComponentsModuleConfig
+  ): ModuleWithProviders<ComponentsModule> {
     return {
       ngModule: ComponentsModule,
       providers: [

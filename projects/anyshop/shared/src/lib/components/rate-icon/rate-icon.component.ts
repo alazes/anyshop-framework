@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Rate } from '@anyshop/core';
-import { normalizeBooleanAttribute, RateExtension } from '../../helpers';
+
+import { RateExtension, normalizeBooleanAttribute } from '../../helpers';
 
 @Component({
   selector: 'rate-icon',
@@ -29,7 +30,6 @@ export class RateIconComponent implements OnInit {
     return this._value;
   }
 
-
   @Input()
   set selected(value) {
     this._selected = normalizeBooleanAttribute(value);
@@ -38,8 +38,7 @@ export class RateIconComponent implements OnInit {
     return this._selected;
   }
 
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() { }
+  ngOnInit() {}
 }

@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, DocumentChangeAction, QueryFn } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  DocumentChangeAction,
+  QueryFn,
+} from '@angular/fire/firestore';
 import { Business, Category, Stock, SubCategory } from '@anyshop/core';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
 import { FirebaseItemsAbstractService } from '../firebase/firebase-items-abstract.service';
 import { StockService } from '../stock/stock.service';
 
@@ -26,7 +31,10 @@ export class CategoriesService extends FirebaseItemsAbstractService<Category> {
   }
 
   mapElements(action: DocumentChangeAction<Category>) {
-    const itemEl = new Category(action.payload.doc.data(), action.payload.doc.id);
+    const itemEl = new Category(
+      action.payload.doc.data(),
+      action.payload.doc.id
+    );
 
     return itemEl;
   }
@@ -40,7 +48,9 @@ export class CategoriesService extends FirebaseItemsAbstractService<Category> {
   getCategoryStockBusiness(category: Category, business: Business | any) {
     const categoryRef = this.itemsCollection.doc(category.key).ref;
     const stockFilterFunction: QueryFn = (ref) =>
-      ref.where('categoryRef', '==', categoryRef).where('businessRef', '==', business);
+      ref
+        .where('categoryRef', '==', categoryRef)
+        .where('businessRef', '==', business);
 
     return this.stock.query(stockFilterFunction);
   }
@@ -48,8 +58,14 @@ export class CategoriesService extends FirebaseItemsAbstractService<Category> {
   /**
    * @deprecated Use StockService.filterByBusiness() instead.
    */
-  getUniqueCountProductsCategoryStockBusiness(category: Category, business: Business | any) {
-    const categoryStockBusiness = this.getCategoryStockBusiness(category, business);
+  getUniqueCountProductsCategoryStockBusiness(
+    category: Category,
+    business: Business | any
+  ) {
+    const categoryStockBusiness = this.getCategoryStockBusiness(
+      category,
+      business
+    );
 
     return categoryStockBusiness.pipe(
       map((stock: Stock[]) => {
@@ -60,8 +76,14 @@ export class CategoriesService extends FirebaseItemsAbstractService<Category> {
     );
   }
 
-  getCountProductsCategoryStockBusiness(category: Category, business: Business | any) {
-    const categoryStockBusiness = this.getCategoryStockBusiness(category, business);
+  getCountProductsCategoryStockBusiness(
+    category: Category,
+    business: Business | any
+  ) {
+    const categoryStockBusiness = this.getCategoryStockBusiness(
+      category,
+      business
+    );
 
     return categoryStockBusiness.pipe(
       map((stock: Stock[]) => {
@@ -77,7 +99,9 @@ export class CategoriesService extends FirebaseItemsAbstractService<Category> {
   }
 
   getActiveCategoriesBusiness(businessId: string): Observable<any> {
-    return this.query((ref) => ref.where(`businesses.${businessId}`, '==', true));
+    return this.query((ref) =>
+      ref.where(`businesses.${businessId}`, '==', true)
+    );
   }
 
   getSubCategories(category: string): Observable<SubCategory[]> {

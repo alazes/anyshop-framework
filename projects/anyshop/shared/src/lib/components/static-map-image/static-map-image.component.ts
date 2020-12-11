@@ -1,9 +1,20 @@
-import { AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  Input,
+  OnInit,
+  QueryList,
+} from '@angular/core';
 import { head, includes, reverse, tail, toPlainObject } from 'lodash';
 import { startWith } from 'rxjs/operators';
+
 import { ComponentsConfigService } from '../../components-config.service';
 import { normalizeBooleanAttribute, objectToQueryString } from '../../helpers';
-import { IStaticMapParams, MapMarkerComponent } from '../map-marker/map-marker.component';
+import {
+  IStaticMapParams,
+  MapMarkerComponent,
+} from '../map-marker/map-marker.component';
 
 @Component({
   selector: 'static-map-image',
@@ -57,7 +68,10 @@ export class StaticMapImageComponent implements OnInit, AfterContentInit {
     if (includes([1, 2, 4], +value)) {
       this.queryParams.scale = +value;
     } else {
-      console.warn('Invalid value for scale (expected 1, 2 or 4). Ignoring.', value);
+      console.warn(
+        'Invalid value for scale (expected 1, 2 or 4). Ignoring.',
+        value
+      );
     }
   }
   get scale() {
@@ -88,8 +102,8 @@ export class StaticMapImageComponent implements OnInit, AfterContentInit {
 
     if (!this.queryParams.key) {
       console.error(
-        'Error: No se ha especificado la key de Google Maps Static API. No se podrá usar este componente.'
-        + 'Use `PideloComponentsModule.forRoot(config)` al importar en el módulo principal de la aplicación.'
+        'Error: No se ha especificado la key de Google Maps Static API. No se podrá usar este componente.' +
+          'Use `PideloComponentsModule.forRoot(config)` al importar en el módulo principal de la aplicación.'
       );
     }
   }
@@ -99,16 +113,18 @@ export class StaticMapImageComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-    this.markers.changes.pipe(startWith(this.markers))
+    this.markers.changes
+      .pipe(startWith(this.markers))
       .subscribe((markers: Array<MapMarkerComponent>) => {
         let paths: string[] = [];
 
         this.queryParams.markers = markers.map((marker) => {
-          paths.push(`${marker.location.latitude},${marker.location.longitude}`);
+          paths.push(
+            `${marker.location.latitude},${marker.location.longitude}`
+          );
 
           return marker.toUrlString();
         });
-
 
         if (paths.length > 0) {
           if (this.drawPath) {
@@ -133,13 +149,14 @@ export class StaticMapImageComponent implements OnInit, AfterContentInit {
           this.mapLink = undefined;
         }
 
-
         this.updateSrc();
       });
   }
 
   updateSrc() {
-    const queryParamsString = objectToQueryString(toPlainObject(this.queryParams));
+    const queryParamsString = objectToQueryString(
+      toPlainObject(this.queryParams)
+    );
 
     // console.log('urlQueries', this.queryParams);
 

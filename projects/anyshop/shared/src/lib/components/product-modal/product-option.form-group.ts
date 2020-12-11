@@ -4,12 +4,11 @@ import {
   FormControl,
   FormGroup,
   ValidationErrors,
-  Validators,
   ValidatorFn,
+  Validators,
 } from '@angular/forms';
 import { ProductOptionValueInterface } from '@anyshop/core';
 import { ProductOption } from '@anyshop/core';
-
 import * as _ from 'lodash';
 
 /**
@@ -20,7 +19,9 @@ export class CustomValidators {
    * Comprueba que se hayan seleccionado un mínimo de opciones.
    */
   public static minSelections(min: number): ValidatorFn {
-    const validator = <T extends AbstractControl>(control: T): ValidationErrors | null => {
+    const validator = <T extends AbstractControl>(
+      control: T
+    ): ValidationErrors | null => {
       // console.log({ min });
       if (min > 0) {
         const values = control.value as ProductOptionValueInterface[];
@@ -33,7 +34,9 @@ export class CustomValidators {
 
         if (selectedValues.length < min) {
           return {
-            minSelections: { message: `Is required at least ${min} selections!` },
+            minSelections: {
+              message: `Is required at least ${min} selections!`,
+            },
           } as ValidationErrors;
         }
       }
@@ -48,7 +51,9 @@ export class CustomValidators {
    * Comprueba que no se hayan seleccionado demasiadas opciones.
    */
   public static maxSelections(max: number): ValidatorFn {
-    const validator = <T extends AbstractControl>(control: T): ValidationErrors | null => {
+    const validator = <T extends AbstractControl>(
+      control: T
+    ): ValidationErrors | null => {
       // console.log({ max });
       if (max > 0) {
         const values = control.value as ProductOptionValueInterface[];
@@ -61,7 +66,9 @@ export class CustomValidators {
 
         if (selectedValues.length > max) {
           return {
-            maxSelections: { message: `There's too many selections (${selectedValues.length}/${max})!` },
+            maxSelections: {
+              message: `There's too many selections (${selectedValues.length}/${max})!`,
+            },
           } as ValidationErrors;
         }
       }
@@ -77,8 +84,13 @@ export class ProductOptionValueFormGroup extends FormGroup {
   constructor(optionValue?: ProductOptionValueInterface) {
     super({
       name: new FormControl(optionValue?.name, Validators.required),
-      price: new FormControl(optionValue?.price || 0, [Validators.min(0), Validators.required]),
-      selected: new FormControl(optionValue?.selected || false, [Validators.required]),
+      price: new FormControl(optionValue?.price || 0, [
+        Validators.min(0),
+        Validators.required,
+      ]),
+      selected: new FormControl(optionValue?.selected || false, [
+        Validators.required,
+      ]),
     });
   }
 }
@@ -92,22 +104,26 @@ export class ProductOptionFormGroup extends FormGroup {
     const { required = false, multiple = false, name = '' } = option;
 
     minSelections = required ? _.max([minSelections, 1]) || 0 : 0;
-    maxSelections = multiple ? _.min([maxSelections, option.values.length]) || Number.MAX_SAFE_INTEGER : 1;
+    maxSelections = multiple
+      ? _.min([maxSelections, option.values.length]) || Number.MAX_SAFE_INTEGER
+      : 1;
 
     let selectedIndex = -1;
     // const selectedIndexes: number[] = [];
 
-    const values = option.values.map((value: ProductOptionValueInterface, i) => {
-      if (!multiple && value.selected) {
-        selectedIndex = i;
+    const values = option.values.map(
+      (value: ProductOptionValueInterface, i) => {
+        if (!multiple && value.selected) {
+          selectedIndex = i;
+        }
+
+        // if (value.selected) {
+        //   selectedIndexes.push(i);
+        // }
+
+        return new ProductOptionValueFormGroup(value);
       }
-
-      // if (value.selected) {
-      //   selectedIndexes.push(i);
-      // }
-
-      return new ProductOptionValueFormGroup(value);
-    });
+    );
 
     // const selectedIndexesValidations = multiple
     //   ? [Validators.minLength(minSelections), Validators.maxLength(maxSelections)]

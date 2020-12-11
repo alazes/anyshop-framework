@@ -1,4 +1,5 @@
 import { WeekDay } from '@angular/common';
+
 import { Model } from './abstract-model';
 
 class Schedule extends Model {

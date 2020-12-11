@@ -28,40 +28,75 @@
               <ng-content></ng-content>
             </ion-col>
 
-            <ion-col *ngIf="!editing" size="auto" class="ion-no-padding ion-align-self-start ion-text-center">
+            <ion-col
+              *ngIf="!editing"
+              size="auto"
+              class="ion-no-padding ion-align-self-start ion-text-center"
+            >
               <ion-chip color="success" outline>
                 <strong>{{ quantity }}</strong>
               </ion-chip>
 
-              <p class="ion-no-margin ion-no-padding" style="font-size: 0.7em; font-wigth: 200;">
+              <p
+                class="ion-no-margin ion-no-padding"
+                style="font-size: 0.7em; font-wigth: 200"
+              >
                 Stock
               </p>
             </ion-col>
 
-            <ion-col *ngIf="editing" size="2" class="ion-align-self-center col-add-remove-product">
-              <ion-row class="ion-align-items-center ion-justify-content-between row-detail-item">
+            <ion-col
+              *ngIf="editing"
+              size="2"
+              class="ion-align-self-center col-add-remove-product"
+            >
+              <ion-row
+                class="ion-align-items-center ion-justify-content-between row-detail-item"
+              >
                 <ion-col size="12" class="ion-align-self-center">
-                  <ion-button size="small" fill="clear" class="btn-icon ion-text-center" (click)="incrementQuantity()">
+                  <ion-button
+                    size="small"
+                    fill="clear"
+                    class="btn-icon ion-text-center"
+                    (click)="incrementQuantity()"
+                  >
                     <ion-icon name="add"></ion-icon>
                   </ion-button>
                 </ion-col>
               </ion-row>
 
-              <ion-row class="ion-align-items-center ion-justify-content-between row-detail-item">
-                <ion-col size="12" class="ion-align-self-center ion-text-center">
+              <ion-row
+                class="ion-align-items-center ion-justify-content-between row-detail-item"
+              >
+                <ion-col
+                  size="12"
+                  class="ion-align-self-center ion-text-center"
+                >
                   <ion-input
                     type="number"
                     inputmode="number"
                     [formControl]="quantityFormControl"
-                    style="--padding-start: 0; --padding-top: 0; --padding-bottom: 0; padding-end: 0;"
+                    style="
+                      --padding-start: 0;
+                      --padding-top: 0;
+                      --padding-bottom: 0;
+                      padding-end: 0;
+                    "
                   >
                   </ion-input>
                 </ion-col>
               </ion-row>
 
-              <ion-row class="ion-align-items-center ion-justify-content-between row-detail-item">
+              <ion-row
+                class="ion-align-items-center ion-justify-content-between row-detail-item"
+              >
                 <ion-col size="12" class="ion-align-self-center">
-                  <ion-button size="small" fill="clear" class="btn-icon ion-text-center" (click)="decrementQuantity()">
+                  <ion-button
+                    size="small"
+                    fill="clear"
+                    class="btn-icon ion-text-center"
+                    (click)="decrementQuantity()"
+                  >
                     <ion-icon name="remove"></ion-icon>
                   </ion-button>
                 </ion-col>
@@ -72,15 +107,24 @@
           <ion-row class="ion-align-items-center">
             <ion-col class="ion-no-padding">
               <div *ngIf="!editing" class="app-currency bold">
-                <ion-text color="dark" style="font-size: 1.1em;">
+                <ion-text color="dark" style="font-size: 1.1em">
                   <strong>{{ price | currency: currencyCode }} - c/u</strong>
                 </ion-text>
               </div>
 
-              <ion-item *ngIf="editing" lines="none" style="--inner-padding-end: 8px;">
+              <ion-item
+                *ngIf="editing"
+                lines="none"
+                style="--inner-padding-end: 8px"
+              >
                 <ion-label position="floating">Precio unitario</ion-label>
 
-                <ion-input class="app-currency" type="number" inputmode="number" [formControl]="priceFormControl">
+                <ion-input
+                  class="app-currency"
+                  type="number"
+                  inputmode="number"
+                  [formControl]="priceFormControl"
+                >
                 </ion-input>
 
                 <!-- <div slot="end" class="ion-align-self-end ion-no-margin" style="margin-left: 8px">
@@ -89,9 +133,22 @@
               </ion-item>
             </ion-col>
 
-            <ion-col size="auto" class="ion-no-padding ion-align-self-end ion-text-right">
-              <ion-chip *ngIf="editing" class="action-button" color="medium" outline (click)="cancelEdit()">
-                <fa-icon [icon]="['fas', 'undo']" size="lg" [fixedWidth]="true"></fa-icon>
+            <ion-col
+              size="auto"
+              class="ion-no-padding ion-align-self-end ion-text-right"
+            >
+              <ion-chip
+                *ngIf="editing"
+                class="action-button"
+                color="medium"
+                outline
+                (click)="cancelEdit()"
+              >
+                <fa-icon
+                  [icon]="['fas', 'undo']"
+                  size="lg"
+                  [fixedWidth]="true"
+                ></fa-icon>
               </ion-chip>
 
               <ion-chip
@@ -102,7 +159,11 @@
                 (click)="toggleEdit()"
                 [ngClass]="{ disabled: editing && !isValid }"
               >
-                <fa-icon [icon]="['fas', editing ? 'save' : 'edit']" size="lg" [fixedWidth]="true"></fa-icon>
+                <fa-icon
+                  [icon]="['fas', editing ? 'save' : 'edit']"
+                  size="lg"
+                  [fixedWidth]="true"
+                ></fa-icon>
               </ion-chip>
 
               <ion-chip
@@ -112,7 +173,11 @@
                 outline
                 (click)="toggleEdit()"
               >
-                <fa-icon [icon]="['fas', 'edit']" size="lg" [fixedWidth]="true"></fa-icon>
+                <fa-icon
+                  [icon]="['fas', 'edit']"
+                  size="lg"
+                  [fixedWidth]="true"
+                ></fa-icon>
               </ion-chip>
             </ion-col>
           </ion-row>

@@ -1,4 +1,5 @@
 import { User } from 'firebase/app';
+
 import { Roles } from '../models/roles';
 
 export interface UserAccountInterface extends User {

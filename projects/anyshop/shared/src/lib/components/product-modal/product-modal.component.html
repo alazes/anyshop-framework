@@ -21,21 +21,29 @@
     <ion-img [src]="item.product.picture"></ion-img>
 
     <ion-card-header>
-      <ion-grid style="--ion-grid-column-padding: 0; --ion-grid-padding: 0;">
+      <ion-grid style="--ion-grid-column-padding: 0; --ion-grid-padding: 0">
         <ion-row>
           <ion-col>
-            <ion-card-title>{{ item.product.name || item.product.brand }}</ion-card-title>
+            <ion-card-title>{{
+              item.product.name || item.product.brand
+            }}</ion-card-title>
           </ion-col>
 
-          <ion-col size="auto" class="ion-align-self-center" style="font-size: 1.1em;">
+          <ion-col
+            size="auto"
+            class="ion-align-self-center"
+            style="font-size: 1.1em"
+          >
             <ion-text color="success" class="app-currency bold">
-              {{ currentItem.product.price | currency: 'PEN' }}
+              {{ currentItem.product.price | currency: "PEN" }}
             </ion-text>
           </ion-col>
         </ion-row>
       </ion-grid>
 
-      <ion-card-subtitle>{{ item.product.description || item.product.product }}</ion-card-subtitle>
+      <ion-card-subtitle>{{
+        item.product.description || item.product.product
+      }}</ion-card-subtitle>
     </ion-card-header>
   </ion-card>
 
@@ -61,8 +69,11 @@
       (mouseup)="syncQuantityRangeWithForm($event)"
       (touchend)="syncQuantityRangeWithForm($event)"
     >
-      <ion-label slot="end" style="font-size: 1.2em;">
-        <ion-text color="medium">{{ quantityRange.max }}<span *ngIf="quantityRange.max < max">+</span></ion-text>
+      <ion-label slot="end" style="font-size: 1.2em">
+        <ion-text color="medium"
+          >{{ quantityRange.max
+          }}<span *ngIf="quantityRange.max < max">+</span></ion-text
+        >
       </ion-label>
     </ion-range>
   </ion-card>
@@ -70,18 +81,20 @@
   <ion-card>
     <form *ngIf="form" [formGroup]="form" (ngSubmit)="dismiss('submit')">
       <ion-card-header>
-        <ion-grid style="--ion-grid-column-padding: 0; --ion-grid-padding: 0;">
+        <ion-grid style="--ion-grid-column-padding: 0; --ion-grid-padding: 0">
           <ion-row>
             <ion-col>
-              <ion-card-title translate>
-                Options
-              </ion-card-title>
+              <ion-card-title translate> Options </ion-card-title>
             </ion-col>
 
-            <ion-col size="auto" class="ion-align-self-center" style="font-size: 1.1em;">
+            <ion-col
+              size="auto"
+              class="ion-align-self-center"
+              style="font-size: 1.1em"
+            >
               <ion-text color="danger" class="app-currency bold">
                 <span>+</span>
-                {{ currentItem.getExtrasTotal() | currency: 'PEN' }}
+                {{ currentItem.getExtrasTotal() | currency: "PEN" }}
               </ion-text>
             </ion-col>
           </ion-row>
@@ -104,17 +117,24 @@
                   slot="end"
                   color="danger"
                   class="ion-margin-horizontal"
-                  style="font-size: 0.6em;"
+                  style="font-size: 0.6em"
                 >
                   <em translate>Mandatory</em>
                 </ion-text>
               </ion-item-divider>
 
-              <ng-container *ngIf="option.get('multiple').value; else noMultiple">
+              <ng-container
+                *ngIf="option.get('multiple').value; else noMultiple"
+              >
                 <ng-container formArrayName="values">
-                  <ng-container *ngFor="let value of option.get('values')['controls']; index as j">
+                  <ng-container
+                    *ngFor="
+                      let value of option.get('values')['controls'];
+                      index as j
+                    "
+                  >
                     <ng-container [formGroupName]="j">
-                      <ion-item style="--min-height: 32px;" lines="none">
+                      <ion-item style="--min-height: 32px" lines="none">
                         <ion-label>{{ value.value.name }}</ion-label>
 
                         <ion-text
@@ -122,7 +142,10 @@
                           slot="end"
                           [color]="value.value.selected ? 'danger' : 'medium'"
                         >
-                          + <em class="app-currency">{{ value.value.price | currency: 'PEN' }}</em>
+                          +
+                          <em class="app-currency">{{
+                            value.value.price | currency: "PEN"
+                          }}</em>
                         </ion-text>
 
                         <ion-text
@@ -133,7 +156,10 @@
                           <em translate>Free</em>
                         </ion-text>
 
-                        <ion-checkbox slot="end" formControlName="selected"></ion-checkbox>
+                        <ion-checkbox
+                          slot="end"
+                          formControlName="selected"
+                        ></ion-checkbox>
                       </ion-item>
                     </ng-container>
                   </ng-container>
@@ -143,13 +169,23 @@
               <ng-template #noMultiple>
                 <ion-radio-group
                   formControlName="selectedIndex"
-                  (ionChange)="syncRadioSelectionWithForm($event, option.get('values')['controls'])"
+                  (ionChange)="
+                    syncRadioSelectionWithForm(
+                      $event,
+                      option.get('values')['controls']
+                    )
+                  "
                   [allowEmptySelection]="!option.get('required').value"
                 >
                   <ng-container formArrayName="values">
-                    <ng-container *ngFor="let value of option.get('values')['controls']; index as j">
+                    <ng-container
+                      *ngFor="
+                        let value of option.get('values')['controls'];
+                        index as j
+                      "
+                    >
                       <ng-container [formGroupName]="j">
-                        <ion-item style="--min-height: 32px;" lines="none">
+                        <ion-item style="--min-height: 32px" lines="none">
                           <ion-label>
                             {{ value.value.name }}
                           </ion-label>
@@ -159,7 +195,10 @@
                             slot="end"
                             [color]="value.value.selected ? 'danger' : 'medium'"
                           >
-                            + <em class="app-currency">{{ value.value.price | currency: 'PEN' }}</em>
+                            +
+                            <em class="app-currency">{{
+                              value.value.price | currency: "PEN"
+                            }}</em>
                           </ion-text>
 
                           <ion-text
@@ -171,7 +210,11 @@
                             <em translate>Free</em>
                           </ion-text>
 
-                          <ion-radio slot="end" [value]="j" [disabled]="readonly"></ion-radio>
+                          <ion-radio
+                            slot="end"
+                            [value]="j"
+                            [disabled]="readonly"
+                          ></ion-radio>
                         </ion-item>
                       </ng-container>
                     </ng-container>
@@ -193,15 +236,21 @@
 
       <span class="app-currency">
         (
-        <ion-text color="success">{{ currentItem.product.price | currency: 'PEN' }}</ion-text>
+        <ion-text color="success">{{
+          currentItem.product.price | currency: "PEN"
+        }}</ion-text>
         +
-        <ion-text color="danger">{{ currentItem.getExtrasTotal() | currency: 'PEN' }}</ion-text>
+        <ion-text color="danger">{{
+          currentItem.getExtrasTotal() | currency: "PEN"
+        }}</ion-text>
         )
       </span>
 
       <span class="app-currency"> x {{ currentItem.quantity }}</span>
 
-      <strong class="app-currency" style="font-size: 1.6em;"> = {{ currentItem.getTotal() | currency: 'PEN' }}</strong>
+      <strong class="app-currency" style="font-size: 1.6em">
+        = {{ currentItem.getTotal() | currency: "PEN" }}</strong
+      >
     </ion-card-content>
   </ion-card>
 

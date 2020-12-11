@@ -1,19 +1,18 @@
-import {
-  DocumentChangeAction,
-  QueryFn
-} from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { DocumentChangeAction, QueryFn } from '@angular/fire/firestore';
 import { IFirebaseData } from '@anyshop/core';
 import { SerializableModel } from '@anyshop/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 import { FirebaseItemsAbstractService } from './firebase-items-abstract.service';
 
 /**
  * @since 1.0.4
  */
-export abstract class SerializableFirebaseCollection<T extends IFirebaseData, U extends SerializableModel<T>>
-  extends FirebaseItemsAbstractService<T> {
-
+export abstract class SerializableFirebaseCollection<
+  T extends IFirebaseData,
+  U extends SerializableModel<T>
+> extends FirebaseItemsAbstractService<T> {
   abstract serialize(action: DocumentChangeAction<T>): U;
 
   /**
@@ -35,7 +34,7 @@ export abstract class SerializableFirebaseCollection<T extends IFirebaseData, U 
     );
 
     return this.filteredCollection.snapshotChanges().pipe(
-      map(list => {
+      map((list) => {
         return list.map<T>(this.serialize.bind(this));
       })
     );
@@ -47,7 +46,7 @@ export abstract class SerializableFirebaseCollection<T extends IFirebaseData, U 
 
   getItems(): Observable<T[]> {
     return this.itemsCollection.snapshotChanges().pipe(
-      map(list => {
+      map((list) => {
         return list.map(this.serialize.bind(this));
       })
     );
@@ -56,7 +55,6 @@ export abstract class SerializableFirebaseCollection<T extends IFirebaseData, U 
   async updateByKey(key: string, data: T) {
     return await this.itemsCollection.doc(key).update(data);
   }
-
 
   toSimpleObject(item: U) {
     return item.serialize();

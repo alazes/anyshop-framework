@@ -1,6 +1,10 @@
 :host {
   ion-card {
     border-radius: var(--border-radius, 8px);
-    box-shadow: var(--box-shadow, 0 .175em .5em rgba(2,8,20,.1),0 .085em .175em rgba(2,8,20,.08));
+    box-shadow: var(
+      --box-shadow,
+      0 0.175em 0.5em rgba(2, 8, 20, 0.1),
+      0 0.085em 0.175em rgba(2, 8, 20, 0.08)
+    );
   }
 }

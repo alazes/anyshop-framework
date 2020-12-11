@@ -1,9 +1,17 @@
 <ion-card>
-  <ion-progress-bar [color]="rejected ? 'danger' : 'success'" [value]="currentProgress" style="height: 0.8em;">
+  <ion-progress-bar
+    [color]="rejected ? 'danger' : 'success'"
+    [value]="currentProgress"
+    style="height: 0.8em"
+  >
   </ion-progress-bar>
 
-  <ion-item lines="none" style="--min-height: 48px;" detail="false">
-    <ion-text slot="start" class="ion-margin-end" [color]="rejected ? 'danger' : 'success'">
+  <ion-item lines="none" style="--min-height: 48px" detail="false">
+    <ion-text
+      slot="start"
+      class="ion-margin-end"
+      [color]="rejected ? 'danger' : 'success'"
+    >
       <fa-icon [icon]="icon" [fixedWidth]="true" size="lg"></fa-icon>
     </ion-text>
 
@@ -11,8 +19,15 @@
       <strong [translate]="currentTitle"></strong>
     </ion-label>
 
-    <elapsed-time-widget *ngIf="!rejected" slot="end" class="ion-no-margin" [startTime]="steps[0].issuedAt"
-                         [endTime]="steps[steps.length - 1].issuedAt" style="font-size: 1.2em;" color="dark">
+    <elapsed-time-widget
+      *ngIf="!rejected"
+      slot="end"
+      class="ion-no-margin"
+      [startTime]="steps[0].issuedAt"
+      [endTime]="steps[steps.length - 1].issuedAt"
+      style="font-size: 1.2em"
+      color="dark"
+    >
     </elapsed-time-widget>
   </ion-item>
 
@@ -20,43 +35,80 @@
     <ion-note [translate]="currentMessage"></ion-note>
   </ion-card-content>
 
-  <ion-progress-bar [color]="rejected ? 'danger' : 'success'" [value]="currentProgress" [buffer]="0">
+  <ion-progress-bar
+    [color]="rejected ? 'danger' : 'success'"
+    [value]="currentProgress"
+    [buffer]="0"
+  >
   </ion-progress-bar>
 
-  <ion-item lines="none" [button]="!rejected" detail (click)="showStepsDetails = !showStepsDetails && !rejected">
-    <ion-icon slot="start" [name]="typeOrder === 'takeaway' ? 'basket-outline' : 'bicycle-outline'"
-              class="ion-margin-end"></ion-icon>
+  <ion-item
+    lines="none"
+    [button]="!rejected"
+    detail
+    (click)="showStepsDetails = !showStepsDetails && !rejected"
+  >
+    <ion-icon
+      slot="start"
+      [name]="typeOrder === 'takeaway' ? 'basket-outline' : 'bicycle-outline'"
+      class="ion-margin-end"
+    ></ion-icon>
 
     <ion-label class="ion-no-margin">
-      {{ ('ORDER_TYPE.' + typeOrder + '.title') | translate }}
+      {{ "ORDER_TYPE." + typeOrder + ".title" | translate }}
     </ion-label>
 
     <ion-text slot="end" class="ion-margin-start">
-      <small>{{ steps[0].issuedAt | date : 'd/M/y' }}</small>
+      <small>{{ steps[0].issuedAt | date: "d/M/y" }}</small>
     </ion-text>
-
   </ion-item>
 
   <ion-card-content *ngIf="showStepsDetails" class="ion-no-padding">
-    <ion-item *ngFor="let step of steps" lines="full" style="--min-height: 32px;">
-      <ion-text slot="start" class="ion-margin-end" [color]="status >= step.status ? 'success' : 'medium'">
-        <fa-icon [icon]="['far', status >= step.status ? 'calendar-check' : (status < 0 ? 'calendar-times' : 'calendar')]"
-                 [fixedWidth]="true">
+    <ion-item
+      *ngFor="let step of steps"
+      lines="full"
+      style="--min-height: 32px"
+    >
+      <ion-text
+        slot="start"
+        class="ion-margin-end"
+        [color]="status >= step.status ? 'success' : 'medium'"
+      >
+        <fa-icon
+          [icon]="[
+            'far',
+            status >= step.status
+              ? 'calendar-check'
+              : status < 0
+              ? 'calendar-times'
+              : 'calendar'
+          ]"
+          [fixedWidth]="true"
+        >
         </fa-icon>
       </ion-text>
 
-      <ion-label class="ion-no-margin" [color]="status >= step.status ? 'dark' : 'medium'">
-        {{ (step.label || defaultLabel(step.status)) | translate }}
+      <ion-label
+        class="ion-no-margin"
+        [color]="status >= step.status ? 'dark' : 'medium'"
+      >
+        {{ step.label || defaultLabel(step.status) | translate }}
       </ion-label>
 
       <ion-text slot="end" *ngIf="step.photo" class="ion-margin-start">
-        <fa-icon [icon]="['far', 'image']" [fixedWidth]="true" size="lg" [srcHighRes]="step.photo" ionImgViewer title="{{ step.title | translate }}">
+        <fa-icon
+          [icon]="['far', 'image']"
+          [fixedWidth]="true"
+          size="lg"
+          [srcHighRes]="step.photo"
+          ionImgViewer
+          title="{{ step.title | translate }}"
+        >
         </fa-icon>
       </ion-text>
 
-
       <ion-text slot="end" class="ion-margin-start">
-        {{ step.issuedAt | date : timeFormat }}
+        {{ step.issuedAt | date: timeFormat }}
       </ion-text>
     </ion-item>
   </ion-card-content>

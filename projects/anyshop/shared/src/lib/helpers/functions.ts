@@ -6,7 +6,9 @@ import { isArray, isNil } from 'lodash';
  *
  * @author Nelson Martell <nelson6e65@gmail.com>
  */
-export function objectToQueryString(params: { [key: string]: number | string | undefined | Array<string> }): string {
+export function objectToQueryString(params: {
+  [key: string]: number | string | undefined | Array<string>;
+}): string {
   const queryString = Object.keys(params)
     .map((key) => {
       let q = '';
@@ -44,14 +46,19 @@ export function objectToQueryString(params: { [key: string]: number | string | u
  * @since 0.1.25
  * @author Nelson Martell <nelson6e65@gmail.com>
  */
-export function normalizeBooleanAttribute(value: string | boolean | undefined): boolean {
+export function normalizeBooleanAttribute(
+  value: string | boolean | undefined
+): boolean {
   let val: boolean;
 
   // Verificar conversión al establecerlo desde markup
   if (typeof value === 'string') {
     const valueAsString = value.toLowerCase().trim();
 
-    val = valueAsString === '' || valueAsString === 'true' || valueAsString === 'on';
+    val =
+      valueAsString === '' ||
+      valueAsString === 'true' ||
+      valueAsString === 'on';
   } else {
     val = value === true || value === undefined;
   }

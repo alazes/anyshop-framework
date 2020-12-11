@@ -2,8 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { PaymentMethod } from '@anyshop/core';
 import { PopoverController } from '@ionic/angular';
 import { max } from 'lodash';
+
 import { ComponentsConfigService } from '../../components-config.service';
-import { normalizeBooleanAttribute, PaymentMethodExtension } from '../../helpers';
+import {
+  PaymentMethodExtension,
+  normalizeBooleanAttribute,
+} from '../../helpers';
 
 @Component({
   selector: 'payment-method-popover',
@@ -80,7 +84,10 @@ export class PaymentMethodPopoverComponent implements OnInit {
     }
   }
 
-  constructor(private controller: PopoverController, config: ComponentsConfigService) {
+  constructor(
+    private controller: PopoverController,
+    config: ComponentsConfigService
+  ) {
     this.currencyCode = config.defaultCurrency;
   }
 
@@ -94,14 +101,19 @@ export class PaymentMethodPopoverComponent implements OnInit {
     if (this.multiple) {
       // TODO: Agregar un método de toggle (n ^= mask)
       // tslint:disable:no-bitwise
-      this.selected = PaymentMethodExtension.for(this.selected.value ^ method.value);
+      this.selected = PaymentMethodExtension.for(
+        this.selected.value ^ method.value
+      );
     } else {
       this.selected = method;
     }
   }
 
   parsePaymentMethodsHtmlAttribute(
-    flags: PaymentMethod | PaymentMethodExtension | Array<PaymentMethodExtension | PaymentMethod | number | string>
+    flags:
+      | PaymentMethod
+      | PaymentMethodExtension
+      | Array<PaymentMethodExtension | PaymentMethod | number | string>
   ): PaymentMethodExtension {
     // console.log('PaymentMethodPopoverComponent::parsePaymentMethodsHtmlAttribute()');
     //
@@ -137,7 +149,10 @@ export class PaymentMethodPopoverComponent implements OnInit {
   }
 
   async confirm() {
-    if (!this.selected.value || (!this.multiple && this.isCash(this.selected.value) && !this.howMuchPay)) {
+    if (
+      !this.selected.value ||
+      (!this.multiple && this.isCash(this.selected.value) && !this.howMuchPay)
+    ) {
       return;
     }
     const data: IPaymentMethodData = {

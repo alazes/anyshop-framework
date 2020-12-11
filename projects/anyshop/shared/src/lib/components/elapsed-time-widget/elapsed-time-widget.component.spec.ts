@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { ElapsedTimeWidgetComponent } from './elapsed-time-widget.component';
@@ -9,8 +9,8 @@ describe('ElapsedTimeWidgetComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ElapsedTimeWidgetComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [ElapsedTimeWidgetComponent],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ElapsedTimeWidgetComponent);

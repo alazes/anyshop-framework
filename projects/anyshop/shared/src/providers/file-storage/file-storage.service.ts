@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import {
+  AngularFireStorage,
+  AngularFireUploadTask,
+} from '@angular/fire/storage';
 import { first } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
@@ -11,10 +14,10 @@ export class FileStorageService {
   static isURL(str: string) {
     const pattern = new RegExp(
       '^(https?:\\/\\/)?' + // protocol
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' + // domain name
-      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' + // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
         '(\\#[-a-z\\d_]*)?$',
       'i'
     );
@@ -33,13 +36,21 @@ export class FileStorageService {
     }
   }
 
-  uploadFile(ref: string, file: File, fileName?: string): AngularFireUploadTask {
+  uploadFile(
+    ref: string,
+    file: File,
+    fileName?: string
+  ): AngularFireUploadTask {
     const storageRef = this.storage.ref(`${ref}/${fileName ?? file.name}`);
 
     return storageRef.put(file);
   }
 
-  async uploadFileFromString(ref: string, fileName: string, data: string): Promise<{ downloadURL: string }> {
+  async uploadFileFromString(
+    ref: string,
+    fileName: string,
+    data: string
+  ): Promise<{ downloadURL: string }> {
     const storageRef = this.storage.ref(`${ref}/${fileName}`);
 
     const snapshot = await storageRef.putString(data, 'data_url');
@@ -65,9 +76,7 @@ export class FileStorageService {
   }
 
   async fileExist(ref: string, fileName: string): Promise<boolean> {
-    const storageRef = this
-      .storage
-      .ref(`${ref}/${fileName}`);
+    const storageRef = this.storage.ref(`${ref}/${fileName}`);
 
     try {
       const value = await storageRef.getDownloadURL().pipe(first()).toPromise();

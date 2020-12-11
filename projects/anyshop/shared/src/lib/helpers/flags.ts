@@ -22,7 +22,6 @@ export default class Flags<E extends number> extends EnumExtension<E> {
     return (this.value & value) === value;
   }
 
-
   isFlag(value: E) {
     return this.value === value;
   }
@@ -46,7 +45,7 @@ export default class Flags<E extends number> extends EnumExtension<E> {
     const flags: E[] = [];
 
     let i = 0;
-    let flag = 0 ;
+    let flag = 0;
     let val = this.value.valueOf();
 
     while (val > 0) {

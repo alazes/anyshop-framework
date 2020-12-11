@@ -1,4 +1,3 @@
-
 /**
  * Clase base para enums extendidos.
  *
@@ -6,12 +5,10 @@
  * @author Nelson Martell <nelson6e65@gmail.com>
  */
 abstract class EnumExtension<E extends number | string> {
-  constructor(public readonly value: E) {
-
-  }
+  constructor(public readonly value: E) {}
 
   public static for<T extends EnumExtension<E>, E extends number | string>(
-    this: new(value: E) => T,
+    this: new (value: E) => T,
     value: E
   ) {
     return new this(value);

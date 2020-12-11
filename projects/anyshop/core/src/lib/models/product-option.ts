@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+
 import { IProductOption, ProductOptionValueInterface } from '../interfaces';
 
 export default class ProductOption implements IProductOption {
@@ -11,7 +12,11 @@ export default class ProductOption implements IProductOption {
 
   constructor(data: IProductOption);
 
-  constructor(name: string, values: ProductOptionValueInterface[], config: { multiple?: boolean; required?: boolean });
+  constructor(
+    name: string,
+    values: ProductOptionValueInterface[],
+    config: { multiple?: boolean; required?: boolean }
+  );
 
   constructor(
     nameOrData: IProductOption | string,
@@ -45,7 +50,10 @@ export default class ProductOption implements IProductOption {
   }
 
   serialize(): IProductOption {
-    const serialized = _.pickBy<ProductOption>(this, (v) => v !== undefined && typeof v !== 'function');
+    const serialized = _.pickBy<ProductOption>(
+      this,
+      (v) => v !== undefined && typeof v !== 'function'
+    );
 
     return serialized as IProductOption;
   }

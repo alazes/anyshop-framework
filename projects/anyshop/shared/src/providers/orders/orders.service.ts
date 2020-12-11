@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, DocumentChangeAction } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  DocumentChangeAction,
+} from '@angular/fire/firestore';
+import { Order, OrderStatus, Rate } from '@anyshop/core';
 import { ApiService } from '@arxis/api';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
-import { Order, OrderStatus, Rate } from '@anyshop/core';
 import * as _ from 'lodash';
+
 import { FirebaseItemsAbstractService } from '../firebase/firebase-items-abstract.service';
 
 @Injectable({ providedIn: 'root' })
@@ -12,7 +16,11 @@ export class OrdersService extends FirebaseItemsAbstractService<Order> {
     return 'api/orders';
   }
 
-  constructor(public db: AngularFirestore, private localNotifications: LocalNotifications, private api: ApiService) {
+  constructor(
+    public db: AngularFirestore,
+    private localNotifications: LocalNotifications,
+    private api: ApiService
+  ) {
     super('/orders', db);
   }
 
@@ -21,7 +29,9 @@ export class OrdersService extends FirebaseItemsAbstractService<Order> {
     const order = new Order(itemEl);
 
     if (!order.deliveryManRef) {
-      order.deliveryManRef = this.afs.collection('users').doc(order.businessData.owner).ref;
+      order.deliveryManRef = this.afs
+        .collection('users')
+        .doc(order.businessData.owner).ref;
     }
 
     this.fixDates(order);
@@ -50,7 +60,9 @@ export class OrdersService extends FirebaseItemsAbstractService<Order> {
     }
 
     if (order.deliveryStartedAt && (order.deliveryStartedAt as any).seconds) {
-      order.deliveryStartedAt = new Date((order.deliveryStartedAt as any).seconds * 1000);
+      order.deliveryStartedAt = new Date(
+        (order.deliveryStartedAt as any).seconds * 1000
+      );
     }
 
     if (order.ratedAt && (order.ratedAt as any).seconds) {
@@ -59,7 +71,12 @@ export class OrdersService extends FirebaseItemsAbstractService<Order> {
   }
 
   async create(data: Order): Promise<{ id: string }> {
-    const simplifiedData = _.omit(data.serialize(), 'createdAt', 'updatedAt', 'deletedAt');
+    const simplifiedData = _.omit(
+      data.serialize(),
+      'createdAt',
+      'updatedAt',
+      'deletedAt'
+    );
 
     if (simplifiedData.deliveryManRef) {
       simplifiedData.deliveryManRef = simplifiedData.deliveryManRef.path as any;
@@ -182,7 +199,11 @@ export class OrdersService extends FirebaseItemsAbstractService<Order> {
    * Califica el pedido.
    *
    */
-  public async rate(order: Order, rate?: Rate, rateComment?: string): Promise<void> {
+  public async rate(
+    order: Order,
+    rate?: Rate,
+    rateComment?: string
+  ): Promise<void> {
     const ratedAt = new Date();
 
     if (rate === undefined) {
@@ -201,7 +222,11 @@ export class OrdersService extends FirebaseItemsAbstractService<Order> {
     order.rateComment = rateComment;
   }
 
-  public async setStatus(order: Order, status: OrderStatus, metadata: { photo?: string } = {}) {
+  public async setStatus(
+    order: Order,
+    status: OrderStatus,
+    metadata: { photo?: string } = {}
+  ) {
     const data = {
       status,
     };

@@ -1,4 +1,5 @@
 import { Rate } from '@anyshop/core';
+
 import EnumExtension from './enum-extension';
 
 /**
@@ -71,7 +72,6 @@ export default class RateExtension extends EnumExtension<Rate> {
   name(): string | undefined {
     return Rate[this.value];
   }
-
 
   color() {
     const name = this.name();

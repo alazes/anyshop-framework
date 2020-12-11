@@ -3,9 +3,13 @@ import { IProductOption } from '@anyshop/core';
 import { OrderItem, ProductOption } from '@anyshop/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core';
+
 import { ComponentsConfigService } from '../../components-config.service';
 import { normalizeBooleanAttribute } from '../../helpers';
-import { IOrderItemModalData, ProductModalComponent } from '../product-modal/product-modal.component';
+import {
+  IOrderItemModalData,
+  ProductModalComponent,
+} from '../product-modal/product-modal.component';
 
 const MIN_QUANTITY = 0;
 
@@ -115,7 +119,9 @@ export class OrderProductCardComponent implements OnInit {
    * Se dispara cuando se cambian las optiones.
    */
   @Output()
-  readonly optionsChange: EventEmitter<ProductOption[]> = new EventEmitter<ProductOption[]>();
+  readonly optionsChange: EventEmitter<ProductOption[]> = new EventEmitter<
+    ProductOption[]
+  >();
 
   /**
    * Se dispara al intentar sobrepasar el máximo.

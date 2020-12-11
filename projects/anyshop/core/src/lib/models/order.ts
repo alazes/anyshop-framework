@@ -1,7 +1,9 @@
 import { DocumentReference } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
 import * as _ from 'lodash';
+
 import { OrderStatus, PaymentMethod, Rate } from '../enums';
+
 import { Model } from './abstract-model';
 import Address from './address';
 import Business from './business';
@@ -18,7 +20,10 @@ class Order extends Model {
   paymentMethod: PaymentMethod = PaymentMethod.None;
   business: string;
   businessData: Business;
-  createdAt: Date | firebase.firestore.Timestamp | firebase.firestore.FieldValue;
+  createdAt:
+    | Date
+    | firebase.firestore.Timestamp
+    | firebase.firestore.FieldValue;
   customer: string;
   customerData: any;
   key: string;
@@ -112,7 +117,10 @@ class Order extends Model {
    * Empaqueta los datos (los serializa) para ser guardados.
    */
   packOrder(
-    dateTime: firebase.firestore.FieldValue | Date | firebase.firestore.Timestamp,
+    dateTime:
+      | firebase.firestore.FieldValue
+      | Date
+      | firebase.firestore.Timestamp,
     customer: string,
     name: string,
     phone?: string,
@@ -130,7 +138,8 @@ class Order extends Model {
       }
     });
 
-    this.statusesDates[this.status] = this.createdAt as firebase.firestore.Timestamp;
+    this.statusesDates[this.status] = this
+      .createdAt as firebase.firestore.Timestamp;
 
     this.customerData = {
       name: name || 'NO_NAME',
@@ -147,7 +156,10 @@ class Order extends Model {
    * También serializa los items.
    */
   serialize(): Partial<Order> {
-    const serialized = _.pickBy<Order>(this, (v) => v !== undefined && typeof v !== 'function');
+    const serialized = _.pickBy<Order>(
+      this,
+      (v) => v !== undefined && typeof v !== 'function'
+    );
 
     serialized.items = (serialized.items || []).map((i) => {
       if (i instanceof OrderItem) {

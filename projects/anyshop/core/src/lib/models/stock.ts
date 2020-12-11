@@ -1,5 +1,7 @@
 import { firestore } from 'firebase/app';
+
 import { IProductData } from '../../lib/models';
+
 import { Model } from './abstract-model';
 import Business from './business';
 import Category from './category';

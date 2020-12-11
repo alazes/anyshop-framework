@@ -37,5 +37,5 @@ export {
   StockService,
   UserService,
   UsersService,
-  Zones
+  Zones,
 };

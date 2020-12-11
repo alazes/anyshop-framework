@@ -1,4 +1,5 @@
 import { DocumentReference } from '@angular/fire/firestore';
+
 import { Model } from './abstract-model';
 import { CategoryGroup, ICategoryGroup } from './category-group';
 import SubCategory from './sub-category';
@@ -42,7 +43,10 @@ class Category extends Model {
       const snapshot = await this.categoryGroupRef.get();
 
       if (snapshot.exists) {
-        return new CategoryGroup(snapshot.data() as ICategoryGroup, snapshot.id);
+        return new CategoryGroup(
+          snapshot.data() as ICategoryGroup,
+          snapshot.id
+        );
       }
     }
 
