@@ -1,5 +1,7 @@
 # `@anyshop/shared`
 
+![npm](https://img.shields.io/npm/v/@anyshop/shared)
+
 ## Code scaffolding
 
 Run `ng generate component component-name --project @anyshop/shared` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project shared`.

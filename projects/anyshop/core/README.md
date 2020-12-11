@@ -1,5 +1,7 @@
 # `@anyshop/core`
 
+![npm](https://img.shields.io/npm/v/@anyshop/core)
+
 ## Code scaffolding
 
 Run `ng generate component component-name --project @anyshop/core` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project @anyshop/core`.

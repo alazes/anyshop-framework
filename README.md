@@ -4,6 +4,9 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![time tracker](https://wakatime.com/badge/github/alazes/anyshop-framework.svg)](https://wakatime.com/badge/github/alazes/anyshop-framework)
 
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/alazes/anyshop-framework?sort=semver)
+![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/alazes/anyshop-framework?include_prereleases&sort=semver)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.12.
 
 
