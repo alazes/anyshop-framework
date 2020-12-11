@@ -5,4 +5,4 @@
 
 - Run `npm run release`.
 
-If something fails, you may need to restore/reset the repo and delete generated tags.
+If only fails the publish, you can try `npm run release -- from-package`.
