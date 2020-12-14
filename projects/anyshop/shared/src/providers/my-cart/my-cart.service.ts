@@ -1,12 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  Business,
-  IProductData,
-  Order,
-  OrderItem,
-  Product,
-} from '@anyshop/core';
+import { Business, IOrderItem, Order, OrderItem, Product } from '@anyshop/core';
 import * as firebase from 'firebase/app';
 import * as _ from 'lodash';
 
@@ -19,7 +13,7 @@ import { UserService } from '../user/user.service';
 export class MyCartService {
   order: Order = new Order({});
 
-  get items() {
+  get items(): (OrderItem | IOrderItem)[] {
     return this.order.items;
   }
 
