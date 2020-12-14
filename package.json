@@ -19,10 +19,11 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
     "e2e": "ng e2e",
     "release": "npx lerna publish --yes",
-    "tslint-config-check": "tslint-config-prettier-check ./tslint.json ./projects/anyshop/core/tslint.json ./projects/anyshop/shared/tslint.json"
+    "lint": "npm run lint:tslint-config && npm run lint:prettier && ng lint",
+    "lint:prettier": "prettier --check .",
+    "lint:tslint-config": "tslint-config-prettier-check ./tslint.json ./projects/anyshop/core/tslint.json ./projects/anyshop/shared/tslint.json"
   },
   "dependencies": {
     "@angular/animations": "~9.1.12",
