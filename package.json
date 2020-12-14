@@ -21,7 +21,8 @@
     "test": "ng test",
     "e2e": "ng e2e",
     "release": "npx lerna publish --yes",
-    "lint": "npm run lint:tslint-config && npm run lint:prettier && ng lint",
+    "lint": "npm run lint:typescript && npm run lint:tslint-config && npm run lint:prettier && ng lint",
+    "lint:typescript": "tsc --noEmit",
     "lint:prettier": "prettier --check .",
     "lint:tslint-config": "tslint-config-prettier-check ./tslint.json ./projects/anyshop/core/tslint.json ./projects/anyshop/shared/tslint.json"
   },
