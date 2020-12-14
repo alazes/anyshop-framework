@@ -1,6 +1,18 @@
 {
   "name": "@anyshop/core",
   "version": "0.2.0",
+  "contributors": [
+    {
+      "name": "Nelson Martell",
+      "email": "nelson6e65@gmail.com",
+      "url": "https://nelson6e65.github.io"
+    },
+    {
+      "name": "René Arias",
+      "email": "rene_811@hotmail.com",
+      "url": "https://renearias.com"
+    }
+  ],
   "peerDependencies": {
     "@angular/common": "^9.1.12",
     "@angular/core": "^9.1.12",

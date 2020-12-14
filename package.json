@@ -1,6 +1,19 @@
 {
   "name": "@anyshop/anyshop",
   "version": "0.0.0",
+  "private": true,
+  "contributors": [
+    {
+      "name": "Nelson Martell",
+      "email": "nelson6e65@gmail.com",
+      "url": "https://nelson6e65.github.io"
+    },
+    {
+      "name": "René Arias",
+      "email": "rene_811@hotmail.com",
+      "url": "https://renearias.com"
+    }
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,7 +24,6 @@
     "release": "npx lerna publish --yes",
     "tslint-config-check": "tslint-config-prettier-check ./tslint.json ./projects/anyshop/core/tslint.json ./projects/anyshop/shared/tslint.json"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~9.1.12",
     "@angular/common": "~9.1.12",
