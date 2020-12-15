@@ -21,10 +21,10 @@
     "test": "ng test",
     "e2e": "ng e2e",
     "release": "npx lerna publish --yes",
-    "lint": "npm run lint:typescript && npm run lint:tslint-config && npm run lint:prettier && ng lint",
+    "lint": "npm run lint:typescript && npm run lint:eslint-config && npm run lint:prettier && ng lint",
     "lint:typescript": "tsc --noEmit",
     "lint:prettier": "prettier --check .",
-    "lint:tslint-config": "tslint-config-prettier-check ./tslint.json ./projects/anyshop/core/tslint.json ./projects/anyshop/shared/tslint.json"
+    "lint:eslint-config": "eslint-config-prettier ./.eslintrc.json ./projects/anyshop/core/.eslintrc.json ./projects/anyshop/shared/.eslintrc.json"
   },
   "dependencies": {
     "@angular/animations": "~9.1.12",
@@ -61,6 +61,11 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.12",
     "@angular-devkit/build-ng-packagr": "~0.901.12",
+    "@angular-eslint/builder": "0.8.0-beta.5",
+    "@angular-eslint/eslint-plugin": "0.8.0-beta.5",
+    "@angular-eslint/eslint-plugin-template": "0.8.0-beta.5",
+    "@angular-eslint/schematics": "^0.8.0-beta.5",
+    "@angular-eslint/template-parser": "0.8.0-beta.5",
     "@angular/cli": "~9.1.12",
     "@angular/compiler-cli": "~9.1.12",
     "@commitlint/cli": "^11.0.0",
@@ -70,8 +75,16 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/lodash": "^4.14.165",
     "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "^4.10.0",
+    "@typescript-eslint/parser": "^4.10.0",
     "codelyzer": "^5.1.2",
     "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jsdoc": "30.7.6",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prefer-arrow": "1.2.2",
     "husky": "^4.3.5",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -86,9 +99,6 @@
     "pretty-quick": "^3.1.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
-    "tslint": "~6.1.0",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-plugin-prettier": "^2.3.0",
     "typescript": "~3.8.3"
   },
   "husky": {
