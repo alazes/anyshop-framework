@@ -5,6 +5,7 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-20.04
+    name: Lint and build
 
     steps:
       - uses: actions/checkout@v2
@@ -17,8 +18,8 @@ jobs:
       - name: Install Node.js dependencies
         run: npm install
 
-      - name: Linting Typescript code
-        run: npm run lint:typescript
+      # - name: Linting Typescript code
+      #   run: npm run lint:typescript
 
       - name: Linting ESLint config
         run: npm run lint:eslint-config
@@ -27,10 +28,13 @@ jobs:
         run: npm run lint:prettier
 
       - name: Linting Angular build
-        run: ng lint
+        run: npx ng lint
 
-      - name: Building @anyshop/core
-        run: ng build @anyshop/core
+      - name: Bootstrapping and build packages
+        run: npx lerna bootstrap
 
-      - name: Building @anyshop/shared
-        run: ng build @anyshop/shared
+      # - name: Building @anyshop/core
+      #   run: npx ng build @anyshop/core
+      #
+      # - name: Building @anyshop/shared
+      #   run: npx ng build @anyshop/shared
