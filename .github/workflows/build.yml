@@ -1,0 +1,36 @@
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: "12"
+
+      - name: Install Node.js dependencies
+        run: npm install
+
+      - name: Linting Typescript code
+        run: npm run lint:typescript
+
+      - name: Linting ESLint config
+        run: npm run lint:eslint-config
+
+      - name: Linting code format
+        run: npm run lint:prettier
+
+      - name: Linting Angular build
+        run: ng lint
+
+      - name: Building @anyshop/core
+        run: ng build @anyshop/core
+
+      - name: Building @anyshop/shared
+        run: ng build @anyshop/shared
