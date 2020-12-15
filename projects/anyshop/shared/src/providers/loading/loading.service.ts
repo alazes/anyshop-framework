@@ -37,7 +37,7 @@ export class LoadingService {
   }
 
   async showLoading(messageOrCode?: string) {
-    let message: string = this.messages['WAIT_PLEASE']; // tslint:disable-line no-string-literal
+    let message: string = this.messages['WAIT_PLEASE']; // eslint-disable-line  @typescript-eslint/dot-notation
 
     if (messageOrCode) {
       message = await this.translateService.get(messageOrCode).toPromise();

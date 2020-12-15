@@ -105,16 +105,11 @@ export class CategoriesService extends FirebaseItemsAbstractService<Category> {
   }
 
   getSubCategories(category: string): Observable<SubCategory[]> {
-    const queryFunction: QueryFn = (ref) => {
-      return ref.where('category', '==', category);
-    };
+    const queryFunction: QueryFn = (ref) =>
+      ref.where('category', '==', category);
     return this.afs
       .collection('sub_categories', queryFunction)
       .snapshotChanges()
-      .pipe(
-        map((list) => {
-          return list.map(this.mapElements.bind(this));
-        })
-      );
+      .pipe(map((list) => list.map(this.mapElements.bind(this))));
   }
 }

@@ -39,12 +39,7 @@ export default class ProductOption implements IProductOption {
   getSelectedTotal(): number {
     const { price } = this.values
       .filter((val) => val.selected === true)
-      .reduce(
-        (a, b) => {
-          return { price: a.price + b.price, name: '' };
-        },
-        { price: 0 }
-      );
+      .reduce((a, b) => ({ price: a.price + b.price, name: '' }), { price: 0 });
 
     return price;
   }

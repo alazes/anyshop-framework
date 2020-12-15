@@ -17,6 +17,8 @@ export class OrderCardComponent implements OnInit {
   private _fixedUnitOfTime = false;
   private _order!: Order;
 
+  steps: IStatusStepInfo[] = [];
+
   @Input()
   set order(value) {
     if (!(value instanceof Order)) {
@@ -149,12 +151,8 @@ export class OrderCardComponent implements OnInit {
     return icon;
   }
 
-  steps: IStatusStepInfo[] = [];
-
   get currentStepIndex() {
-    const i = this.steps.findIndex((s) => {
-      return s.status === this.status.value;
-    });
+    const i = this.steps.findIndex((s) => s.status === this.status.value);
 
     if (i < 0) {
       return this.steps.length - 1;

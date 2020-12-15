@@ -4,7 +4,7 @@ import {
   IconPrefix,
 } from '@fortawesome/fontawesome-svg-core';
 
-/* tslint:disable:max-line-length */
+/* eslint-disable max-len */
 
 /**
  * Paquete de íconos personalizados de Pídelo para FontAwesomeModule.

@@ -25,31 +25,34 @@ export interface IOrderItemModalData {
 })
 export class ProductModalComponent implements OnInit {
   private _readonly = false;
+  private _max = 28;
+  currentItem = new OrderItem();
+
+  form!: FormGroup;
+
+  quantityRange = {
+    value: 1,
+    max: 15,
+  };
 
   /**
    * Indica si el componente será de sólo lectura.
    *
    * @todo Implementar funcionalidad para solo lectura.
    */
+  @Input()
   get readonly(): boolean {
     return this._readonly;
   }
-  @Input()
   set readonly(readonly: boolean) {
     this._readonly = normalizeBooleanAttribute(readonly);
   }
 
-  private _max = 28;
-
   @Input()
   item!: OrderItem;
 
-  currentItem = new OrderItem();
-
   @Input()
   quantity = 1;
-
-  form!: FormGroup;
 
   /**
    * Obtiene o estable el máximo de productos que se pueden agregar.
@@ -64,11 +67,6 @@ export class ProductModalComponent implements OnInit {
     this._max =
       _.min([max, Number.MAX_SAFE_INTEGER]) || Number.MAX_SAFE_INTEGER;
   }
-
-  quantityRange = {
-    value: 1,
-    max: 15,
-  };
 
   /**
    * Indica si el formulario es válido.
@@ -126,12 +124,13 @@ export class ProductModalComponent implements OnInit {
       .subscribe((v: IOrderItemModalData) => {
         // console.log(v.options);
 
-        this.currentItem.product.options = v.options.map((o) => {
-          return new ProductOption(o.name, o.values, {
-            multiple: o.multiple,
-            required: o.required,
-          });
-        });
+        this.currentItem.product.options = v.options.map(
+          (o) =>
+            new ProductOption(o.name, o.values, {
+              multiple: o.multiple,
+              required: o.required,
+            })
+        );
 
         this.currentItem.quantity = v.quantity;
       });

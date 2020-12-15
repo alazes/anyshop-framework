@@ -22,9 +22,6 @@ import {
   styleUrls: ['./static-map-image.component.scss'],
 })
 export class StaticMapImageComponent implements OnInit, AfterContentInit {
-  @ContentChildren(MapMarkerComponent)
-  markers!: QueryList<MapMarkerComponent>;
-
   private _src = '';
   private _drawPath = false;
   private _clickable = false;
@@ -35,17 +32,21 @@ export class StaticMapImageComponent implements OnInit, AfterContentInit {
     markers: [],
   };
 
+  protected readonly baseUrl: string;
+
+  public _asdasd = 4;
   mapLink: string | undefined;
 
   protected get queryParams() {
     return this._queryParams;
   }
 
-  protected readonly baseUrl: string;
-
   get src(): string {
     return this._src;
   }
+
+  @ContentChildren(MapMarkerComponent)
+  markers!: QueryList<MapMarkerComponent>;
 
   @Input()
   set zoom(value) {

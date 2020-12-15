@@ -1,4 +1,5 @@
 interface CountryCode {
+  [key: string]: string;
   ax: string;
   af: string;
   al: string;
@@ -250,7 +251,6 @@ interface CountryCode {
   ye: string;
   zm: string;
   zw: string;
-  [key: string]: string;
 }
 
 export default CountryCode;

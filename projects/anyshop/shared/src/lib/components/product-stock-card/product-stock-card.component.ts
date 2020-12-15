@@ -31,6 +31,8 @@ export class ProductStockCardComponent implements OnInit {
   priceFormControl: FormControl;
   quantityFormControl: FormControl;
 
+  editing = false;
+
   /**
    * Moneda a usar.
    */
@@ -47,8 +49,6 @@ export class ProductStockCardComponent implements OnInit {
   public get editable() {
     return this._editable;
   }
-
-  editing = false;
 
   @Input()
   public set picture(value) {

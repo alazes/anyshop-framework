@@ -130,11 +130,9 @@ export class StockService extends FirebaseItemsAbstractService<Stock> {
   getRemainingStock(businessId: string): Observable<any> {
     const businessRef = this.afs.collection('businesses').doc(businessId).ref;
 
-    return this.query((ref) => {
-      return ref
-        .where('businessRef', '==', businessRef)
-        .where('quantity', '<', 5);
-    });
+    return this.query((ref) =>
+      ref.where('businessRef', '==', businessRef).where('quantity', '<', 5)
+    );
   }
 
   /**

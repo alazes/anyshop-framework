@@ -33,11 +33,9 @@ export abstract class SerializableFirebaseCollection<
       params
     );
 
-    return this.filteredCollection.snapshotChanges().pipe(
-      map((list) => {
-        return list.map<T>(this.serialize.bind(this));
-      })
-    );
+    return this.filteredCollection
+      .snapshotChanges()
+      .pipe(map((list) => list.map<T>(this.serialize.bind(this))));
   }
 
   async set(key: string, data: T) {
@@ -45,11 +43,9 @@ export abstract class SerializableFirebaseCollection<
   }
 
   getItems(): Observable<T[]> {
-    return this.itemsCollection.snapshotChanges().pipe(
-      map((list) => {
-        return list.map(this.serialize.bind(this));
-      })
-    );
+    return this.itemsCollection
+      .snapshotChanges()
+      .pipe(map((list) => list.map(this.serialize.bind(this))));
   }
 
   async updateByKey(key: string, data: T) {

@@ -8,7 +8,7 @@ import { IProductOption } from '../interfaces';
  */
 interface IProductData extends firestore.DocumentData {
   key?: string;
-  SKU?: string;
+  SKU?: string; // eslint-disable-line  @typescript-eslint/naming-convention
   name: string;
   enabled: boolean;
   description?: string;

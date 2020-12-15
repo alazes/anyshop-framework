@@ -20,7 +20,7 @@ interface IOrderItem {
   /**
    * @deprecated
    */
-  stock_id?: string; // tslint:disable-line variable-name
+  stock_id?: string; // eslint-disable-line  @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
 }
 
 export default IOrderItem;

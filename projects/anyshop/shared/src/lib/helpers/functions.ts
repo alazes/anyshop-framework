@@ -6,9 +6,9 @@ import { isArray, isNil } from 'lodash';
  *
  * @author Nelson Martell <nelson6e65@gmail.com>
  */
-export function objectToQueryString(params: {
+export const objectToQueryString = (params: {
   [key: string]: number | string | undefined | Array<string>;
-}): string {
+}): string => {
   const queryString = Object.keys(params)
     .map((key) => {
       let q = '';
@@ -16,9 +16,7 @@ export function objectToQueryString(params: {
 
       if (!isNil(value)) {
         if (isArray(value)) {
-          const values = (value as string[]).map((val) => {
-            return key + '=' + val;
-          });
+          const values = (value as string[]).map((val) => key + '=' + val);
 
           q = values.join('&');
         } else {
@@ -28,13 +26,11 @@ export function objectToQueryString(params: {
 
       return q;
     })
-    .filter((param) => {
-      return param.length > 1;
-    })
+    .filter((param) => param.length > 1)
     .join('&');
 
   return queryString;
-}
+};
 
 /**
  * Convierte un valor a booleano el valor de un atributo HTML.
@@ -46,9 +42,9 @@ export function objectToQueryString(params: {
  * @since 0.1.25
  * @author Nelson Martell <nelson6e65@gmail.com>
  */
-export function normalizeBooleanAttribute(
+export const normalizeBooleanAttribute = (
   value: string | boolean | undefined
-): boolean {
+): boolean => {
   let val: boolean;
 
   // Verificar conversión al establecerlo desde markup
@@ -64,24 +60,7 @@ export function normalizeBooleanAttribute(
   }
 
   return val;
-}
-
-/**
- * Determina si el parámetro especificado está en los parámetros y contiene un
- * valor correspondiente a `true`.
- *
- * @param  name   Nombre del parámetro.
- * @param  params [description]
- *
- * @author Nelson Martell <nelson6e65@gmail.com>
- */
-export function paramIsTrue(name: string, params: ParamMap): boolean {
-  if (params.has(name)) {
-    return stringIsTrue(params.get(name) ?? '');
-  }
-
-  return false;
-}
+};
 
 /**
  * Determina si una cadena contiene el valor entendible como `true`.
@@ -91,7 +70,7 @@ export function paramIsTrue(name: string, params: ParamMap): boolean {
  *
  * @author Nelson Martell <nelson6e65@gmail.com>
  */
-export function stringIsTrue(value: string | boolean): boolean {
+export const stringIsTrue = (value: string | boolean): boolean => {
   if (typeof value === 'boolean') {
     return value;
   }
@@ -106,4 +85,21 @@ export function stringIsTrue(value: string | boolean): boolean {
     default:
       return false;
   }
-}
+};
+
+/**
+ * Determina si el parámetro especificado está en los parámetros y contiene un
+ * valor correspondiente a `true`.
+ *
+ * @param  name   Nombre del parámetro.
+ * @param  params [description]
+ *
+ * @author Nelson Martell <nelson6e65@gmail.com>
+ */
+export const paramIsTrue = (name: string, params: ParamMap): boolean => {
+  if (params.has(name)) {
+    return stringIsTrue(params.get(name) ?? '');
+  }
+
+  return false;
+};

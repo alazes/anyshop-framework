@@ -28,16 +28,19 @@ class OrderItem implements IOrderItem {
   product: Product;
   stockKey: string | undefined;
 
-  // tslint:disable-next-line variable-name
+  // eslint-disable-next-line  @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
 
   /**
    * @deprecated usar stockKey
    *
    */
+  // eslint-disable-next-line  @typescript-eslint/naming-convention
   get stock_id() {
+    // eslint-disable-line  @typescript-eslint/naming-convention
     return this.stockKey;
   }
 
+  // eslint-disable-next-line  @typescript-eslint/naming-convention
   set stock_id(stockKey) {
     this.stockKey = stockKey;
   }
@@ -96,7 +99,6 @@ class OrderItem implements IOrderItem {
       quantity: this.quantity,
       qty: this.quantity,
       stockKey: this.stockKey,
-      stock_id: this.stockKey,
       product: this.product.serialize(),
     };
 

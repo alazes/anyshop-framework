@@ -18,6 +18,11 @@ export class BusinessCardComponent implements OnInit, OnDestroy {
   private _paymentMethods = PaymentMethodExtension.for(0);
 
   private _button = false;
+  private _minutes = 15;
+
+  startTime = moment();
+  endTime = moment();
+
   set button(value) {
     this._button = normalizeBooleanAttribute(value);
   }
@@ -46,7 +51,6 @@ export class BusinessCardComponent implements OnInit, OnDestroy {
   @Input()
   minOrder = 0;
 
-  private _minutes = 15;
   @Input()
   set minutes(value) {
     this._minutes = +value || 0;
@@ -56,9 +60,6 @@ export class BusinessCardComponent implements OnInit, OnDestroy {
   get minutes(): number {
     return this._minutes;
   }
-
-  startTime = moment();
-  endTime = moment();
 
   @Input()
   set paymentMethods(value) {
@@ -88,9 +89,8 @@ export class BusinessCardComponent implements OnInit, OnDestroy {
   ): PaymentMethodExtension {
     let pm = PaymentMethodExtension.for(0);
 
-    function hasKey(object: any): object is IPaymentMethodWithKeys {
-      return 'key' in object;
-    }
+    const hasKey = (object: any): object is IPaymentMethodWithKeys =>
+      'key' in object;
 
     if (flags) {
       if (flags instanceof PaymentMethodExtension) {
@@ -121,6 +121,6 @@ export class BusinessCardComponent implements OnInit, OnDestroy {
 }
 
 interface IPaymentMethodWithKeys {
-  key: string;
   [p: string]: any;
+  key: string;
 }

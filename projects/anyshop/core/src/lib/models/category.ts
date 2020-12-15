@@ -6,7 +6,7 @@ import SubCategory from './sub-category';
 
 class Category extends Model {
   name: string;
-  products_count = 0; // tslint:disable-line variable-name
+  products_count = 0; // eslint-disable-line  @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
   sortIndex = 0;
   img: string;
   key?: string;

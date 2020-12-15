@@ -6,7 +6,7 @@ import DeliveryMethod from './delivery-method';
 import Schedule from './schedule';
 
 class Business extends Model {
-  _id: string; // tslint:disable-line variable-name
+  _id: string; // eslint-disable-line  @typescript-eslint/naming-convention,no-underscore-dangle,id-blacklist,id-match
   active: boolean;
   email: string;
   name: string;
@@ -21,16 +21,16 @@ class Business extends Model {
   geolocation: any;
   category?: any;
   categories?: { [category: string]: boolean };
-  custom_area: string; // tslint:disable-line variable-name
-  polygon_area: any; // tslint:disable-line variable-name
+  custom_area: string; // eslint-disable-line  @typescript-eslint/naming-convention,no-underscore-dangle,id-blacklist,id-match
+  polygon_area: any; // eslint-disable-line  @typescript-eslint/naming-convention,no-underscore-dangle,id-blacklist,id-match
   phone: any;
   /**
    * @deprecated Use `paymentMethods` property instead.
    */
-  payment_methods: Array<any> = []; // tslint:disable-line variable-name
+  payment_methods: Array<any> = []; // eslint-disable-line  @typescript-eslint/naming-convention,no-underscore-dangle,id-blacklist,id-match
   paymentMethods: PaymentMethod = PaymentMethod.None;
   activeCategories: any;
-  delivery_methods: DeliveryMethod[] = []; // tslint:disable-line variable-name
+  delivery_methods: DeliveryMethod[] = []; // eslint-disable-line  @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
   timeToAttend: number | undefined;
   pendingOrders: number | undefined;
   totalOrders?: number;

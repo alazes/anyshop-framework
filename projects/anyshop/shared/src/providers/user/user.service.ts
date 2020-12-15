@@ -80,8 +80,8 @@ export class UserService extends ArxisUser {
       switchMap((u: User | null) => {
         if (u) {
           return of(u).pipe(
-            switchMap((us) => {
-              return this.getPrimaryBusiness(us.uid).pipe(
+            switchMap((us) =>
+              this.getPrimaryBusiness(us.uid).pipe(
                 switchMap((business: Business) => {
                   console.log('negocio encontrado', business);
                   if (business) {
@@ -93,8 +93,8 @@ export class UserService extends ArxisUser {
                   }
                   return of(us);
                 })
-              );
-            })
+              )
+            )
           );
         } else {
           return of(null);
@@ -141,9 +141,7 @@ export class UserService extends ArxisUser {
     );
 
     return primaryBusinessQuery.snapshotChanges().pipe(
-      map((list) => {
-        return list.map<Business>(this.mapElements);
-      }),
+      map((list) => list.map<Business>(this.mapElements)),
       switchMap((businesses) => {
         if (!businesses) {
           return of(null);
@@ -168,9 +166,7 @@ export class UserService extends ArxisUser {
 
     return this.afAuth
       .signInWithPopup(provider)
-      .then((credential) => {
-        return credential;
-      })
+      .then((credential) => credential)
       .catch((error) => {
         throw error;
       });
@@ -202,9 +198,7 @@ export class UserService extends ArxisUser {
     let userCredential: auth.UserCredential;
     try {
       userCredential = await this.loginWithCredential(phoneCredential)
-        .then((result: firebase.auth.UserCredential) => {
-          return result;
-        })
+        .then((result: firebase.auth.UserCredential) => result)
         .catch((error) => {
           throw error;
         });

@@ -19,21 +19,21 @@ class Product extends Model implements IProductData {
   primary: boolean | undefined;
   principal: string | undefined;
   price: number;
-  SKU: string | undefined;
+  SKU: string | undefined; // eslint-disable-line  @typescript-eslint/naming-convention
   presentation: string | undefined;
   quantity: string | undefined;
   type: string | undefined;
   flavor: string | undefined;
   infoExtra: string | undefined;
-  num_product: number | undefined; // tslint:disable-line variable-name 💩
+  num_product: number | undefined; // eslint-disable-line  @typescript-eslint/naming-convention,no-underscore-dangle,id-blacklist,id-match,
   order: number | undefined;
   fullName?: string; // ghost variable
   qty?: number; // ghost variable
   stock?: number; // ghost variable
   stockPrice?: number; // ghost variable
-  stock_id: string | undefined; // tslint:disable-line variable-name 💩
-  bar_code?: any; // tslint:disable-line variable-name 💩
-  business_code?: any; // tslint:disable-line variable-name 💩
+  stock_id: string | undefined; // eslint-disable-line  @typescript-eslint/naming-convention,no-underscore-dangle,id-blacklist,id-match,
+  bar_code?: any; // eslint-disable-line  @typescript-eslint/naming-convention,no-underscore-dangle,id-blacklist,id-match,
+  business_code?: any; // eslint-disable-line  @typescript-eslint/naming-convention,no-underscore-dangle,id-blacklist,id-match,
   status: any;
   accepted: boolean | undefined;
   acceptedAt: Date | undefined;
@@ -41,7 +41,7 @@ class Product extends Model implements IProductData {
   rejected: boolean | undefined;
   enabled: boolean;
   exclusive: boolean | undefined;
-  products_by_rack: number | undefined; // tslint:disable-line variable-name 💩
+  products_by_rack: number | undefined; // eslint-disable-line  @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
   requestBy: any;
   createdBy: string | undefined;
   createdAt: Date | firebase.firestore.Timestamp | undefined;
@@ -71,12 +71,13 @@ class Product extends Model implements IProductData {
     this.enabled = data.enabled === true;
     this.price = data.price || 0;
 
-    this.options = options.map((opt) => {
-      return new ProductOption(opt.name, opt.values, {
-        required: opt.required,
-        multiple: opt.multiple,
-      });
-    });
+    this.options = options.map(
+      (opt) =>
+        new ProductOption(opt.name, opt.values, {
+          required: opt.required,
+          multiple: opt.multiple,
+        })
+    );
   }
 
   addChild(product: Product) {
@@ -121,7 +122,7 @@ class Product extends Model implements IProductData {
       ownerRef: this.ownerRef,
       price: this.price,
       picture: this.picture,
-      SKU: this.SKU,
+      SKU: this.SKU, // eslint-disable-line  @typescript-eslint/naming-convention
       createdBy: this.createdBy,
       updatedAt: this.updatedAt,
       createdAt: this.createdAt,

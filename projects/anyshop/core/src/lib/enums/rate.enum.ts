@@ -17,7 +17,7 @@ enum Rate {
  *
  * @deprecated
  */
-export function color(rate: Rate): Color {
+export const color = (rate: Rate): Color => {
   switch (rate) {
     case Rate.Awful:
       return Color.Danger;
@@ -37,14 +37,14 @@ export function color(rate: Rate): Color {
     default:
       return Color.None;
   }
-}
+};
 
 /**
  * Obtiene el nombre del ícono correspondiente.
  *
  * @deprecated
  */
-export function icon(rate: Rate): string {
+export const icon = (rate: Rate): string => {
   // TODO: Diferenciar más los íconos
   switch (rate) {
     case Rate.Awful:
@@ -65,6 +65,6 @@ export function icon(rate: Rate): string {
     default:
       return 'help-circle-outline';
   }
-}
+};
 
 export default Rate;

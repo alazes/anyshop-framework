@@ -102,9 +102,7 @@ export class OrderProductCardComponent implements OnInit {
     return this.item.product.options;
   }
   set options(options: Array<ProductOption | IProductOption>) {
-    this.item.product.options = options.map((o) => {
-      return new ProductOption(o);
-    });
+    this.item.product.options = options.map((o) => new ProductOption(o));
 
     this.optionsChange.emit(this.item.product.options);
   }

@@ -16,7 +16,7 @@ import {
 })
 export class PaymentMethodPopoverComponent implements OnInit {
   private _multiple = false;
-  public _selected = new PaymentMethodExtension(0);
+  private _selected = new PaymentMethodExtension(0);
   private _howMuchPay = 0;
   private _minCash = 0;
   private _availableMethods = new PaymentMethodExtension(0);
@@ -100,7 +100,7 @@ export class PaymentMethodPopoverComponent implements OnInit {
   select(method: PaymentMethodExtension) {
     if (this.multiple) {
       // TODO: Agregar un método de toggle (n ^= mask)
-      // tslint:disable:no-bitwise
+      /* eslint-disable no-bitwise */
       this.selected = PaymentMethodExtension.for(
         this.selected.value ^ method.value
       );

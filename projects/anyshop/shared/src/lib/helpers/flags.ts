@@ -1,6 +1,6 @@
 import EnumExtension from './enum-extension';
 
-/* tslint:disable:no-bitwise */
+/* eslint-disable no-bitwise */
 
 /**
  * Provee métodos para operar con flags en enums.

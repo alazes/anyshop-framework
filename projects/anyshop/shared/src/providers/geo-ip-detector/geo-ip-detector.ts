@@ -5,11 +5,11 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'any' })
 export class GeoIPDetectorService {
+  private geoIPData?: GeoIpResponse;
+
   // url = 'https://ipinfo.io';
   // TODO: TOKEN DETECT COUNTRY
   url = 'https://ipinfo.io?token=ce0fff6bc4bf47';
-
-  private geoIPData?: GeoIpResponse;
 
   constructor(public http: HttpClient) {
     if (!this.ipData) {

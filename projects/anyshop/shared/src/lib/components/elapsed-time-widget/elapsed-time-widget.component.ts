@@ -23,11 +23,11 @@ export class ElapsedTimeWidgetComponent implements OnInit {
   private _fixedUnitOfTime = false;
   private _icon: string | string[] | false = ['far', 'clock'];
 
-  @Input()
-  color: Color | undefined;
-
   elapsedTime$!: Observable<number | undefined>;
   elapsedTime: number | undefined;
+
+  @Input()
+  color: Color | undefined;
 
   @Input()
   /**

@@ -1154,8 +1154,9 @@ class CountryService {
   }
 
   getCountries(): Country[] {
-    return filter(this.countries, (country) => {
-      return (
+    return filter(
+      this.countries,
+      (country) =>
         [
           'bo',
           'pe',
@@ -1170,8 +1171,7 @@ class CountryService {
           'pa',
           'mx',
         ].indexOf(country.countryCode) !== -1
-      );
-    });
+    );
   }
 }
 

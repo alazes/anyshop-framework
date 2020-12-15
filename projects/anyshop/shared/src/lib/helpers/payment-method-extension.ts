@@ -2,7 +2,7 @@ import { PaymentMethod } from '@anyshop/core';
 
 import Flags from './flags';
 
-/* tslint:disable:no-bitwise */
+/* eslint-disable no-bitwise */
 
 /**
  * @since 0.1.26
@@ -117,8 +117,6 @@ export default class PaymentMethodExtension extends Flags<PaymentMethod> {
    * Obtiene cada instancia individual de los flags como array.
    */
   toArray(): PaymentMethodExtension[] {
-    return this.getFlags().map((method) => {
-      return PaymentMethodExtension.for(method);
-    });
+    return this.getFlags().map((method) => PaymentMethodExtension.for(method));
   }
 }

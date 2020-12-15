@@ -30,9 +30,9 @@ export class MyCartService {
       return false;
     }
 
-    let item = this.items.find((orderItem) => {
-      return orderItem.product.key === product.key;
-    });
+    let item = this.items.find(
+      (orderItem) => orderItem.product.key === product.key
+    );
 
     if (!item) {
       item = new OrderItem({

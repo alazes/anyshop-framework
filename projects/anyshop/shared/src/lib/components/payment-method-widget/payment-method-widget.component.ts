@@ -21,13 +21,13 @@ import {
 export class PaymentMethodWidgetComponent implements OnInit {
   private _lines: 'full' | 'inset' | 'none' | undefined = 'full';
   private _multiple = false;
-  public _selected = new PaymentMethodExtension(0);
+  private _selected = new PaymentMethodExtension(0);
   private _howMuchPay = 0;
   private _availableMethods = new PaymentMethodExtension(0);
   private _placeholder: string | undefined;
   private _readonly = false;
-  selecting = false;
   private _minCash = 0;
+  selecting = false;
 
   @Input()
   set minCash(value: number) {
@@ -194,8 +194,8 @@ export class PaymentMethodWidgetComponent implements OnInit {
       .onDidDismiss()
       .then((response: OverlayEventDetail<IPaymentMethodData>) => {
         if (response.role === 'selected' && response.data && response.data) {
-          (this.selected = PaymentMethodExtension.for(response.data.selected)),
-            (this.howMuchPay = response.data.howMuchPay);
+          this.selected = PaymentMethodExtension.for(response.data.selected);
+          this.howMuchPay = response.data.howMuchPay;
         }
       })
       .finally(() => {

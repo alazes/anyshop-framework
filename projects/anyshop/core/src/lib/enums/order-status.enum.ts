@@ -6,7 +6,7 @@ enum OrderStatus {
    * Rechazado
    */
   Rejected = -1,
-  Undefined = 0,
+  Undefined = 0, // eslint-disable-line id-blacklist
 
   /**
    * Solicitado.

@@ -55,9 +55,7 @@ export class FullOrderStatusWidgetComponent implements OnInit {
       return this.steps.length - 1;
     }
 
-    return this.steps.findIndex((s) => {
-      return s.status === this.status;
-    });
+    return this.steps.findIndex((s) => s.status === this.status);
   }
 
   get maxStatus() {

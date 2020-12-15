@@ -20,6 +20,26 @@ export class ProductsService extends FirebaseItemsAbstractService<Product> {
     super('/products', afs);
   }
 
+  /**
+   * Sube la imagen y devuelve la URL.
+   */
+  protected async uploadPicture(
+    id: string,
+    businessId: string,
+    imageData: { data: string; extension: string; type: string }
+  ) {
+    const uploadRef = `uploads/businesses/${businessId}/products/${id}`;
+    const uploadFilename = `picture.${imageData.extension}`;
+
+    const { downloadURL } = await this.fileStorage.uploadFileFromString(
+      uploadRef,
+      uploadFilename,
+      imageData.data
+    );
+
+    return downloadURL as string;
+  }
+
   async create(
     businessId: string,
     data: IProductData,
@@ -51,26 +71,6 @@ export class ProductsService extends FirebaseItemsAbstractService<Product> {
     await productDoc.set(normalizedProduct);
 
     return productDoc as firestore.DocumentReference<Product>;
-  }
-
-  /**
-   * Sube la imagen y devuelve la URL.
-   */
-  protected async uploadPicture(
-    id: string,
-    businessId: string,
-    imageData: { data: string; extension: string; type: string }
-  ) {
-    const uploadRef = `uploads/businesses/${businessId}/products/${id}`;
-    const uploadFilename = `picture.${imageData.extension}`;
-
-    const { downloadURL } = await this.fileStorage.uploadFileFromString(
-      uploadRef,
-      uploadFilename,
-      imageData.data
-    );
-
-    return downloadURL as string;
   }
 
   async updateByKey(

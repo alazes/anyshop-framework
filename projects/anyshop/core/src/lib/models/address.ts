@@ -12,7 +12,7 @@ class Address extends Model {
   district: string;
   geolocation: firestore.GeoPoint;
   key: string;
-  number: string;
+  number: string; // eslint-disable-line id-blacklist
   owner: any;
   icon: any;
   type: any;

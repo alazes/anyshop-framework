@@ -26,9 +26,7 @@ export class CustomValidators {
       if (min > 0) {
         const values = control.value as ProductOptionValueInterface[];
 
-        const selectedValues = values.filter((val) => {
-          return val.selected === true;
-        });
+        const selectedValues = values.filter((val) => val.selected === true);
 
         // console.log({ selectedValues, valid: selectedValues.length >= min });
 
@@ -58,9 +56,7 @@ export class CustomValidators {
       if (max > 0) {
         const values = control.value as ProductOptionValueInterface[];
 
-        const selectedValues = values.filter((val) => {
-          return val.selected === true;
-        });
+        const selectedValues = values.filter((val) => val.selected === true);
 
         // console.log({ selectedValues, valid: selectedValues.length <= max });
 

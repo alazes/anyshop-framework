@@ -7,10 +7,10 @@
 abstract class EnumExtension<E extends number | string> {
   constructor(public readonly value: E) {}
 
-  public static for<T extends EnumExtension<E>, E extends number | string>(
-    this: new (value: E) => T,
-    value: E
-  ) {
+  public static for<
+    T extends EnumExtension<EType>,
+    EType extends number | string
+  >(this: new (value: EType) => T, value: EType) {
     return new this(value);
   }
 

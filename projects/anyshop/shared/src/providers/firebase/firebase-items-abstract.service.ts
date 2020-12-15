@@ -46,11 +46,9 @@ export abstract class FirebaseItemsAbstractService<
       params
     );
 
-    return this.filteredCollection.snapshotChanges().pipe(
-      map((list) => {
-        return list.map<T>(this.mapElements.bind(this));
-      })
-    );
+    return this.filteredCollection
+      .snapshotChanges()
+      .pipe(map((list) => list.map<T>(this.mapElements.bind(this))));
   }
 
   async add(item: T): Promise<firestore.DocumentReference<T>> {
@@ -93,11 +91,9 @@ export abstract class FirebaseItemsAbstractService<
   }
 
   getItems(): Observable<T[]> {
-    return this.itemsCollection.snapshotChanges().pipe(
-      map((list) => {
-        return list.map(this.mapElements.bind(this));
-      })
-    );
+    return this.itemsCollection
+      .snapshotChanges()
+      .pipe(map((list) => list.map(this.mapElements.bind(this))));
   }
 
   update(item: any, data: any) {
