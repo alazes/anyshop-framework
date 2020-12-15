@@ -38,6 +38,6 @@
     "directory": "../../../dist/anyshop/shared"
   },
   "scripts": {
-    "prepublish": "ng build --prod"
+    "prepublish": "npx ng build @anyshop/shared --prod"
   }
 }
