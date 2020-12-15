@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/alazes/anyshop-framework/compare/v0.2.0...v0.3.0) (2020-12-15)
+
+### Bug Fixes
+
+- invalid package builded for publish ([a61f1b9](https://github.com/alazes/anyshop-framework/commit/a61f1b9752000da4af6a1eadc0fe0ae735718bc5))
+
 # [0.2.0](https://github.com/alazes/anyshop-framework/compare/v0.1.6...v0.2.0) (2020-12-10)
 
 **Note:** Version bump only for package @anyshop/core

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/alazes/anyshop-framework/compare/v0.2.0...v0.3.0) (2020-12-15)
+
+### Bug Fixes
+
+- invalid package builded for publish ([a61f1b9](https://github.com/alazes/anyshop-framework/commit/a61f1b9752000da4af6a1eadc0fe0ae735718bc5))
+- **shared:** return type ([4eff40a](https://github.com/alazes/anyshop-framework/commit/4eff40a822678f3cf87cdef16af88803be9b9178))
+- **shared:** unexported component to public api ([2f568f6](https://github.com/alazes/anyshop-framework/commit/2f568f6be62e15f37ab1b7ea2192b4c8b1b39ba8))
+
+### Features
+
+- **shared:** add @anyshop/core as dependency ([a58fd4f](https://github.com/alazes/anyshop-framework/commit/a58fd4fee68071a29605b913e148d8f35b19bc2a))
+
 # [0.2.0](https://github.com/alazes/anyshop-framework/compare/v0.1.6...v0.2.0) (2020-12-10)
 
 **Note:** Version bump only for package @anyshop/anyshop
