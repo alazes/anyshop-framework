@@ -27,6 +27,6 @@
     "directory": "../../../dist/anyshop/core"
   },
   "scripts": {
-    "prepublish": "npx ng build @anyshop/core --prod"
+    "prepare": "ng build @anyshop/core --prod"
   }
 }
