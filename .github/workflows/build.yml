@@ -31,7 +31,7 @@ jobs:
         run: npx ng lint
 
       - name: Bootstrapping and build packages
-        run: npx lerna bootstrap --no-ci
+        run: npm run bootstrap
 
       # - name: Building @anyshop/core
       #   run: npx ng build @anyshop/core

@@ -20,6 +20,7 @@
     "build": "ng build",
     "test": "ng test",
     "e2e": "ng e2e",
+    "bootstrap": "lerna bootstrap --no-ci",
     "release": "npx lerna publish --yes",
     "lint": "npm run lint:typescript && npm run lint:eslint-config && npm run lint:prettier && ng lint",
     "lint:typescript": "tsc --noEmit",
