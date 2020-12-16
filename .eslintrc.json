@@ -16,6 +16,9 @@
         "plugin:@angular-eslint/ng-cli-compat",
         "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
         "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript",
         "prettier",
         "prettier/@typescript-eslint"
       ],
@@ -140,7 +143,17 @@
         "brace-style": ["off", "off"],
         "eol-last": "off",
         "import/no-unassigned-import": "warn",
-        "import/order": "error",
+        "import/order": [
+          "error",
+          {
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": false
+            },
+            "newlines-between": "always-and-inside-groups",
+            "groups": ["builtin", "external", "parent", "sibling", "index"]
+          }
+        ],
         "linebreak-style": "off",
         "max-len": "off",
         "new-parens": "off",

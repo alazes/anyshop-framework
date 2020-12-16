@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IProductOption } from '@anyshop/core';
-import { OrderItem, ProductOption } from '@anyshop/core';
+import { IProductOption, OrderItem, ProductOption } from '@anyshop/core';
+
 import { AlertController, ModalController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core';
 

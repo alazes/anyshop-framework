@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { OrderStatus } from '@anyshop/core';
-import { IStatusStepInfo } from '@anyshop/core';
+import { OrderStatus, IStatusStepInfo } from '@anyshop/core';
 
 import { OrderStatusExtension } from '../../helpers';
 

@@ -5,13 +5,17 @@ import {
   AngularFirestoreCollection,
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
-import { UserAccountInterface } from '@anyshop/core';
-import { Account, Address, Business } from '@anyshop/core';
+import {
+  UserAccountInterface,
+  Account,
+  Address,
+  Business,
+} from '@anyshop/core';
 import { ApiService } from '@arxis/api';
 import {
   ArxisDeviceService,
-  ArxisIonicFireStoreAuthService as ArxisUser,
   ArxisSmsAuthService,
+  ArxisIonicFireStoreAuthService as ArxisUser,
   ROUTE_FCM_DOC,
 } from '@arxis/fireauth';
 import { Platform } from '@ionic/angular';

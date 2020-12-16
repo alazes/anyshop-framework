@@ -1,6 +1,5 @@
 import { DocumentChangeAction, QueryFn } from '@angular/fire/firestore';
-import { IFirebaseData } from '@anyshop/core';
-import { SerializableModel } from '@anyshop/core';
+import { IFirebaseData, SerializableModel } from '@anyshop/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 

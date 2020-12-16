@@ -7,8 +7,8 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { ProductOptionValueInterface } from '@anyshop/core';
-import { ProductOption } from '@anyshop/core';
+import { ProductOptionValueInterface, ProductOption } from '@anyshop/core';
+
 import * as _ from 'lodash';
 
 /**

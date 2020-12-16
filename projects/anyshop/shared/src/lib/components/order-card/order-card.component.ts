@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { OrderStatus } from '@anyshop/core';
-import { IStatusStepInfo } from '@anyshop/core';
-import { Business, Order } from '@anyshop/core';
+import { OrderStatus, IStatusStepInfo, Business, Order } from '@anyshop/core';
 
 import { ComponentsConfigService } from '../../components-config.service';
 import { OrderStatusExtension, normalizeBooleanAttribute } from '../../helpers';

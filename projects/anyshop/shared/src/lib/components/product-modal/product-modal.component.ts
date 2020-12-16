@@ -1,7 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { IProductOption } from '@anyshop/core';
-import { IOrderItem, OrderItem, ProductOption } from '@anyshop/core';
+import {
+  IProductOption,
+  IOrderItem,
+  OrderItem,
+  ProductOption,
+} from '@anyshop/core';
+
 import { ModalController } from '@ionic/angular';
 import * as _ from 'lodash';
 import { startWith } from 'rxjs/operators';
