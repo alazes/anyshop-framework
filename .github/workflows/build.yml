@@ -30,11 +30,11 @@ jobs:
       - name: Linting Angular build
         run: npx ng lint
 
-      - name: Bootstrapping and build packages
+      - name: Bootstrapping packages
         run: npm run bootstrap
 
-      # - name: Building @anyshop/core
-      #   run: npx ng build @anyshop/core
-      #
-      # - name: Building @anyshop/shared
-      #   run: npx ng build @anyshop/shared
+      - name: Building @anyshop/core
+        run: npx ng build @anyshop/core --prod
+
+      - name: Building @anyshop/shared
+        run: npx ng build @anyshop/shared --prod

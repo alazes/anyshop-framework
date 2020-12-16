@@ -39,6 +39,6 @@
     "directory": "../../../dist/anyshop/shared"
   },
   "scripts": {
-    "prepare": "ng build @anyshop/shared --prod"
+    "prepublishOnly": "ng build @anyshop/shared --prod"
   }
 }
