@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@anyshop/core": "^0.4.0",
-    "angular-svg-round-progressbar": "^3.0.1",
+    "angular-svg-round-progressbar": "^5.0.2",
     "tslib": "^1.10.0"
   },
   "publishConfig": {
