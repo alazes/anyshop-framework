@@ -126,6 +126,7 @@ This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
 
 ## Release process
 
-- Run `npm run release`.
+Commands for Release Managers:
 
-If only fails the publish, you can try `npm run release -- from-package`.
+- `npm run release`: Creates the version tag (lerna checks if is necessary).
+- `npm run publish`: Publishes the recent packages versioned to the npm registry.
