@@ -43,7 +43,7 @@ jobs:
 
       - name: Update deployment status (success)
         if: success()
-        uses: chrnorm/deployment-action@v1.2.0
+        uses: chrnorm/deployment-status@v1
         with:
           environment: npm@latest
           token: "${{ github.token }}"
@@ -52,7 +52,7 @@ jobs:
 
       - name: Update deployment status (failure)
         if: failure()
-        uses: chrnorm/deployment-action@v1.2.0
+        uses: chrnorm/deployment-status@v1
         with:
           environment: npm@latest
           token: "${{ github.token }}"
