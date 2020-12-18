@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/alazes/anyshop-framework/compare/v0.3.0...v0.4.0) (2020-12-18)
+
+### Bug Fixes
+
+- deep import of moment/locale/es ([a4239cb](https://github.com/alazes/anyshop-framework/commit/a4239cb6aee094732bf32da5086ca2c3ddbf803a))
+
+### Code Refactoring
+
+- rely on application to import 'firebase/\*' products ([5041fdb](https://github.com/alazes/anyshop-framework/commit/5041fdbe770a7bcb0b4c0114565eb5e9c3ba2867))
+
+### BREAKING CHANGES
+
+- App initializer or module initializer in the app is the responsible for import
+  modules from 'firebase/\*'
+
 # [0.3.0](https://github.com/alazes/anyshop-framework/compare/v0.2.0...v0.3.0) (2020-12-15)
 
 ### Bug Fixes
