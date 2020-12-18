@@ -36,11 +36,12 @@ jobs:
       - name: Building packages
         run: npm run build
 
-      - env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       - name: Deploying packages
-        run: npm run deploy
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          cp .npmrc.ci .npmrc
+          npm run deploy
 
       - name: Update deployment status (success)
         if: success()
