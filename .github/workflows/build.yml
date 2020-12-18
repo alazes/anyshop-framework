@@ -18,23 +18,26 @@ jobs:
       - name: Install Node.js dependencies
         run: npm install
 
+      - name: Bootstrapping packages
+        run: npm run bootstrap
+
       # - name: Linting Typescript code
       #   run: npm run lint:typescript
 
       - name: Linting ESLint config
         run: npm run lint:eslint-config
 
-      - name: Linting code format
+      - name: Linting code style format
         run: npm run lint:prettier
 
-      - name: Linting Angular build
-        run: npx ng lint
-
-      - name: Bootstrapping packages
-        run: npm run bootstrap
+      - name: Linting @anyshop/core
+        run: npx ng lint @anyshop/core
 
       - name: Building @anyshop/core
         run: npx ng build @anyshop/core --prod
+
+      - name: Linting @anyshop/shared
+        run: npx ng lint @anyshop/shared
 
       - name: Building @anyshop/shared
         run: npx ng build @anyshop/shared --prod
