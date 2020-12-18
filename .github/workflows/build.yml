@@ -18,9 +18,6 @@ jobs:
       - name: Install Node.js dependencies
         run: npm install
 
-      - name: Bootstrapping packages
-        run: npm run bootstrap
-
       # - name: Linting Typescript code
       #   run: npm run lint:typescript
 
@@ -29,6 +26,9 @@ jobs:
 
       - name: Linting code style format
         run: npm run lint:prettier
+
+      - name: Bootstrapping packages
+        run: npm run bootstrap
 
       - name: Linting @anyshop/core
         run: npx ng lint @anyshop/core
