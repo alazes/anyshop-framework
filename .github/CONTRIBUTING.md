@@ -129,4 +129,4 @@ This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
 Commands for Release Managers:
 
 - `npm run release`: Creates the version tag (lerna checks if is necessary).
-- `npm run publish`: Publishes the recent packages versioned to the npm registry.
+- `npm run deploy`: Publishes the recent packages versioned to the npm registry.
