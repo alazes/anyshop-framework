@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/alazes/anyshop-framework/compare/v0.4.0...v1.0.0) (2020-12-18)
+
+### Bug Fixes
+
+- **deps:** wrong version of 'angular-svg-round-progressbar' ([1aa9ff3](https://github.com/alazes/anyshop-framework/commit/1aa9ff35d56716b2b3b319a89fe11303fbb92a77))
+
 # [0.4.0](https://github.com/alazes/anyshop-framework/compare/v0.3.0...v0.4.0) (2020-12-18)
 
 ### Bug Fixes
