@@ -1,0 +1,61 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - v*
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: "12"
+
+      - uses: chrnorm/deployment-action@v1.2.0
+        name: Create GitHub deployment
+        id: deployment
+        with:
+          environment: npm@latest
+          token: "${{ github.token }}"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Bootstrapping packages
+        run: npm run bootstrap
+
+      - name: Building packages
+        run: npm run build
+
+      - env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Deploying packages
+        run: npm run deploy
+
+      - name: Update deployment status (success)
+        if: success()
+        uses: chrnorm/deployment-action@v1.2.0
+        with:
+          environment: npm@latest
+          token: "${{ github.token }}"
+          state: "success"
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+
+      - name: Update deployment status (failure)
+        if: failure()
+        uses: chrnorm/deployment-action@v1.2.0
+        with:
+          environment: npm@latest
+          token: "${{ github.token }}"
+          state: "failure"
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
