@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Color } from '@anyshop/core';
 import * as Moment from 'moment';
-import 'moment/locale/es';
 import { Observable, timer } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 
