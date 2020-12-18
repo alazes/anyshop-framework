@@ -163,6 +163,7 @@
         "no-shadow": "off",
         "no-trailing-spaces": "off",
         "no-underscore-dangle": ["warn", { "allowAfterThis": true }],
+        "prefer-template": "error",
         "quote-props": "off",
         "react/jsx-curly-spacing": "off",
         "react/jsx-equals-spacing": "off",

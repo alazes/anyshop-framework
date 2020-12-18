@@ -174,12 +174,12 @@ export class MapMarkerComponent implements OnInit {
       q += 'size:{size}|';
     }
 
-    q += this.data.location.latitude + ',' + this.data.location.longitude;
+    q += `${this.data.location.latitude},${this.data.location.longitude}`;
 
-    q = replace(q, new RegExp('{color}', 'g'), this.color + '');
-    q = replace(q, new RegExp('{label}', 'g'), this.label + '');
-    q = replace(q, new RegExp('{scale}', 'g'), this.scale + '');
-    q = replace(q, new RegExp('{size}', 'g'), this.size + '');
+    q = replace(q, new RegExp('{color}', 'g'), `${this.color}`);
+    q = replace(q, new RegExp('{label}', 'g'), `${this.label}`);
+    q = replace(q, new RegExp('{scale}', 'g'), `${this.scale}`);
+    q = replace(q, new RegExp('{size}', 'g'), `${this.size}`);
     q = replace(q, /\#/g, '%23');
     q = replace(q, /\|/g, '%7C');
 

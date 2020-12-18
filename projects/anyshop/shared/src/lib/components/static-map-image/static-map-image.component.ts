@@ -161,7 +161,7 @@ export class StaticMapImageComponent implements OnInit, AfterContentInit {
 
     // console.log('urlQueries', this.queryParams);
 
-    this._src = this.baseUrl + '?' + queryParamsString;
+    this._src = `${this.baseUrl}?${queryParamsString}`;
 
     // console.log(this.src);
   }

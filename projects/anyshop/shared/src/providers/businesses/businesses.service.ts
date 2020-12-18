@@ -34,7 +34,7 @@ export class BusinessesService extends FirebaseItemsAbstractService<Business> {
   }
 
   getDocByKey(key: string): AngularFirestoreDocument<Business> {
-    return this.afs.doc<Business>(this.firebaseRoute + '/' + key);
+    return this.afs.doc<Business>(`${this.firebaseRoute}/${key}`);
   }
 
   getStockBusiness(businessId: string): Observable<Stock[]> {

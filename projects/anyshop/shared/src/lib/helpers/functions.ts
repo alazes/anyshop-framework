@@ -16,11 +16,11 @@ export const objectToQueryString = (params: {
 
       if (!isNil(value)) {
         if (isArray(value)) {
-          const values = (value as string[]).map((val) => key + '=' + val);
+          const values = (value as string[]).map((val) => `${key}=${val}`);
 
           q = values.join('&');
         } else {
-          q = key + '=' + value.toString();
+          q = `${key}=${value.toString()}`;
         }
       }
 
