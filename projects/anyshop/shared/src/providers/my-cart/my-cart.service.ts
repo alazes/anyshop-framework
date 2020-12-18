@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Business, IOrderItem, Order, OrderItem, Product } from '@anyshop/core';
-import * as firebase from 'firebase/app';
+import { firestore } from 'firebase/app';
 import * as _ from 'lodash';
 
 import { OrdersService } from '../orders/orders.service';
@@ -94,7 +94,7 @@ export class MyCartService {
       this.order.deliveryAddress || this.user.primaryAddress;
     const userPhone =
       this.user.currentUser.phone || this.user.currentUser.phoneNumber;
-    const serverDate = firebase.firestore.FieldValue.serverTimestamp();
+    const serverDate = firestore.FieldValue.serverTimestamp();
 
     this.sanitizeOrder();
     this.order.packOrder(

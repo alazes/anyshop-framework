@@ -6,7 +6,6 @@ import {
 import { Business, Stock } from '@anyshop/core';
 import { ApiService } from '@arxis/api';
 import { firestore } from 'firebase/app';
-import 'firebase/firestore';
 import { Observable } from 'rxjs';
 
 import { FirebaseItemsAbstractService } from '../firebase/firebase-items-abstract.service';

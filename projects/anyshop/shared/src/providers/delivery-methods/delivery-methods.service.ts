@@ -3,7 +3,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { DeliveryMethod } from '@anyshop/core';
 import { ApiService } from '@arxis/api';
 import { firestore } from 'firebase/app';
-import 'firebase/firestore';
 import { Observable } from 'rxjs';
 
 import { FirebaseItemsAbstractService } from '../firebase/firebase-items-abstract.service';

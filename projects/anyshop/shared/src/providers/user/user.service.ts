@@ -21,7 +21,6 @@ import {
 import { Platform } from '@ionic/angular';
 // import { Pro } from '@ionic/pro';
 import { User, auth } from 'firebase/app';
-import 'firebase/auth';
 import * as _ from 'lodash';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { first, map, switchMap } from 'rxjs/operators';
@@ -49,7 +48,7 @@ import { first, map, switchMap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class UserService extends ArxisUser {
-  recaptchaVerifier: firebase.auth.RecaptchaVerifier;
+  recaptchaVerifier: auth.RecaptchaVerifier;
   confirmationResult: any;
   preSavedAccountInfo: any;
   verificationId: any;
@@ -72,7 +71,7 @@ export class UserService extends ArxisUser {
     super(afAuth, afs, device, platform, routeFCMDoc);
   }
 
-  authFillAction(user: firebase.User): Observable<any> {
+  authFillAction(user: User): Observable<any> {
     return super.authFillAction(user).pipe(
       switchMap((u) => {
         if (u) {
@@ -165,7 +164,7 @@ export class UserService extends ArxisUser {
   /**
    * @deprecated User loginWith('facebook.com')
    */
-  loginFB(): Promise<firebase.auth.UserCredential> {
+  loginFB(): Promise<auth.UserCredential> {
     const provider = new auth.FacebookAuthProvider();
 
     return this.afAuth
@@ -178,7 +177,7 @@ export class UserService extends ArxisUser {
 
   sendSMSVerification(
     phone: string,
-    verifier?: firebase.auth.RecaptchaVerifier
+    verifier?: auth.RecaptchaVerifier
   ): Promise<string> {
     return this.sms.sendSMSVerification(phone, verifier);
   }
@@ -186,7 +185,7 @@ export class UserService extends ArxisUser {
   sendSMSVerificationAlternative(
     phone: string,
     verifier?: auth.RecaptchaVerifier
-  ): Promise<firebase.auth.UserCredential> {
+  ): Promise<auth.UserCredential> {
     return this.sms.sendSMSVerificationAndroidAlternative(phone);
   }
 
@@ -217,7 +216,7 @@ export class UserService extends ArxisUser {
     email: string,
     password: string,
     data: { [key: string]: any }
-  ): Promise<firebase.auth.UserCredential> {
+  ): Promise<auth.UserCredential> {
     const credential = this.createEmailCredential(email, password);
 
     const userCredential = await this.linkAccount(credential);
@@ -388,7 +387,7 @@ export class UserService extends ArxisUser {
   }
 
   // updatePhoneNumber(phone) {
-  //   // let credential = firebase.auth.PhoneAuthProvider.credential(this.confirmationResult.verificationId, code);
+  //   // let credential = auth.PhoneAuthProvider.credential(this.confirmationResult.verificationId, code);
   //   // return this._user.updatePhoneNumber(credential);
   // }
 

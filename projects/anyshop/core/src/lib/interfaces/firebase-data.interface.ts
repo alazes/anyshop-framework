@@ -1,6 +1,5 @@
 import { DocumentData, DocumentReference } from '@angular/fire/firestore';
-import { firestore } from 'firebase';
-import 'firebase/firestore';
+import { firestore } from 'firebase/app';
 
 /**
  * Datos en crudo desde Firebase, restringido a los compatibles.

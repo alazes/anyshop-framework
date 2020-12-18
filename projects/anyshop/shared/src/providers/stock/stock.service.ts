@@ -5,7 +5,6 @@ import {
 } from '@angular/fire/firestore';
 import { Product, Stock } from '@anyshop/core';
 import { firestore } from 'firebase/app';
-import 'firebase/firestore';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs';
 
