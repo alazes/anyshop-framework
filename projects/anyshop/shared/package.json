@@ -14,8 +14,8 @@
     }
   ],
   "peerDependencies": {
-    "@angular/common": "^9.1.12",
-    "@angular/core": "^9.1.12",
+    "@angular/common": "^9.1.13",
+    "@angular/core": "^9.1.13",
     "@arxis/api": "^0.0.5",
     "@arxis/fireauth": "^2.3.0",
     "@fortawesome/angular-fontawesome": "^0.6.0",
