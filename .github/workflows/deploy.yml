@@ -36,9 +36,9 @@ jobs:
         run: npm run build
 
       - name: Deploying packages
+        run: npm run deploy
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm run deploy
 
       - name: Update deployment status (success)
         if: success()
