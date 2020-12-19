@@ -10,8 +10,6 @@ jobs:
     name: Build and deploy
     runs-on: ubuntu-20.04
 
-    environment: npm@latest
-
     steps:
       - uses: actions/checkout@v2
 
