@@ -17,6 +17,7 @@ jobs:
         uses: actions/setup-node@v2.1.2
         with:
           node-version: "12"
+          registry-url: "https://registry.npmjs.org"
 
       - uses: chrnorm/deployment-action@v1.2.0
         name: Create GitHub deployment
@@ -36,10 +37,8 @@ jobs:
 
       - name: Deploying packages
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          cp .npmrc.ci .npmrc
-          npm run deploy
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm run deploy
 
       - name: Update deployment status (success)
         if: success()
