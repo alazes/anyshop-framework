@@ -46,7 +46,6 @@ jobs:
         if: success()
         uses: chrnorm/deployment-status@v1.0.0
         with:
-          environment: npm@latest
           token: "${{ github.token }}"
           state: "success"
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
@@ -55,7 +54,6 @@ jobs:
         if: failure()
         uses: chrnorm/deployment-status@v1.0.0
         with:
-          environment: npm@latest
           token: "${{ github.token }}"
           state: "failure"
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
