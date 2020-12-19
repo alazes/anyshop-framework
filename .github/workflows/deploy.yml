@@ -32,9 +32,6 @@ jobs:
       - name: Bootstrapping packages
         run: npm run bootstrap
 
-      - name: Building packages
-        run: npm run build
-
       - name: Check npm login
         run: npm whoami
         env:
