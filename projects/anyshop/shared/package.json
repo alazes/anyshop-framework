@@ -1,6 +1,6 @@
 {
   "name": "@anyshop/shared",
-  "version": "1.0.4-alpha.3",
+  "version": "1.0.4-alpha.4",
   "contributors": [
     {
       "name": "Nelson Martell",
@@ -30,7 +30,7 @@
     "rxjs": "^6.6.3"
   },
   "dependencies": {
-    "@anyshop/core": "^1.0.4-alpha.2",
+    "@anyshop/core": "^1.0.4-alpha.4",
     "angular-svg-round-progressbar": "^5.0.2",
     "tslib": "^1.10.0"
   },
