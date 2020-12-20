@@ -144,7 +144,7 @@ export class StaticMapImageComponent implements OnInit, AfterContentInit {
             // console.log({ waypointsCoors });
           }
 
-          console.log({ lastCoords });
+          // console.log({ lastCoords });
         } else {
           this.queryParams.path = undefined;
           this.mapLink = undefined;
