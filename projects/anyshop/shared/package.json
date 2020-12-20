@@ -38,8 +38,5 @@
   "publishConfig": {
     "access": "public",
     "directory": "../../../dist/anyshop/shared"
-  },
-  "scripts": {
-    "prepublishOnly": "ng build @anyshop/shared --prod"
   }
 }

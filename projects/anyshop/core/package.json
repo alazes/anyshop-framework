@@ -26,8 +26,5 @@
   "publishConfig": {
     "access": "public",
     "directory": "../../../dist/anyshop/core"
-  },
-  "scripts": {
-    "prepublishOnly": "ng build @anyshop/core --prod"
   }
 }
