@@ -19,6 +19,10 @@ jobs:
           node-version: "12"
           registry-url: "https://registry.npmjs.org"
 
+      - name: Get the tag
+        id: get_tag
+        run: echo ::set-output name=tag::${GITHUB_REF/refs\/tags\//}
+
       - name: Get npm cache directory
         id: npm-cache
         run: |
@@ -61,6 +65,34 @@ jobs:
           token: "${{ github.token }}"
           state: "success"
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+
+      - name: Notify releases to Slack
+        if: success()
+        uses: hbfernandes/slack-action@1.0
+        with:
+          args: |
+            {
+              "channel": "C01F1D3QAKV",
+              "text": "Packages published to npm.",
+              "attachments": [
+                {
+                  "title": "@anyshop/core",
+                  "title_link": "https://www.npmjs.com/package/@anyshop/core",
+                  "text": "Version: ${{ steps.get_tag.outputs.tag }}",
+                  "color": "good",
+                  "fallback": "@anyshop/core (${{ steps.get_tag.outputs.tag }})"
+                },
+                {
+                  "title": "@anyshop/shared",
+                  "title_link": "https://www.npmjs.com/package/@anyshop/shared",
+                  "text": "Version: ${{ steps.get_tag.outputs.tag }}",
+                  "color": "good",
+                  "fallback": "@anyshop/shared (${{ steps.get_tag.outputs.tag }})"
+                }
+              ]
+            }
+        env:
+          SLACK_TOKEN: ${{ secrets.SLACK_RELEASE_BOT_OATH_TOKEN }}
 
       - name: Update deployment status (failure)
         if: failure()
