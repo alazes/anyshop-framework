@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/alazes/anyshop-framework/compare/v1.0.6...v1.1.0) (2020-12-21)
+
+### Features
+
+- **helpers:** add DeactivatablePageGuard helper ([0b863fc](https://github.com/alazes/anyshop-framework/commit/0b863fcc238992409c454eae7eabbb64f0914b5b))
+
 ## [1.0.6](https://github.com/alazes/anyshop-framework/compare/v1.0.5...v1.0.6) (2020-12-20)
 
 **Note:** Version bump only for package @anyshop/core
