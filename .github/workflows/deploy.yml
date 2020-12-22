@@ -79,7 +79,7 @@ jobs:
           args: |
             {
               "channel": "C01F1D3QAKV",
-              "text": "Package `${{ PACKAGE_NAME }}` published to npm.",
+              "text": "Package '${{ PACKAGE_NAME }}' published to npm.",
               "attachments": [
                 {
                   "title": "${{ PACKAGE_NAME }} (${{ PACKAGE_VERSION }})",
