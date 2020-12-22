@@ -73,3 +73,9 @@ jobs:
 
       - name: Building @anyshop/shared
         run: npx ng build @anyshop/shared --prod
+
+      - name: Linting @anyshop/auth
+        run: npx ng lint @anyshop/auth
+
+      - name: Building @anyshop/auth
+        run: npx ng build @anyshop/auth --prod
