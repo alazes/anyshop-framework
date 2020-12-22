@@ -9,6 +9,7 @@
     },
     "version": {
       "message": "chore(release): prepare %s",
+      "conventionalCommits": true,
       "allowBranch": ["main"]
     }
   },
