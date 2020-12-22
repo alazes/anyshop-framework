@@ -1,3 +1,3 @@
 /* Global helper functions */
 
-export const log = () => {};
+export const a = () => {};

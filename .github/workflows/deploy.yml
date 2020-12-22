@@ -79,21 +79,19 @@ jobs:
           args: |
             {
               "channel": "C01F1D3QAKV",
-              "text": "Package '${{ PACKAGE_NAME }}' published to npm.",
+              "text": "Package ${{ steps.get_package_version.outputs.PACKAGE }} published to npm.",
               "attachments": [
                 {
-                  "title": "${{ PACKAGE_NAME }} (${{ PACKAGE_VERSION }})",
-                  "title_link": "https://www.npmjs.com/package/${{ PACKAGE_NAME }}",
-                  "text": "https://www.npmjs.com/package/${{ PACKAGE_NAME }}",
+                  "title": "${{ steps.get_package_version.outputs.PACKAGE }} (${{ steps.get_package_version.outputs.VERSION }})",
+                  "title_link": "https://www.npmjs.com/package/${{ steps.get_package_version.outputs.PACKAGE }}",
+                  "text": "https://www.npmjs.com/package/${{ steps.get_package_version.outputs.PACKAGE }}",
                   "color": "good",
-                  "fallback": "${{ PACKAGE_NAME }} (${{ PACKAGE_VERSION }})"
+                  "fallback": "${{ steps.get_package_version.outputs.PACKAGE }} (${{ steps.get_package_version.outputs.VERSION }})"
                 }
               ]
             }
         env:
           SLACK_TOKEN: ${{ secrets.SLACK_RELEASE_BOT_OATH_TOKEN }}
-          PACKAGE_NAME: ${{ steps.get_package_version.outputs.PACKAGE }}
-          PACKAGE_VERSION: ${{ steps.get_package_version.outputs.VERSION }}
 
       - name: Update deployment status (failure)
         if: failure()
