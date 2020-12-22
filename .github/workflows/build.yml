@@ -1,6 +1,15 @@
 name: Build
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - "*"
+    tags-ignore:
+      - "*" # We don't want this to run on tag
+
+  pull_request:
+    branches:
+      - "*"
 
 jobs:
   build:
