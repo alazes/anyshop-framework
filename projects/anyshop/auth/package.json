@@ -1,6 +1,6 @@
 {
   "name": "@anyshop/auth",
-  "version": "0.0.0",
+  "version": "1.0.0-alpha.0",
   "contributors": [
     {
       "name": "Nelson Martell",
@@ -24,8 +24,5 @@
   "publishConfig": {
     "access": "public",
     "directory": "../../../dist/anyshop/auth"
-  },
-  "dependencies": {
-    "tslib": "^1.10.0"
   }
 }
