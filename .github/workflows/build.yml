@@ -1,23 +1,19 @@
 name: Build
 
-on:
-  push:
-    branches:
-      - "*"
-    tags-ignore:
-      - "*" # We don't want this to run on tag
-
-  pull_request:
-    branches:
-      - "*"
+on: [push, pull_request]
 
 jobs:
-  build:
+  pre-build:
     runs-on: ubuntu-20.04
-    name: Lint and build
+
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+      npm_cache_dir: ${{ steps.npm-cache.outputs.dir }}
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Check Duplicate Actions
+        id: skip_check
+        uses: fkirc/skip-duplicate-actions@v3.3.0
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.2
@@ -29,9 +25,24 @@ jobs:
         run: |
           echo "::set-output name=dir::$(npm config get cache)"
 
+  build:
+    runs-on: ubuntu-20.04
+
+    needs: pre-build
+    if: ${{ needs.pre-build.outputs.should_skip != 'true' }}
+    name: Build
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: "12"
+
       - uses: actions/cache@v2
         with:
-          path: ${{ steps.npm-cache.outputs.dir }}
+          path: ${{ needs.pre-build.outputs.npm_cache_dir }}
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
