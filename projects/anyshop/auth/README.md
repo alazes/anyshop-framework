@@ -2,6 +2,8 @@
 
 Firebase authentication module with generic pages, guards and resolvers for an Ionic 5 application.
 
+<!-- WIP -->
+
 ## License
 
 Copyright 2019-2020 (c) Alaz (https://alaz.es)
