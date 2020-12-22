@@ -76,6 +76,43 @@
           }
         }
       }
+    },
+    "@anyshop/auth": {
+      "projectType": "library",
+      "root": "projects/anyshop/auth",
+      "sourceRoot": "projects/anyshop/auth/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/anyshop/auth/tsconfig.lib.json",
+            "project": "projects/anyshop/auth/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/anyshop/auth/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/anyshop/auth/src/test.ts",
+            "tsConfig": "projects/anyshop/auth/tsconfig.spec.json",
+            "karmaConfig": "projects/anyshop/auth/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/anyshop/auth/**/*.ts",
+              "projects/anyshop/auth/**/*.html"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "@anyshop/core"

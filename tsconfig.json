@@ -17,7 +17,8 @@
       "@anyshop/shared": [
         "dist/anyshop/shared/anyshop-shared",
         "dist/anyshop/shared"
-      ]
+      ],
+      "@anyshop/auth": ["dist/anyshop/auth/anyshop-auth", "dist/anyshop/auth"]
     }
   },
   "angularCompilerOptions": {

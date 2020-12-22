@@ -1,0 +1,31 @@
+{
+  "name": "@anyshop/auth",
+  "version": "0.0.0",
+  "contributors": [
+    {
+      "name": "Nelson Martell",
+      "email": "nelson6e65@gmail.com",
+      "url": "https://nelson6e65.github.io"
+    },
+    {
+      "name": "René Arias",
+      "email": "rene_811@hotmail.com",
+      "url": "https://renearias.com"
+    }
+  ],
+  "licence": "Apache-2.0",
+  "peerDependencies": {
+    "@angular/common": "^9.1.13",
+    "@angular/core": "^9.1.13"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "../../../dist/anyshop/auth"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  }
+}

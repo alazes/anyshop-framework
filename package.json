@@ -17,7 +17,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build @anyshop/core --prod && ng build @anyshop/shared --prod",
+    "build": "ng build @anyshop/core --prod && ng build @anyshop/shared --prod && ng build @anyshop/auth --prod",
     "test": "ng test",
     "e2e": "ng e2e",
     "bootstrap": "lerna bootstrap --no-ci --hoist",
