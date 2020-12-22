@@ -45,9 +45,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Bootstrapping packages
-        run: npm run bootstrap
-
       - name: Check npm login
         run: npm whoami
         env:
