@@ -3,7 +3,9 @@ name: Build
 on: [push, pull_request]
 
 jobs:
+  # Prepare linting/building/testing
   pre-build:
+    name: Pre-build
     runs-on: ubuntu-20.04
 
     outputs:
@@ -25,12 +27,14 @@ jobs:
         run: |
           echo "::set-output name=dir::$(npm config get cache)"
 
+  # Lint, build and test the code
+  # TODO: Add testing
   build:
+    name: Build
     runs-on: ubuntu-20.04
 
     needs: pre-build
-    if: ${{ needs.pre-build.outputs.should_skip != 'true' }}
-    name: Build
+    if: ${{ needs.pre-build.outputs.should_skip != 'true' || startsWith(github.ref, 'refs/tags') }}
 
     steps:
       - uses: actions/checkout@v2
@@ -79,3 +83,128 @@ jobs:
 
       - name: Building @anyshop/auth
         run: npx ng build @anyshop/auth --prod
+
+      - name: Upload build artifacts for deployment
+        uses: actions/upload-artifact@v2
+        if: startsWith(github.ref, 'refs/tags')
+        with:
+          name: dist
+          path: dist
+
+  # Prepare deployment
+  pre-deploy:
+    name: Pre-deploy
+    runs-on: ubuntu-20.04
+    needs: pre-build
+    if: startsWith(github.ref, 'refs/tags') # Only trigger deployment on tags
+
+    outputs:
+      npm_cache_dir: ${{ needs.pre-build.outputs.npm_cache_dir }}
+      package: ${{ steps.get_package_version.outputs.PACKAGE }}
+      version: ${{ steps.get_package_version.outputs.VERSION }}
+
+    steps:
+      - name: Get the tag
+        id: get_tag
+        run: |
+          echo ::set-output name=tag::${GITHUB_REF/refs\/tags\/\@/}
+
+      - name: Get package and version
+        id: get_package_version
+        run: |
+          echo ::set-output name=PACKAGE::@${TAG/\@*/}
+          echo ::set-output name=VERSION::${TAG/*\@/}
+        env:
+          TAG: ${{ steps.get_tag.outputs.tag }}
+
+  # Run deployment
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-20.04
+    needs: [build, pre-deploy]
+
+    # TODO: Evaluar uso de caché
+    steps:
+      - name: Download dist artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: "12"
+          registry-url: "https://registry.npmjs.org"
+
+      - uses: actions/cache@v2
+        with:
+          path: ${{ needs.pre-deploy.outputs.npm_cache_dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - uses: chrnorm/deployment-action@v1.2.0
+        name: Create GitHub deployment
+        id: deployment
+        with:
+          environment: npm@latest
+          token: "${{ github.token }}"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Bootstrapping packages
+        run: npm run bootstrap
+
+      # TODO: Remove debug step
+      - name: Check npm login
+        run: npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # TODO: Fix npm auth to allow lerna check access (remove `--no-verify-access`)
+      - name: Deploying packages
+        # Try to use dist artifact instead of re-build with prepublishOnly hook. If fails, run following the normal flow
+        run: npm run deploy -- --no-verify-access --ignore-scripts || npm run deploy -- --no-verify-access
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Update deployment status (success)
+        if: success()
+        uses: chrnorm/deployment-status@v1.0.0
+        with:
+          token: "${{ github.token }}"
+          state: "success"
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+
+      # TODO: Check messages for multi-publish deployment
+      - name: Notify releases to Slack
+        if: success()
+        uses: hbfernandes/slack-action@1.0
+        with:
+          args: |
+            {
+              "channel": "C01F1D3QAKV",
+              "text": "Package `${{ needs.pre-deploy.outputs.package }}` published to npm.",
+              "attachments": [
+                {
+                  "title": "${{ needs.pre-deploy.outputs.package }} (${{ needs.pre-deploy.outputs.version }})",
+                  "title_link": "https://www.npmjs.com/package/${{ needs.pre-deploy.outputs.package }}",
+                  "text": "https://www.npmjs.com/package/${{ needs.pre-deploy.outputs.package }}",
+                  "color": "good",
+                  "fallback": "${{ needs.pre-deploy.outputs.package }} (${{ needs.pre-deploy.outputs.version }})"
+                }
+              ]
+            }
+        env:
+          SLACK_TOKEN: ${{ secrets.SLACK_RELEASE_BOT_OATH_TOKEN }}
+
+      - name: Update deployment status (failure)
+        if: failure()
+        uses: chrnorm/deployment-status@v1.0.0
+        with:
+          token: "${{ github.token }}"
+          state: "failure"
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
