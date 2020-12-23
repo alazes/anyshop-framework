@@ -198,7 +198,7 @@ jobs:
 
       # TODO: Check messages for multi-publish deployment
       - name: Notify releases to Slack
-        if: $ {{ success() }}
+        if: ${{ success() }}
         uses: hbfernandes/slack-action@1.0
         with:
           args: |
