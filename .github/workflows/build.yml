@@ -125,12 +125,12 @@ jobs:
 
     # TODO: Evaluar uso de caché
     steps:
+      - uses: actions/checkout@v2
+
       - name: Download dist artifact
         uses: actions/download-artifact@v2
         with:
           name: dist
-
-      - uses: actions/checkout@v2
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.2
@@ -166,8 +166,8 @@ jobs:
 
       # TODO: Fix npm auth to allow lerna check access (remove `--no-verify-access`)
       - name: Deploying packages
-        # Try to use dist artifact instead of re-build with prepublishOnly hook. If fails, run following the normal flow
-        run: npm run deploy -- --no-verify-access --ignore-scripts || npm run deploy -- --no-verify-access
+        # Try to use dist artifact instead of re-build with prepublishOnly hook.
+        run: npm run deploy -- --no-verify-access --ignore-scripts
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
