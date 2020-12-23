@@ -39,12 +39,23 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      # Cache for multiple run on different tags/branches for the same commit
+      - uses: actions/cache@v2
+        id: dist-cache
+        with:
+          path: build
+          key: ${{ runner.os }}-build-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+
       - name: Setup Node.js environment
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
         uses: actions/setup-node@v2.1.2
         with:
           node-version: "12"
 
       - uses: actions/cache@v2
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
         with:
           path: ${{ needs.pre-build.outputs.npm_cache_dir }}
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -52,44 +63,47 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install Node.js dependencies
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
         run: npm install
 
       # - name: Linting Typescript code
       #   run: npm run lint:typescript
 
       - name: Linting ESLint config
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
         run: npm run lint:eslint-config
 
       - name: Linting code style format
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
         run: npm run lint:prettier
 
       - name: Bootstrapping packages
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
         run: npm run bootstrap
 
       - name: Linting @anyshop/core
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
         run: npx ng lint @anyshop/core
 
       - name: Building @anyshop/core
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
         run: npx ng build @anyshop/core --prod
 
       - name: Linting @anyshop/shared
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
         run: npx ng lint @anyshop/shared
 
       - name: Building @anyshop/shared
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
         run: npx ng build @anyshop/shared --prod
 
       - name: Linting @anyshop/auth
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
         run: npx ng lint @anyshop/auth
 
       - name: Building @anyshop/auth
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
         run: npx ng build @anyshop/auth --prod
-
-      - name: Upload build artifacts for deployment
-        uses: actions/upload-artifact@v2
-        if: startsWith(github.ref, 'refs/tags')
-        with:
-          name: dist
-          path: dist
 
   # Prepare deployment
   pre-deploy:
@@ -127,10 +141,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Download dist artifact
-        uses: actions/download-artifact@v2
+      - uses: actions/cache@v2
+        id: dist-cache
         with:
-          name: dist
+          path: build
+          key: ${{ runner.os }}-build-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-build-
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.2
@@ -172,7 +189,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Update deployment status (success)
-        if: success()
+        if: ${{ success() }}
         uses: chrnorm/deployment-status@v1.0.0
         with:
           token: "${{ github.token }}"
@@ -181,7 +198,7 @@ jobs:
 
       # TODO: Check messages for multi-publish deployment
       - name: Notify releases to Slack
-        if: success()
+        if: $ {{ success() }}
         uses: hbfernandes/slack-action@1.0
         with:
           args: |
@@ -202,7 +219,7 @@ jobs:
           SLACK_TOKEN: ${{ secrets.SLACK_RELEASE_BOT_OATH_TOKEN }}
 
       - name: Update deployment status (failure)
-        if: failure()
+        if: ${{ failure() }}
         uses: chrnorm/deployment-status@v1.0.0
         with:
           token: "${{ github.token }}"
