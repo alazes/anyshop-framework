@@ -1,5 +1,3 @@
 /* Global helper functions */
 
-export const a = () => {
-  //
-};
+export const a = () => {};
