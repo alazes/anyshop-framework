@@ -187,14 +187,14 @@ jobs:
           args: |
             {
               "channel": "C01F1D3QAKV",
-              "text": "Package `${{ needs.pre-deploy.outputs.package }}` published to npm.",
+              "text": "Bump version ${{ needs.pre-deploy.outputs.version }} of :package: ${{ needs.pre-deploy.outputs.package }}",
               "attachments": [
                 {
-                  "title": "${{ needs.pre-deploy.outputs.package }} (${{ needs.pre-deploy.outputs.version }})",
+                  "title": "${{ needs.pre-deploy.outputs.package }}",
                   "title_link": "https://www.npmjs.com/package/${{ needs.pre-deploy.outputs.package }}",
-                  "text": "https://www.npmjs.com/package/${{ needs.pre-deploy.outputs.package }}",
+                  "text": "v${{ needs.pre-deploy.outputs.version }} published to npm.",
                   "color": "good",
-                  "fallback": "${{ needs.pre-deploy.outputs.package }} (${{ needs.pre-deploy.outputs.version }})"
+                  "fallback": "${{ needs.pre-deploy.outputs.package }}@${{ needs.pre-deploy.outputs.version }} published to npm"
                 }
               ]
             }
