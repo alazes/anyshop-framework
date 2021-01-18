@@ -27,6 +27,11 @@
     "ng": "ng",
     "prepublishOnly": "npm run build",
     "release": "lerna version",
+    "release:alpha": "npm run release:unstable -- --preid=alpha",
+    "release:beta": "npm run release:unstable -- --preid=beta",
+    "release:rc": "npm run release:unstable -- --preid=rc",
+    "release:stable": "lerna version --conventional-graduate",
+    "release:unstable": "lerna version --conventional-prerelease",
     "start": "ng serve",
     "test": "ng test"
   },
