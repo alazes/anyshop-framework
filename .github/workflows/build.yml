@@ -116,4 +116,4 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-
             
-      - run: tree -d build
+      - run: tree -d dist
