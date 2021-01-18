@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.14](https://github.com/alazes/anyshop-framework/compare/@anyshop/auth@1.0.0-alpha.13...@anyshop/auth@1.0.0-alpha.14) (2021-01-18)
+
+**Note:** Version bump only for package @anyshop/auth
+
 # [1.0.0-alpha.13](https://github.com/alazes/anyshop-framework/compare/@anyshop/auth@1.0.0-alpha.12...@anyshop/auth@1.0.0-alpha.13) (2021-01-18)
 
 **Note:** Version bump only for package @anyshop/auth
