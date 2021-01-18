@@ -100,6 +100,5 @@ export const paramIsTrue = (name: string, params: ParamMap): boolean => {
   if (params.has(name)) {
     return stringIsTrue(params.get(name) ?? '');
   }
-
   return false;
 };
