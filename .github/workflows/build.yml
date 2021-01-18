@@ -36,10 +36,10 @@ jobs:
         uses: actions/cache@v2
         id: dist-cache
         with:
-          path: build
-          key: ${{ runner.os }}-build-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-build-
+          path: dist
+          key: ${{ runner.os }}-dist-${{ github.sha }}
+          # restore-keys: |
+          #   ${{ runner.os }}-build-
 
       - name: Setup Node.js environment
         if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
@@ -143,10 +143,10 @@ jobs:
         uses: actions/cache@v2
         id: dist-cache
         with:
-          path: build
-          key: ${{ runner.os }}-build-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-build-
+          path: dist
+          key: ${{ runner.os }}-dist-${{ github.sha }}
+          # restore-keys: |
+          #   ${{ runner.os }}-build-
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.2
