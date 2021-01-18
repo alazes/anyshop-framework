@@ -72,14 +72,6 @@ jobs:
       # - name: Linting Typescript code
       #   run: npm run lint:typescript
 
-      - name: Linting ESLint config
-        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
-        run: npm run lint:eslint-config
-
-      - name: Linting code style format
-        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
-        run: npm run lint:prettier
-
       - name: Bootstrapping packages
         if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
         run: npm run bootstrap
