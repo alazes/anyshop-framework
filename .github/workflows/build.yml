@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     needs: pre-build
-    if: ${{ needs.pre-build.outputs.should_skip != 'true' || startsWith(github.ref, 'refs/tags') }}
+    if: ${{ needs.pre-build.outputs.should_skip != 'true' || startsWith(github.ref, 'refs/tags/@') }}
 
     steps:
       - uses: actions/checkout@v2
@@ -110,7 +110,7 @@ jobs:
     name: Pre-deploy
     runs-on: ubuntu-20.04
     needs: pre-build
-    if: startsWith(github.ref, 'refs/tags') # Only trigger deployment on tags
+    if: startsWith(github.ref, 'refs/tags/@') # Only trigger deployment on release tags
 
     outputs:
       npm_cache_dir: ${{ needs.pre-build.outputs.npm_cache_dir }}
