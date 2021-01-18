@@ -167,6 +167,7 @@ jobs:
         name: Create GitHub deployment
         id: deployment
         with:
+          ref: "${{ needs.pre-deploy.outputs.package }}@${{ needs.pre-deploy.outputs.version }}"
           environment: npm@latest
           token: "${{ github.token }}"
 
