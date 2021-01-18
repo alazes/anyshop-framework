@@ -26,7 +26,7 @@ jobs:
     # Si es un tag, ejecuta siempre. Pero si es un head, si ya se tiene caché,
 
     outputs:
-      npm_cache_dir: ${{ steps.npm-cache.outputs.dir }}
+      npm_cache_dir: ${{ steps.npm-cache.outputs.npm_cache_dir }}
 
     steps:
       - uses: actions/checkout@v2
@@ -50,12 +50,13 @@ jobs:
       - name: Get npm cache directory
         id: npm-cache
         run: |
-          echo "::set-output name=dir::$(npm config get cache)"
+          echo "::set-output name=npm_cache_dir::$(npm config get cache)"
 
       - uses: actions/cache@v2
+        name: Setup npm cache
         if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
         with:
-          path: ${{ needs.pre-build.outputs.npm_cache_dir }}
+          path: ${{ steps.npm-cache.outputs.npm_cache_dir }}
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
