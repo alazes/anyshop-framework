@@ -15,20 +15,39 @@
     }
   ],
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
+    "bootstrap": "lerna bootstrap --no-ci --hoist",
     "build": "ng build @anyshop/core --prod && ng build @anyshop/shared --prod && ng build @anyshop/auth --prod",
     "postbuild": "npm run bootstrap",
-    "test": "ng test",
-    "e2e": "ng e2e",
-    "bootstrap": "lerna bootstrap --no-ci --hoist",
-    "release": "lerna version",
     "deploy": "lerna publish from-package --yes",
-    "prepublishOnly": "npm run build",
+    "e2e": "ng e2e",
     "lint": "npm run lint:typescript && npm run lint:eslint-config && npm run lint:prettier && ng lint",
-    "lint:typescript": "tsc --noEmit",
+    "lint:eslint-config": "eslint-config-prettier ./.eslintrc.json ./projects/anyshop/core/.eslintrc.json ./projects/anyshop/shared/.eslintrc.json",
     "lint:prettier": "prettier --check .",
-    "lint:eslint-config": "eslint-config-prettier ./.eslintrc.json ./projects/anyshop/core/.eslintrc.json ./projects/anyshop/shared/.eslintrc.json"
+    "lint:typescript": "tsc --noEmit",
+    "ng": "ng",
+    "prepublishOnly": "npm run build",
+    "release": "lerna version",
+    "start": "ng serve",
+    "test": "ng test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && pretty-quick --staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,ts,html}": "eslint --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "dependencies": {
     "@angular/animations": "~9.1.13",
@@ -100,28 +119,10 @@
     "lint-staged": "^10.5.3",
     "ng-packagr": "^9.0.0",
     "prettier": "^2.2.1",
+    "prettier-plugin-packagejson": "^2.2.9",
     "pretty-quick": "^3.1.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "typescript": "~3.8.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && pretty-quick --staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts,html}": "eslint --fix"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }

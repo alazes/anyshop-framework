@@ -13,7 +13,11 @@
       "url": "https://renearias.com"
     }
   ],
-  "licence": "Apache-2.0",
+  "dependencies": {
+    "@anyshop/core": "^1.1.1-alpha.0",
+    "angular-svg-round-progressbar": "^5.0.2",
+    "tslib": "^1.10.0"
+  },
   "peerDependencies": {
     "@angular/common": "^9.1.13",
     "@angular/core": "^9.1.13",
@@ -30,13 +34,9 @@
     "ngx-ionic-image-viewer": "^0.7.4",
     "rxjs": "^6.6.3"
   },
-  "dependencies": {
-    "@anyshop/core": "^1.1.1-alpha.0",
-    "angular-svg-round-progressbar": "^5.0.2",
-    "tslib": "^1.10.0"
-  },
   "publishConfig": {
     "access": "public",
     "directory": "../../../dist/anyshop/shared"
-  }
+  },
+  "licence": "Apache-2.0"
 }
