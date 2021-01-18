@@ -8,7 +8,7 @@
       "conventionalCommits": true
     },
     "version": {
-      "message": "chore(release): 🔖 prepare :package: release",
+      "message": "chore(release): 🔖 bump version of packages",
       "conventionalCommits": true,
       "allowBranch": ["main"]
     }
