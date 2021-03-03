@@ -4,7 +4,7 @@ Helper classes, models and core utilities for any shop using `@anyshop/*` packag
 
 ## License
 
-Copyright 2019-2020 (c) Alaz (https://alaz.es)
+Copyright 2019-2021 (c) Alaz (https://alaz.es)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
