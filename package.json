@@ -76,7 +76,7 @@
     "@ionic-native/firebase-x": "^5.22.0",
     "@ionic-native/local-notifications": "^5.28.0",
     "@ionic/angular": "^5.5.5",
-    "@ngx-translate/core": "^11.0.1",
+    "@ngx-translate/core": "^12.1.2",
     "angular-svg-round-progressbar": "^5.0.2",
     "capacitor-firebase-auth": "^2.3.2",
     "firebase": "^7.23.0",
