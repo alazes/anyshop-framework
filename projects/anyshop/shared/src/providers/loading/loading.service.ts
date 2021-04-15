@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Injectable({ providedIn: 'any' })
 export class LoadingService {
   private messages: string[] = [];
-  loading: any;
+  loading: HTMLIonLoadingElement | undefined;
 
   constructor(
     public loadingCtrl: LoadingController,
@@ -52,7 +52,10 @@ export class LoadingService {
   }
 
   async dimissLoading() {
-    return await this.loadingCtrl.dismiss();
+    // const overlay = await this.loadingCtrl.getTop();
+    if (this.loading) {
+      return await this.loading.dismiss();
+    }
   }
 
   async showAlert(
