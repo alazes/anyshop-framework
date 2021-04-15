@@ -49,6 +49,9 @@ jobs:
         with:
           node-version: "12"
 
+      - name: Update npm
+        run: npm install -g npm@latest
+
       - name: Get npm cache directory
         id: npm-cache
         run: |
