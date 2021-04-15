@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/alazes/anyshop-framework/compare/@anyshop/shared@1.1.1-alpha.0...@anyshop/shared@1.1.1) (2021-04-15)
+
+### Bug Fixes
+
+- **services:** unhandled Promise rejection: overlay does not exist in Loading service ([50f9128](https://github.com/alazes/anyshop-framework/commit/50f912837507bdeceaf138453eaf699df8143ce4))
+
 ## 1.1.1-alpha.0 (2021-01-18)
 
 # 1.1.0 (2020-12-21)
