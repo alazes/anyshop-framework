@@ -14,6 +14,7 @@ import {
 const MIN_QUANTITY = 0;
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'order-product-card',
   templateUrl: './order-product-card.component.html',
   styleUrls: ['./order-product-card.component.scss'],
@@ -28,6 +29,10 @@ export class OrderProductCardComponent implements OnInit {
   get item() {
     return this._item;
   }
+
+  /**
+   * Por esta linea estuvimos viendo de que manera resolver las dependencias
+   */
   @Input()
   set item(item) {
     if (!(item instanceof OrderItem)) {
