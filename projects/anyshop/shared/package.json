@@ -14,13 +14,13 @@
     }
   ],
   "dependencies": {
-    "@anyshop/core": "^1.1.1-alpha.1",
     "angular-svg-round-progressbar": "^5.0.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
     "@angular/common": "^9.1.13",
     "@angular/core": "^9.1.13",
+    "@anyshop/core": "^1.1.0",
     "@arxis/api": "^0.0.5",
     "@arxis/fireauth": "^2.3.0",
     "@fortawesome/angular-fontawesome": "^0.6.0",
