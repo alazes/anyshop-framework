@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/alazes/anyshop-framework/compare/@anyshop/shared@1.1.1...@anyshop/shared@1.1.2) (2021-04-27)
+
+### Bug Fixes
+
+- update shared peer depencencies ([ca77793](https://github.com/alazes/anyshop-framework/commit/ca777939b58270c313a18bf3bb5d5bf2ceb863a7))
+
 ## [1.1.1](https://github.com/alazes/anyshop-framework/compare/@anyshop/shared@1.1.1-alpha.0...@anyshop/shared@1.1.1) (2021-04-15)
 
 ### Bug Fixes
