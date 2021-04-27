@@ -102,7 +102,7 @@
     "@types/jasmine": "~3.6.4",
     "@types/jasminewd2": "~2.0.3",
     "@types/lodash": "^4.14.165",
-    "@types/node": "^12.11.1",
+    "@types/node": "^15.0.0",
     "@typescript-eslint/eslint-plugin": "^4.13.0",
     "@typescript-eslint/parser": "^4.13.0",
     "cz-conventional-changelog": "^3.3.0",
