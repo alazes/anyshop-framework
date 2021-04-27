@@ -64,6 +64,7 @@
     "@angular/platform-browser": "~9.1.13",
     "@angular/platform-browser-dynamic": "~9.1.13",
     "@angular/router": "~9.1.13",
+    "@anyshop/core": "^1.1.0",
     "@arxis/api": "0.0.5",
     "@arxis/fireauth": "^2.3.0",
     "@capacitor/core": "^2.4.2",
