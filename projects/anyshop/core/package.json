@@ -17,10 +17,10 @@
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
-    "@angular/common": "^9.1.13",
-    "@angular/core": "^9.1.13",
-    "@angular/fire": "6.0.3",
-    "firebase": "^7.23.0"
+    "@angular/common": "^11.0.0",
+    "@angular/core": "^11.0.0",
+    "@angular/fire": "^6.0.3",
+    "firebase": "^8.0.0"
   },
   "publishConfig": {
     "access": "public",
