@@ -17,13 +17,12 @@
     "@anyshop/auth": "*",
     "@anyshop/core": "*",
     "angular-svg-round-progressbar": "^5.0.2",
-    "tslib": "^1.10.0"
+    "tslib": "^2.3.1"
   },
   "peerDependencies": {
-    "@angular/common": "^9.1.13",
-    "@angular/core": "^9.1.13",
-    "@arxis/api": "^0.0.5",
-    "@fortawesome/angular-fontawesome": "^0.6.0",
+    "@angular/common": "~10.2.5",
+    "@angular/core": "~10.2.5",
+    "@fortawesome/angular-fontawesome": "^0.7.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-brands-svg-icons": "^5.9.0",
     "@fortawesome/free-regular-svg-icons": "^5.9.0",
