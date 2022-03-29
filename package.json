@@ -21,7 +21,7 @@
     "deploy": "lerna publish from-package --yes",
     "e2e": "ng e2e",
     "lint": "npm run lint:typescript && npm run lint:eslint-config && npm run lint:prettier && ng lint",
-    "lint:eslint-config": "eslint-config-prettier ./.eslintrc.json ./projects/anyshop/core/.eslintrc.json ./projects/anyshop/shared/.eslintrc.json",
+    "lint:eslint-config": "eslint-config-prettier ./.eslintrc.json ./projects/anyshop/core/.eslintrc.json ./projects/anyshop/auth/.eslintrc.json ./projects/anyshop/shared/.eslintrc.json",
     "lint:prettier": "prettier --check .",
     "lint:typescript": "tsc --noEmit",
     "ng": "ng",
