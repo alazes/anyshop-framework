@@ -91,6 +91,7 @@
     "@angular-devkit/build-ng-packagr": "~0.1002.4",
     "@angular-eslint/builder": "^1.1.0",
     "@angular-eslint/eslint-plugin": "^1.1.0",
+    "@angular-eslint/eslint-plugin-template": "^1.2.0",
     "@angular-eslint/schematics": "^1.1.0",
     "@angular-eslint/template-parser": "^1.2.0",
     "@angular/cli": "~10.2.4",
