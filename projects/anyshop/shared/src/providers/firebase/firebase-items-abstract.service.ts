@@ -7,7 +7,7 @@ import {
   QueryFn,
 } from '@angular/fire/firestore';
 import { IFirebaseData, IKeyable } from '@anyshop/core';
-import { firestore } from 'firebase/app';
+import firebase from 'firebase/app';
 import { clone } from 'lodash';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -51,10 +51,10 @@ export abstract class FirebaseItemsAbstractService<
       .pipe(map((list) => list.map<T>(this.mapElements.bind(this))));
   }
 
-  async add(item: T): Promise<firestore.DocumentReference<T>> {
+  async add(item: T): Promise<firebase.firestore.DocumentReference<T>> {
     return (await this.itemsCollection.add(
       item
-    )) as firestore.DocumentReference<T>;
+    )) as firebase.firestore.DocumentReference<T>;
   }
 
   async set(item: any, data: any) {

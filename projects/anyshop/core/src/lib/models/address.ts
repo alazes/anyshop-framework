@@ -1,4 +1,4 @@
-import { firestore } from 'firebase/app';
+import firebase from 'firebase/app';
 
 import { Model } from './abstract-model';
 
@@ -10,7 +10,7 @@ class Address extends Model {
   street?: string;
   city: string;
   district: string;
-  geolocation: firestore.GeoPoint;
+  geolocation: firebase.firestore.GeoPoint;
   key: string;
   number: string; // eslint-disable-line id-blacklist
   owner: any;

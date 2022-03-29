@@ -14,15 +14,15 @@
     }
   ],
   "dependencies": {
+    "@anyshop/auth": "*",
+    "@anyshop/core": "*",
     "angular-svg-round-progressbar": "^5.0.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
-    "@angular/common": "^11.0.0",
-    "@angular/core": "^11.0.0",
-    "@anyshop/core": "^1.1.1",
+    "@angular/common": "^9.1.13",
+    "@angular/core": "^9.1.13",
     "@arxis/api": "^0.0.5",
-    "@arxis/fireauth": "^2.3.0",
     "@fortawesome/angular-fontawesome": "^0.6.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-brands-svg-icons": "^5.9.0",

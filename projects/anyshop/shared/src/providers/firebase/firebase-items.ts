@@ -3,7 +3,7 @@ import {
   AngularFirestoreCollection,
   QueryFn,
 } from '@angular/fire/firestore';
-import { firestore } from 'firebase/app';
+import firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 
 export interface FirebaseItems<T> {
@@ -15,7 +15,7 @@ export interface FirebaseItems<T> {
 
   query(params?: QueryFn): Observable<T[]>;
 
-  add(item: T): Promise<firestore.DocumentReference<T>>;
+  add(item: T): Promise<firebase.firestore.DocumentReference<T>>;
 
   delete(item: T | string): Promise<void>;
 }

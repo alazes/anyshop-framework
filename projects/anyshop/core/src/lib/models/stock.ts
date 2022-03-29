@@ -1,4 +1,4 @@
-import { firestore } from 'firebase/app';
+import firebase from 'firebase/app';
 
 import { IProductData } from '../../lib/models';
 
@@ -12,20 +12,20 @@ class Stock extends Model {
    * @deprecated Usar businessRef para obtener la instancia.
    */
   business?: Business;
-  businessRef: firestore.DocumentReference | null = null;
+  businessRef: firebase.firestore.DocumentReference | null = null;
   key: string | undefined;
 
   /**
    * @deprecated Usar productRef para obtener la instancia.
    */
   product?: Product;
-  productRef: firestore.DocumentReference<IProductData> | null = null;
+  productRef: firebase.firestore.DocumentReference<IProductData> | null = null;
 
   /**
    * @deprecated Usar el categoryRef para obtener la instancia.
    */
   category?: Category;
-  categoryRef: firestore.DocumentReference | null = null;
+  categoryRef: firebase.firestore.DocumentReference | null = null;
   price = 0;
   quantity = 0;
 

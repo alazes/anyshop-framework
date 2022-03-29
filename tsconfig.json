@@ -14,11 +14,11 @@
     "lib": ["es2018", "dom"],
     "paths": {
       "@anyshop/core": ["dist/anyshop/core/anyshop-core", "dist/anyshop/core"],
+      "@anyshop/auth": ["dist/anyshop/auth/anyshop-auth", "dist/anyshop/auth"],
       "@anyshop/shared": [
         "dist/anyshop/shared/anyshop-shared",
         "dist/anyshop/shared"
-      ],
-      "@anyshop/auth": ["dist/anyshop/auth/anyshop-auth", "dist/anyshop/auth"]
+      ]
     }
   },
   "angularCompilerOptions": {

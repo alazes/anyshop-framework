@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Business, IProductData, Product } from '@anyshop/core';
-import { firestore, storage } from 'firebase/app';
+import firebase from 'firebase/app';
 
 import { FileStorageService } from '../file-storage/file-storage.service';
 import { FirebaseItemsAbstractService } from '../firebase/firebase-items-abstract.service';
@@ -69,7 +69,7 @@ export class ProductsService extends FirebaseItemsAbstractService<Product> {
 
     await productDoc.set(normalizedProduct);
 
-    return productDoc as firestore.DocumentReference<Product>;
+    return productDoc as firebase.firestore.DocumentReference<Product>;
   }
 
   async updateByKey(
@@ -133,9 +133,9 @@ export class ProductsService extends FirebaseItemsAbstractService<Product> {
   }
 
   async getProductImageSrc(prod: Product) {
-    const pathReference = storage().ref(
-      `products/Abarrotes/Aceites Comestibles/${prod.SKU}.png`
-    );
+    const pathReference = firebase
+      .storage()
+      .ref(`products/Abarrotes/Aceites Comestibles/${prod.SKU}.png`);
     const downloadURL = await pathReference.getDownloadURL();
 
     console.log('el link ahor a es', downloadURL);

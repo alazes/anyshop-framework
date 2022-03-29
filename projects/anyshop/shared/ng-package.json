@@ -4,6 +4,7 @@
   "assets": ["./theme/**/*.scss", "LICENSE", "NOTICE"],
   "whitelistedNonPeerDependencies": [
     "angular-svg-round-progressbar",
+    "@anyshop/auth",
     "@anyshop/core"
   ],
   "lib": {

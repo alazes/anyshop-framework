@@ -14,11 +14,16 @@
     }
   ],
   "dependencies": {
+    "@anyshop/core": "*",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
     "@angular/common": "^9.1.13",
-    "@angular/core": "^9.1.13"
+    "@angular/core": "^9.1.13",
+    "@capacitor/core": "^3.4.3",
+    "@capacitor/device": "^1.1.2",
+    "@capacitor/push-notifications": "^1.0.9",
+    "capacitor-firebase-auth": "^3.0.0"
   },
   "publishConfig": {
     "access": "public",

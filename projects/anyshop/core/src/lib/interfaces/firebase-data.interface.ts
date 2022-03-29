@@ -1,5 +1,5 @@
 import { DocumentData, DocumentReference } from '@angular/fire/firestore';
-import { firestore } from 'firebase/app';
+import firebase from 'firebase/app';
 
 /**
  * Datos en crudo desde Firebase, restringido a los compatibles.
@@ -22,8 +22,8 @@ export type IFirebaseFieldType =
   | number
   | boolean
   | DocumentReference
-  | firestore.DocumentReference
-  | firestore.Timestamp
+  | firebase.firestore.DocumentReference
+  | firebase.firestore.Timestamp
   | IFirebaseData
   | Array<
       | null
@@ -31,7 +31,7 @@ export type IFirebaseFieldType =
       | number
       | boolean
       | DocumentReference
-      | firestore.DocumentReference
-      | firestore.Timestamp
+      | firebase.firestore.DocumentReference
+      | firebase.firestore.Timestamp
       | IFirebaseData
     >;

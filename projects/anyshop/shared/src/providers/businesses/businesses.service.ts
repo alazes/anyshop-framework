@@ -5,7 +5,7 @@ import {
 } from '@angular/fire/firestore';
 import { Business, Stock } from '@anyshop/core';
 import { ApiService } from '@arxis/api';
-import { firestore } from 'firebase/app';
+import firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 
 import { FirebaseItemsAbstractService } from '../firebase/firebase-items-abstract.service';
@@ -60,7 +60,9 @@ export class BusinessesService extends FirebaseItemsAbstractService<Business> {
     return this.stock.query(stockFilterFunction);
   }
 
-  getNearByBusinessAtPoint(geoPoint: firestore.GeoPoint): Observable<any> {
+  getNearByBusinessAtPoint(
+    geoPoint: firebase.firestore.GeoPoint
+  ): Observable<any> {
     return this.api.get('searchNearByBusinesses', {
       lat: geoPoint.latitude,
       long: geoPoint.longitude,

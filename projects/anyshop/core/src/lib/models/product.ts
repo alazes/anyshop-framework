@@ -1,5 +1,5 @@
 import { DocumentReference } from '@angular/fire/firestore';
-import { firestore } from 'firebase/app';
+import firebase from 'firebase/app';
 import * as _ from 'lodash';
 
 import { Model } from './abstract-model';
@@ -45,8 +45,8 @@ class Product extends Model implements IProductData {
   products_by_rack: number | undefined; // eslint-disable-line  @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
   requestBy: any;
   createdBy: string | undefined;
-  createdAt: Date | firestore.Timestamp | undefined;
-  updatedAt: Date | firestore.Timestamp | undefined;
+  createdAt: Date | firebase.firestore.Timestamp | undefined;
+  updatedAt: Date | firebase.firestore.Timestamp | undefined;
   owner: string | null = null;
   ownerRef: DocumentReference | null = null;
   name = '';

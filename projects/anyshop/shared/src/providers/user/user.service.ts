@@ -6,21 +6,21 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
 import {
+  ArxisDeviceService,
+  ArxisSmsAuthService,
+  ArxisIonicFireStoreAuthService as ArxisUser,
+  ROUTE_FCM_DOC,
+} from '@anyshop/auth';
+import {
   UserAccountInterface,
   Account,
   Address,
   Business,
 } from '@anyshop/core';
 import { ApiService } from '@arxis/api';
-import {
-  ArxisDeviceService,
-  ArxisSmsAuthService,
-  ArxisIonicFireStoreAuthService as ArxisUser,
-  ROUTE_FCM_DOC,
-} from '@arxis/fireauth';
 import { Platform } from '@ionic/angular';
 // import { Pro } from '@ionic/pro';
-import { User, auth } from 'firebase/app';
+import firebase from 'firebase/app';
 import * as _ from 'lodash';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { first, map, switchMap } from 'rxjs/operators';
@@ -48,7 +48,7 @@ import { first, map, switchMap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class UserService extends ArxisUser {
-  recaptchaVerifier: auth.RecaptchaVerifier;
+  recaptchaVerifier: firebase.auth.RecaptchaVerifier;
   confirmationResult: any;
   preSavedAccountInfo: any;
   verificationId: any;
@@ -71,7 +71,7 @@ export class UserService extends ArxisUser {
     super(afAuth, afs, device, platform, routeFCMDoc);
   }
 
-  authFillAction(user: User): Observable<any> {
+  authFillAction(user: firebase.User): Observable<any> {
     return super.authFillAction(user).pipe(
       switchMap((u) => {
         if (u) {
@@ -80,7 +80,7 @@ export class UserService extends ArxisUser {
           return of(null);
         }
       }),
-      switchMap((u: User | null) => {
+      switchMap((u: firebase.User | null) => {
         if (u) {
           return of(u).pipe(
             switchMap((us) =>
@@ -164,8 +164,8 @@ export class UserService extends ArxisUser {
   /**
    * @deprecated User loginWith('facebook.com')
    */
-  loginFB(): Promise<auth.UserCredential> {
-    const provider = new auth.FacebookAuthProvider();
+  loginFB(): Promise<firebase.auth.UserCredential> {
+    const provider = new firebase.auth.FacebookAuthProvider();
 
     return this.afAuth
       .signInWithPopup(provider)
@@ -177,15 +177,15 @@ export class UserService extends ArxisUser {
 
   sendSMSVerification(
     phone: string,
-    verifier?: auth.RecaptchaVerifier
+    verifier?: firebase.auth.RecaptchaVerifier
   ): Promise<string> {
     return this.sms.sendSMSVerification(phone, verifier);
   }
 
   sendSMSVerificationAlternative(
     phone: string,
-    verifier?: auth.RecaptchaVerifier
-  ): Promise<auth.UserCredential> {
+    verifier?: firebase.auth.RecaptchaVerifier
+  ): Promise<firebase.auth.UserCredential> {
     return this.sms.sendSMSVerificationAndroidAlternative(phone);
   }
 
@@ -196,9 +196,9 @@ export class UserService extends ArxisUser {
   async confirm(
     code: string,
     verificationId: string
-  ): Promise<auth.UserCredential> {
+  ): Promise<firebase.auth.UserCredential> {
     const phoneCredential = await this.sms.confirm(code, verificationId);
-    let userCredential: auth.UserCredential;
+    let userCredential: firebase.auth.UserCredential;
     try {
       userCredential = await this.loginWithCredential(phoneCredential)
         .then((result: firebase.auth.UserCredential) => result)
@@ -216,7 +216,7 @@ export class UserService extends ArxisUser {
     email: string,
     password: string,
     data: { [key: string]: any }
-  ): Promise<auth.UserCredential> {
+  ): Promise<firebase.auth.UserCredential> {
     const credential = this.createEmailCredential(email, password);
 
     const userCredential = await this.linkAccount(credential);
@@ -243,7 +243,7 @@ export class UserService extends ArxisUser {
    *
    * @param accountInfo Datos extra del usuario.
    */
-  async updateUserData<TUser extends User>(
+  async updateUserData<TUser extends firebase.User>(
     accountInfo: { [key: string]: any } = {},
     user?: TUser,
     isNewUser?: boolean

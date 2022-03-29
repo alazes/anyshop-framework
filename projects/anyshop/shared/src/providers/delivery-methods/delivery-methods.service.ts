@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { DeliveryMethod } from '@anyshop/core';
 import { ApiService } from '@arxis/api';
-import { firestore } from 'firebase/app';
+import firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 
 import { FirebaseItemsAbstractService } from '../firebase/firebase-items-abstract.service';
@@ -14,7 +14,7 @@ export class DeliveryMethodsService extends FirebaseItemsAbstractService<Deliver
   }
 
   getAvaliableDeliveryMethodsAtPoint(
-    geoPoint: firestore.GeoPoint
+    geoPoint: firebase.firestore.GeoPoint
   ): Observable<any> {
     // partial fix
     if (!geoPoint) {

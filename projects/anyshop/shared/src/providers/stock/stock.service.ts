@@ -4,7 +4,7 @@ import {
   DocumentChangeAction,
 } from '@angular/fire/firestore';
 import { Product, Stock } from '@anyshop/core';
-import { firestore } from 'firebase/app';
+import firebase from 'firebase/app';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs';
 
@@ -140,11 +140,11 @@ export class StockService extends FirebaseItemsAbstractService<Stock> {
    * Se puede usar el tercer parámetro para filtrar según la cantidad mín/máx de productos en stock.
    */
   filterByBusiness<
-    C extends firestore.DocumentData,
-    B extends firestore.DocumentData
+    C extends firebase.firestore.DocumentData,
+    B extends firebase.firestore.DocumentData
   >(
-    businessRef: firestore.DocumentReference<B>,
-    categoryRef: firestore.DocumentReference<C>,
+    businessRef: firebase.firestore.DocumentReference<B>,
+    categoryRef: firebase.firestore.DocumentReference<C>,
     quantityOptions: { min?: number; max?: number } = {}
   ) {
     return this.query((ref) => {

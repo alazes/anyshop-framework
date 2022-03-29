@@ -1,5 +1,5 @@
 import { DocumentReference } from '@angular/fire/firestore';
-import { firestore } from 'firebase/app';
+import firebase from 'firebase/app';
 import * as _ from 'lodash';
 
 import { OrderStatus, PaymentMethod, Rate } from '../enums';
@@ -20,18 +20,21 @@ class Order extends Model {
   paymentMethod: PaymentMethod = PaymentMethod.None;
   business: string;
   businessData: Business;
-  createdAt: Date | firestore.Timestamp | firestore.FieldValue;
+  createdAt:
+    | Date
+    | firebase.firestore.Timestamp
+    | firebase.firestore.FieldValue;
   customer: string;
   customerData: any;
   key: string;
   accepted = false;
-  acceptedAt: Date | firestore.Timestamp;
+  acceptedAt: Date | firebase.firestore.Timestamp;
   rejected = false;
-  rejectedAt: Date | firestore.Timestamp;
+  rejectedAt: Date | firebase.firestore.Timestamp;
   rejectedBy: string | undefined;
   delivered = false;
   deliveryAddress: Address;
-  deliveredAt: Date | firestore.Timestamp;
+  deliveredAt: Date | firebase.firestore.Timestamp;
   deliveryMethod: DeliveryMethod;
   deliveryCost: number;
   howMuchPay?: number;
@@ -52,7 +55,7 @@ class Order extends Model {
   /**
    * Obtiene o establece el momento en que inicia la entrega del pedido.
    */
-  deliveryStartedAt?: Date | firestore.Timestamp;
+  deliveryStartedAt?: Date | firebase.firestore.Timestamp;
   elapsedTime?: number; // minutos
   /**
    * Obtiene o establece la calificación del pedido
@@ -67,7 +70,7 @@ class Order extends Model {
   /**
    * Obtiene o establece el momento en que califica el pedido.
    */
-  ratedAt?: Date | firestore.Timestamp;
+  ratedAt?: Date | firebase.firestore.Timestamp;
 
   /**
    * Referencia al repartidor del pedido.
@@ -114,7 +117,10 @@ class Order extends Model {
    * Empaqueta los datos (los serializa) para ser guardados.
    */
   packOrder(
-    dateTime: firestore.FieldValue | Date | firestore.Timestamp,
+    dateTime:
+      | firebase.firestore.FieldValue
+      | Date
+      | firebase.firestore.Timestamp,
     customer: string,
     name: string,
     phone?: string,
@@ -132,7 +138,8 @@ class Order extends Model {
       }
     });
 
-    this.statusesDates[this.status] = this.createdAt as firestore.Timestamp;
+    this.statusesDates[this.status] = this
+      .createdAt as firebase.firestore.Timestamp;
 
     this.customerData = {
       name: name || 'NO_NAME',
