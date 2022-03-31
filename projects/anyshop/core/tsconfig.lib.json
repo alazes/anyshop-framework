@@ -4,14 +4,17 @@
     "outDir": "../../../dist/out-tsc/anyshop/core",
     "declarationMap": true,
     "target": "es2015",
+    "module": "es2020",
     "declaration": true,
     "inlineSources": true,
     "types": [],
-    "lib": ["dom", "es2018"]
+    "lib": ["es2020", "dom"]
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
     "enableResourceInlining": true
   },
   "exclude": ["src/test.ts", "**/*.spec.ts"]
