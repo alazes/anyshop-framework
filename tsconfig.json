@@ -11,7 +11,7 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "lib": ["es2018", "dom"],
+    "lib": ["es2020", "dom"],
     "paths": {
       "@anyshop/core": ["dist/anyshop/core/anyshop-core", "dist/anyshop/core"],
       "@anyshop/auth": ["dist/anyshop/auth/anyshop-auth", "dist/anyshop/auth"],

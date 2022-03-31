@@ -4,6 +4,7 @@ import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
+import { Account } from '@anyshop/core';
 import firebase from 'firebase/app';
 import * as _ from 'lodash';
 import { Observable, of } from 'rxjs';

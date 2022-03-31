@@ -3,11 +3,11 @@
   "compilerOptions": {
     "outDir": "../../../dist/out-tsc/anyshop/shared",
     "declarationMap": true,
-    "target": "es2015",
+    "module": "es2020",
     "declaration": true,
     "inlineSources": true,
     "types": [],
-    "lib": ["dom", "es2018"]
+    "lib": ["es2020", "dom"]
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,

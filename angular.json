@@ -115,5 +115,8 @@
       }
     }
   },
-  "defaultProject": "@anyshop/core"
+  "defaultProject": "@anyshop/core",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
