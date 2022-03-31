@@ -10,7 +10,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/anyshop/core/tsconfig.lib.json",
             "project": "projects/anyshop/core/ng-package.json"
@@ -47,7 +47,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/anyshop/shared/tsconfig.lib.json",
             "project": "projects/anyshop/shared/ng-package.json"
@@ -84,7 +84,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/anyshop/auth/tsconfig.lib.json",
             "project": "projects/anyshop/auth/ng-package.json"

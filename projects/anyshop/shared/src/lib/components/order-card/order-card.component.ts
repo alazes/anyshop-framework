@@ -70,6 +70,10 @@ export class OrderCardComponent implements OnInit {
     return this._fixedUnitOfTime;
   }
 
+  get orderCreatedAt() {
+    return this.order.createdAt as Date;
+  }
+
   get status() {
     return OrderStatusExtension.for(this.order.status);
   }

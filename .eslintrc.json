@@ -66,50 +66,37 @@
           {
             "default": [
               "signature",
-
               "abstract-field",
               "abstract-method",
-
               "private-static-field",
               "protected-static-field",
               "public-static-field",
-
               "private-instance-field",
               "protected-instance-field",
               "public-instance-field",
-
               "private-decorated-field",
               "protected-decorated-field",
               "public-decorated-field",
-
               "field",
-
               "public-constructor",
               "protected-constructor",
               "private-constructor",
-
               "constructor",
-
               "private-static-method",
               "protected-static-method",
               "public-static-method",
-
               "private-instance-method",
               "protected-instance-method",
               "public-instance-method",
-
               "private-decorated-method",
               "protected-decorated-method",
               "public-decorated-method",
-
               "private-method",
               "protected-method",
               "public-method",
-
               "static-method",
               "instance-method",
               "decorated-method",
-
               "method"
             ]
           }
@@ -162,7 +149,12 @@
         "no-irregular-whitespace": "off",
         "no-shadow": "off",
         "no-trailing-spaces": "off",
-        "no-underscore-dangle": ["warn", { "allowAfterThis": true }],
+        "no-underscore-dangle": [
+          "warn",
+          {
+            "allowAfterThis": true
+          }
+        ],
         "prefer-template": "error",
         "quote-props": "off",
         "react/jsx-curly-spacing": "off",
