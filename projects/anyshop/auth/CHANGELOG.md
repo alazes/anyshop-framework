@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/alazes/anyshop-framework/compare/@anyshop/auth@1.0.0...@anyshop/auth@2.0.0) (2022-03-31)
+
+### Features
+
+- finish update to Angular 11 ([f1fd7e0](https://github.com/alazes/anyshop-framework/commit/f1fd7e01cefcbece74dbad298c9ecdfb002bf465))
+- upgrade packages to Angular 11 ([e84d084](https://github.com/alazes/anyshop-framework/commit/e84d08417c40ac766a3ded8268e587c4119ebbc3))
+- upgrade to Angular 12 ([d1dad4c](https://github.com/alazes/anyshop-framework/commit/d1dad4c73f3e62f827c2a14ff5e22f076aaa763a))
+- **auth:** copy amd reimplemen services from @arxis/fireauth ([f17f42f](https://github.com/alazes/anyshop-framework/commit/f17f42fb43b82f7e710f580bae784476e3367240))
+
+### BREAKING CHANGES
+
+- Minimum Angular 12 is required.
+- Angular 11 now is required
+
 # [1.0.0](https://github.com/alazes/anyshop-framework/compare/@anyshop/auth@1.0.0-alpha.15...@anyshop/auth@1.0.0) (2022-03-23)
 
 **Note:** Version bump only for package @anyshop/auth

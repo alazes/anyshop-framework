@@ -1,6 +1,6 @@
 {
   "name": "@anyshop/auth",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "contributors": [
     {
       "name": "Nelson Martell",
@@ -14,7 +14,7 @@
     }
   ],
   "dependencies": {
-    "@anyshop/core": "*",
+    "@anyshop/core": "^2.0.0",
     "tslib": "^2.3.1"
   },
   "peerDependencies": {
