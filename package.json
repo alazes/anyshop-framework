@@ -16,8 +16,11 @@
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap --no-ci --hoist",
-    "build": "ng build @anyshop/core --configuration production && ng build @anyshop/auth --configuration production && ng build @anyshop/shared --configuration production",
+    "build": "npm run build:core && npm run build:auth && npm run build:shared",
     "postbuild": "npm run bootstrap",
+    "build:core": "ng build @anyshop/core --configuration production",
+    "build:auth": "ng build @anyshop/auth --configuration production",
+    "build:shared": "ng build @anyshop/shared --configuration production",
     "deploy": "lerna publish from-package --yes",
     "e2e": "ng e2e",
     "lint": "npm run lint:typescript && npm run lint:eslint-config && npm run lint:prettier && ng lint",

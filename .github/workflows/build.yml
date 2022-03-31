@@ -49,8 +49,8 @@ jobs:
         with:
           node-version: "12"
 
-      - name: Update npm
-        run: npm install -g npm@7
+      - name: Use npm 7
+        run: npm i -g npm@7
 
       - name: Get npm cache directory
         id: npm-cache
@@ -91,7 +91,7 @@ jobs:
 
       - name: Building @anyshop/core
         if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
-        run: npx ng build @anyshop/core --prod
+        run: npm run build:core
 
       - name: Linting @anyshop/auth
         if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
@@ -99,7 +99,7 @@ jobs:
 
       - name: Building @anyshop/auth
         if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
-        run: npx ng build @anyshop/auth --prod
+        run: npm run build:auth
 
       - name: Linting @anyshop/shared
         if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
@@ -107,7 +107,7 @@ jobs:
 
       - name: Building @anyshop/shared
         if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
-        run: npx ng build @anyshop/shared --prod
+        run: npm run build:shared
 
   # Prepare deployment
   pre-deploy:
@@ -158,6 +158,9 @@ jobs:
         with:
           node-version: "12"
           registry-url: "https://registry.npmjs.org"
+
+      - name: Use npm 7
+        run: npm i -g npm@7
 
       - uses: actions/cache@v2
         with:
