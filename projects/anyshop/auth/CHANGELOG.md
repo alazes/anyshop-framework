@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/alazes/anyshop-framework/compare/@anyshop/auth@2.0.0...@anyshop/auth@2.0.1) (2022-03-31)
+
+**Note:** Version bump only for package @anyshop/auth
+
 # [2.0.0](https://github.com/alazes/anyshop-framework/compare/@anyshop/auth@1.0.0...@anyshop/auth@2.0.0) (2022-03-31)
 
 ### Features
