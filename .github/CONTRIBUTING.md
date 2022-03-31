@@ -128,5 +128,6 @@ This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
 
 Commands for Release Managers:
 
-- `npm run release`: Creates the version tag (lerna checks if is necessary).
-- `npm run deploy`: Publishes the recent packages versioned to the npm registry.
+- `npm run build`: Builds all the packages to be published.
+- `npm run release`: Creates the version tags via **lerna** for unpublished changes in packages.
+- `npm run deploy`: Publishes the recent packages versioned to the npm registry. **_This will run automatically via GitHub action._**. Only use it explicitly if action fails

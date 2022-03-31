@@ -13,9 +13,11 @@
 
 ## Packages
 
-- [![@anyshop/core](https://img.shields.io/npm/v/@anyshop/core?label=@anyshop/core&labelColor=white&color=red)](https://www.npmjs.com/package/@anyshop/core)
+[![@anyshop/core](https://img.shields.io/npm/v/@anyshop/core?label=@anyshop/core&labelColor=white&color=blue&style=plastic&logo=ionic)](https://www.npmjs.com/package/@anyshop/core)
 
-- [![@anyshop/shared](https://img.shields.io/npm/v/@anyshop/shared?label=@anyshop/shared&labelColor=white&color=red)](https://www.npmjs.com/package/@anyshop/shared)
+[![@anyshop/auth](https://img.shields.io/npm/v/@anyshop/auth?label=@anyshop/auth&labelColor=white&color=blue&style=plastic&logo=ionic)](https://www.npmjs.com/package/@anyshop/auth)
+
+[![@anyshop/shared](https://img.shields.io/npm/v/@anyshop/shared?label=@anyshop/shared&labelColor=white&color=blue&style=plastic&logo=ionic)](https://www.npmjs.com/package/@anyshop/shared)
 
 ## Contributing
 
