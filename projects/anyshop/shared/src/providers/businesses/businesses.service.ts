@@ -11,6 +11,14 @@ import { Observable } from 'rxjs';
 import { FirebaseItemsAbstractService } from '../firebase/firebase-items-abstract.service';
 import { StockService } from '../stock/stock.service';
 
+export interface IOrdersAverages {
+  totalMatches: number;
+  data: {
+    deliveryDuration?: number;
+    rating?: number;
+  };
+}
+
 @Injectable({ providedIn: 'any' })
 export class BusinessesService extends FirebaseItemsAbstractService<Business> {
   constructor(
@@ -83,14 +91,8 @@ export class BusinessesService extends FirebaseItemsAbstractService<Business> {
       default?: number;
       max?: number;
     } = {}
-  ): Observable<
-    | {
-        totalMatches: number;
-        data: { deliveryDuration?: number; rating?: number };
-      }
-    | ArrayBuffer
-  > {
-    return this.api.get('businessOrdersAverages', {
+  ): Observable<IOrdersAverages> {
+    return this.api.get<IOrdersAverages>('businessOrdersAverages', {
       business,
       includes,
       ...options,

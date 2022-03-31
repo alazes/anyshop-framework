@@ -2,7 +2,7 @@
   "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../../dist/anyshop/shared",
   "assets": ["./theme/**/*.scss", "LICENSE", "NOTICE"],
-  "whitelistedNonPeerDependencies": [
+  "allowedNonPeerDependencies": [
     "angular-svg-round-progressbar",
     "@anyshop/auth",
     "@anyshop/core"

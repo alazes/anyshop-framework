@@ -7,6 +7,9 @@ import { FileStorageService } from '../file-storage/file-storage.service';
 import { FirebaseItemsAbstractService } from '../firebase/firebase-items-abstract.service';
 import { UserService } from '../user/user.service';
 
+/**
+ * @todo actualizar a SerializableFirebaseCollection
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -94,7 +97,9 @@ export class ProductsService extends FirebaseItemsAbstractService<Product> {
     delete normalizedProduct.owner;
     delete normalizedProduct.ownerRef;
 
-    return await this.itemsCollection.doc(id).update(normalizedProduct);
+    return await this.itemsCollection
+      .doc(id)
+      .update(normalizedProduct as Partial<Product>);
   }
 
   /**
