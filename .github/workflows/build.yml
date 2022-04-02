@@ -31,11 +31,11 @@ jobs:
       npm_cache_dir: ${{ steps.npm-cache.outputs.npm_cache_dir }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # Cache for multiple run on different tags/branches for the same commit
       - name: Distribution Cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: dist-cache
         with:
           path: dist
@@ -45,28 +45,26 @@ jobs:
 
       - name: Setup Node.js environment
         if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
-        uses: actions/setup-node@v2.1.2
+        uses: actions/setup-node@v3
         with:
-          node-version: "12"
+          node-version: "16"
+          cache: "npm"
 
-      - name: Use npm 7
-        run: npm i -g npm@7
+      # - name: Get npm cache directory
+      #   id: npm-cache
+      #   run: |
+      #     echo "::set-output name=npm_cache_dir::$(npm config get cache)"
+      #
+      # - uses: actions/cache@v3
+      #   name: Setup npm cache
+      #   if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
+      #   with:
+      #     path: ${{ steps.npm-cache.outputs.npm_cache_dir }}
+      #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-node-
 
-      - name: Get npm cache directory
-        id: npm-cache
-        run: |
-          echo "::set-output name=npm_cache_dir::$(npm config get cache)"
-
-      - uses: actions/cache@v2
-        name: Setup npm cache
-        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
-        with:
-          path: ${{ steps.npm-cache.outputs.npm_cache_dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install Node.js dependencies
+      - name: Install dependencies
         if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
         run: npm install
 
@@ -142,10 +140,10 @@ jobs:
 
     # TODO: Evaluar uso de caché
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Distribution Cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: dist-cache
         with:
           path: dist
@@ -154,20 +152,18 @@ jobs:
           #   ${{ runner.os }}-build-
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.2
+        uses: actions/setup-node@v3
         with:
-          node-version: "12"
+          node-version: "16"
+          cache: "npm"
           registry-url: "https://registry.npmjs.org"
 
-      - name: Use npm 7
-        run: npm i -g npm@7
-
-      - uses: actions/cache@v2
-        with:
-          path: ${{ needs.build.outputs.npm_cache_dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+      # - uses: actions/cache@v3
+      #   with:
+      #     path: ${{ needs.build.outputs.npm_cache_dir }}
+      #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-node-
 
       - uses: chrnorm/deployment-action@v1.2.0
         name: Create GitHub deployment
