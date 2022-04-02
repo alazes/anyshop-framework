@@ -28,6 +28,7 @@
     "lint:prettier": "prettier --check .",
     "lint:typescript": "tsc --noEmit",
     "ng": "ng",
+    "prepare": "husky install",
     "prepublishOnly": "npm run build",
     "release": "lerna version",
     "release:alpha": "npm run release:unstable -- --preid=alpha",
@@ -37,12 +38,6 @@
     "release:unstable": "lerna version --conventional-prerelease",
     "start": "ng serve",
     "test": "ng test"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && pretty-quick --staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   },
   "commitlint": {
     "extends": [
@@ -113,7 +108,7 @@
     "eslint-plugin-jsdoc": "^31.0.7",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-arrow": "1.2.3",
-    "husky": "^4.3.8",
+    "husky": "^7.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "^6.3.17",
