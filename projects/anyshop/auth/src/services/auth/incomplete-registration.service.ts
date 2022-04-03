@@ -50,6 +50,7 @@ export class IncompleteRegistrationService {
 
   getProviderResultCredentials(): firebase.auth.OAuthCredential | undefined {
     let credential: firebase.auth.OAuthCredential | undefined;
+    let twitterSignInResult: TwitterSignInResult | undefined;
 
     if (this.providerResult) {
       switch (this.providerResult.providerId) {
@@ -66,11 +67,11 @@ export class IncompleteRegistrationService {
           break;
 
         case firebase.auth.TwitterAuthProvider.PROVIDER_ID:
-          const r = this.providerResult as TwitterSignInResult;
+          twitterSignInResult = this.providerResult as TwitterSignInResult;
 
           credential = firebase.auth.TwitterAuthProvider.credential(
-            r.idToken,
-            r.secret
+            twitterSignInResult.idToken,
+            twitterSignInResult.secret
           );
           break;
 

@@ -4,7 +4,7 @@
   "overrides": [
     {
       "files": ["*.js"],
-      "extends": ["eslint:recommended", "prettier", "plugin:node/recommended"]
+      "extends": ["eslint:recommended", "plugin:node/recommended", "prettier"]
     },
     {
       "files": ["*.ts"],
@@ -13,14 +13,15 @@
         "createDefaultProgram": true
       },
       "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/ng-cli-compat",
         "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
         "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:import/errors",
         "plugin:import/warnings",
         "plugin:import/typescript",
-        "prettier",
-        "prettier/@typescript-eslint"
+        "prettier"
       ],
       "plugins": [],
       "rules": {

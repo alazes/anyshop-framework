@@ -128,6 +128,7 @@ export class ArxisFireAuthService extends ArxisAuthAbstractService {
         return false;
       }
     } catch (error) {
+      console.error('Error al intentar manejar fetchSignInMethodsForEmail');
       throw error;
     }
   }

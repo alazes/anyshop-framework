@@ -180,7 +180,7 @@ export class MapMarkerComponent implements OnInit {
     q = replace(q, new RegExp('{label}', 'g'), `${this.label}`);
     q = replace(q, new RegExp('{scale}', 'g'), `${this.scale}`);
     q = replace(q, new RegExp('{size}', 'g'), `${this.size}`);
-    q = replace(q, /\#/g, '%23');
+    q = replace(q, /#/g, '%23');
     q = replace(q, /\|/g, '%7C');
 
     return q;

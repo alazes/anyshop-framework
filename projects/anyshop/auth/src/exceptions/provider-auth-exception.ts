@@ -27,6 +27,7 @@ export default class ProviderAuthException extends Exception<IProviderUserData> 
 
   get credential(): firebase.auth.OAuthCredential | undefined {
     let credential: firebase.auth.OAuthCredential | undefined;
+    let twitterSignInResult: TwitterSignInResult | undefined;
 
     if (this.result) {
       switch (this.result.providerId) {
@@ -38,10 +39,10 @@ export default class ProviderAuthException extends Exception<IProviderUserData> 
           break;
 
         case firebase.auth.TwitterAuthProvider.PROVIDER_ID:
-          const r = this.result as TwitterSignInResult;
+          twitterSignInResult = this.result as TwitterSignInResult;
           credential = firebase.auth.TwitterAuthProvider.credential(
-            r.idToken,
-            r.secret
+            twitterSignInResult.idToken,
+            twitterSignInResult.secret
           );
           break;
 
