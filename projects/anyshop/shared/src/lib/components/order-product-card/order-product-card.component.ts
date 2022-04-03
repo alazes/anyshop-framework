@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IProductOption, OrderItem, ProductOption } from '@anyshop/core';
 
 import { AlertController, ModalController } from '@ionic/angular';
@@ -19,7 +19,7 @@ const MIN_QUANTITY = 0;
   templateUrl: './order-product-card.component.html',
   styleUrls: ['./order-product-card.component.scss'],
 })
-export class OrderProductCardComponent implements OnInit {
+export class OrderProductCardComponent {
   private _min = MIN_QUANTITY;
   private _max = Infinity;
   private _readonly = false;
@@ -189,10 +189,6 @@ export class OrderProductCardComponent implements OnInit {
     config: ComponentsConfigService
   ) {
     this.currencyCode = config.defaultCurrency;
-    //
-  }
-
-  ngOnInit() {
     //
   }
 

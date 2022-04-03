@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 import { ComponentsConfigService } from '../../components-config.service';
@@ -14,7 +14,7 @@ import { normalizeBooleanAttribute } from '../../helpers';
   templateUrl: './product-stock-card.component.html',
   styleUrls: ['./product-stock-card.component.scss'],
 })
-export class ProductStockCardComponent implements OnInit {
+export class ProductStockCardComponent {
   private _editable = false;
   private _picture = '';
 
@@ -97,10 +97,6 @@ export class ProductStockCardComponent implements OnInit {
       Validators.required,
       Validators.min(0),
     ]);
-  }
-
-  ngOnInit() {
-    //
   }
 
   get isValid(): boolean {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 
 const DEFAULT_FILLED_COLOR = 'rating-filled';
@@ -11,7 +11,7 @@ const DEFAULT_EMPTY_ICON = ['far', 'star'];
   templateUrl: './fa-rating.component.html',
   styleUrls: ['./fa-rating.component.scss'],
 })
-export class FaRatingComponent implements OnInit {
+export class FaRatingComponent {
   private _total = 5;
   private _filledColor = DEFAULT_FILLED_COLOR;
   private _emptyColor = DEFAULT_EMPTY_COLOR;
@@ -170,6 +170,4 @@ export class FaRatingComponent implements OnInit {
   }
 
   constructor() {}
-
-  ngOnInit() {}
 }

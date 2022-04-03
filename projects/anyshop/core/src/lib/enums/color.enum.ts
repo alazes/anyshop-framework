@@ -15,9 +15,3 @@ enum Color {
 }
 
 export default Color;
-
-class Algo {
-  public hola() {
-    return false;
-  }
-}

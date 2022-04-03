@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PaymentMethod } from '@anyshop/core';
 import * as Moment from 'moment';
 
@@ -14,7 +14,7 @@ const moment = Moment; // https://github.com/rollup/rollup/issues/670#issuecomme
   templateUrl: './business-card.component.html',
   styleUrls: ['./business-card.component.scss'],
 })
-export class BusinessCardComponent implements OnInit, OnDestroy {
+export class BusinessCardComponent {
   private _paymentMethods = PaymentMethodExtension.for(0);
 
   private _button = false;
@@ -70,10 +70,6 @@ export class BusinessCardComponent implements OnInit, OnDestroy {
   }
 
   constructor() {}
-
-  ngOnInit() {}
-
-  ngOnDestroy() {}
 
   parsePaymentMethodsHtmlAttribute(
     flags:

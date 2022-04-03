@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Rate } from '@anyshop/core';
 
 import { RateExtension, normalizeBooleanAttribute } from '../../helpers';
@@ -8,7 +8,7 @@ import { RateExtension, normalizeBooleanAttribute } from '../../helpers';
   templateUrl: './rate-icon.component.html',
   styleUrls: ['./rate-icon.component.scss'],
 })
-export class RateIconComponent implements OnInit {
+export class RateIconComponent {
   private _value: RateExtension = new RateExtension(Rate.None);
   private _selected = false;
 
@@ -39,6 +39,4 @@ export class RateIconComponent implements OnInit {
   }
 
   constructor() {}
-
-  ngOnInit() {}
 }

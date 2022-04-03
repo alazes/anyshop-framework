@@ -18,7 +18,7 @@ import {
   templateUrl: './payment-method-widget.component.html',
   styleUrls: ['./payment-method-widget.component.scss'],
 })
-export class PaymentMethodWidgetComponent implements OnInit {
+export class PaymentMethodWidgetComponent {
   private _lines: 'full' | 'inset' | 'none' | undefined = 'full';
   private _multiple = false;
   private _selected = new PaymentMethodExtension(0);
@@ -130,8 +130,6 @@ export class PaymentMethodWidgetComponent implements OnInit {
   ) {
     this.currencyCode = config.defaultCurrency;
   }
-
-  ngOnInit() {}
 
   parsePaymentMethodsHtmlAttribute(
     flags:

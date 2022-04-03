@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PaymentMethod } from '@anyshop/core';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 
@@ -12,7 +12,7 @@ import {
   templateUrl: './payment-method-icon.component.html',
   styleUrls: ['./payment-method-icon.component.scss'],
 })
-export class PaymentMethodIconComponent implements OnInit {
+export class PaymentMethodIconComponent {
   private _value: PaymentMethodExtension = new PaymentMethodExtension(
     PaymentMethod.None
   );
@@ -52,6 +52,4 @@ export class PaymentMethodIconComponent implements OnInit {
   }
 
   constructor() {}
-
-  ngOnInit() {}
 }

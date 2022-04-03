@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Color } from '@ionic/core';
 
 import { normalizeBooleanAttribute } from '../../helpers';
@@ -8,7 +8,7 @@ import { normalizeBooleanAttribute } from '../../helpers';
   templateUrl: './desplegable-card.component.html',
   styleUrls: ['./desplegable-card.component.scss'],
 })
-export class DesplegableCardComponent implements OnInit, OnDestroy {
+export class DesplegableCardComponent {
   private _isOpen = false;
 
   @Input()
@@ -32,14 +32,6 @@ export class DesplegableCardComponent implements OnInit, OnDestroy {
   }
 
   constructor() {
-    //
-  }
-
-  ngOnDestroy() {
-    //
-  }
-
-  ngOnInit() {
     //
   }
 

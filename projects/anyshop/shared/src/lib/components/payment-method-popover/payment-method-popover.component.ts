@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PaymentMethod } from '@anyshop/core';
 import { PopoverController } from '@ionic/angular';
 import { max } from 'lodash';
@@ -14,7 +14,7 @@ import {
   templateUrl: './payment-method-popover.component.html',
   styleUrls: ['./payment-method-popover.component.scss'],
 })
-export class PaymentMethodPopoverComponent implements OnInit {
+export class PaymentMethodPopoverComponent {
   private _multiple = false;
   private _selected = new PaymentMethodExtension(0);
   private _howMuchPay = 0;
@@ -90,8 +90,6 @@ export class PaymentMethodPopoverComponent implements OnInit {
   ) {
     this.currencyCode = config.defaultCurrency;
   }
-
-  ngOnInit() {}
 
   isCash(method: PaymentMethod): boolean {
     return method === PaymentMethod.Cash;

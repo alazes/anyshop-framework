@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { OrderStatus, IStatusStepInfo } from '@anyshop/core';
 
 import { OrderStatusExtension } from '../../helpers';
@@ -8,7 +8,7 @@ import { OrderStatusExtension } from '../../helpers';
   templateUrl: './full-order-status-widget.component.html',
   styleUrls: ['./full-order-status-widget.component.scss'],
 })
-export class FullOrderStatusWidgetComponent implements OnInit {
+export class FullOrderStatusWidgetComponent {
   private _steps: IStatusStepInfo[] = [];
   private _status: OrderStatus = OrderStatus.Undefined;
   private _timeFormat = 'HH:mm';
@@ -112,10 +112,6 @@ export class FullOrderStatusWidgetComponent implements OnInit {
   }
 
   constructor() {}
-
-  ngOnInit() {
-    // console.log('Status:', this.steps);
-  }
 
   defaultLabel(status: OrderStatus) {
     return OrderStatusExtension.for(status).label();
