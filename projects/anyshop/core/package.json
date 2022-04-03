@@ -9,6 +9,7 @@
     "type": "git",
     "url": "https://github.com/alazes/anyshop-framework.git"
   },
+  "license": "Apache-2.0",
   "contributors": [
     {
       "name": "Nelson Martell",
@@ -32,6 +33,5 @@
   "publishConfig": {
     "access": "public",
     "directory": "../../../dist/anyshop/core"
-  },
-  "licence": "Apache-2.0"
+  }
 }
