@@ -1,6 +1,14 @@
 {
   "name": "@anyshop/core",
   "version": "2.0.1",
+  "homepage": "https://github.com/alazes/anyshop-framework/tree/main/projects/anyshop/core#readme",
+  "bugs": {
+    "url": "https://github.com/alazes/anyshop-framework/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alazes/anyshop-framework.git"
+  },
   "contributors": [
     {
       "name": "Nelson Martell",
