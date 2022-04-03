@@ -1,6 +1,6 @@
 {
   "root": true,
-  "extends": ["prettier"],
+  "extends": [],
   "overrides": [
     {
       "files": ["*.js"],
@@ -166,7 +166,7 @@
     },
     {
       "files": ["*.html"],
-      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "extends": ["plugin:@angular-eslint/template/recommended", "prettier"],
       "rules": {}
     }
   ]

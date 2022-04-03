@@ -10,7 +10,6 @@
         ],
         "createDefaultProgram": true
       },
-      "extends": ["prettier", "prettier/@typescript-eslint"],
       "plugins": [],
       "rules": {
         "@angular-eslint/component-selector": [
@@ -70,10 +69,6 @@
         "space-before-function-paren": "off",
         "space-in-parens": ["off", "never"]
       }
-    },
-    {
-      "files": ["*.html"],
-      "rules": {}
     }
   ]
 }
