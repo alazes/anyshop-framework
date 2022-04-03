@@ -22,7 +22,8 @@ export interface SyncOptions {
 }
 
 export abstract class ArxisAuthAbstractService
-  implements ArxisAuthAbstractInterface<UserAccountInterface> {
+  implements ArxisAuthAbstractInterface<UserAccountInterface>
+{
   /**
    * Send a POST request to our login endpoint with the data
    * the user entered on the form.
@@ -43,9 +44,8 @@ export abstract class ArxisAuthAbstractService
 
   protected readonly registrationStatusSubject: BehaviorSubject<UserRegistrationStatus | null>;
 
-  $user: BehaviorSubject<UserAccountInterface | null> = new BehaviorSubject<UserAccountInterface | null>(
-    null
-  );
+  $user: BehaviorSubject<UserAccountInterface | null> =
+    new BehaviorSubject<UserAccountInterface | null>(null);
 
   /**
    * @see registrationStatus
@@ -75,9 +75,8 @@ export abstract class ArxisAuthAbstractService
   }
 
   constructor() {
-    this.registrationStatusSubject = new BehaviorSubject<UserRegistrationStatus | null>(
-      null
-    );
+    this.registrationStatusSubject =
+      new BehaviorSubject<UserRegistrationStatus | null>(null);
   }
 
   /**

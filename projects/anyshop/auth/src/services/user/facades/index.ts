@@ -108,9 +108,8 @@ export const cfaSignInGoogle = async <TnativeOnly extends boolean = false>(
   }
 
   // web sign in
-  const firebaseCredentials: SignInCredential<GoogleSignInResult> = await cfaFirebaseSignIn(
-    nativeCrendentials
-  );
+  const firebaseCredentials: SignInCredential<GoogleSignInResult> =
+    await cfaFirebaseSignIn(nativeCrendentials);
 
   return firebaseCredentials as any; // 💩
 };
@@ -155,9 +154,8 @@ export const cfaSignInFacebook = async <TnativeOnly extends boolean = false>(
   }
 
   // web sign in
-  const firebaseCredentials: SignInCredential<FacebookSignInResult> = await cfaFirebaseSignIn(
-    nativeCrendentials
-  );
+  const firebaseCredentials: SignInCredential<FacebookSignInResult> =
+    await cfaFirebaseSignIn(nativeCrendentials);
 
   return firebaseCredentials as any; // 💩
 };
@@ -203,9 +201,8 @@ export const cfaSignInTwitter = async <TnativeOnly extends boolean = false>(
   }
 
   // web sign in
-  const firebaseCredentials: SignInCredential<TwitterSignInResult> = await cfaFirebaseSignIn(
-    nativeCrendentials
-  );
+  const firebaseCredentials: SignInCredential<TwitterSignInResult> =
+    await cfaFirebaseSignIn(nativeCrendentials);
 
   return firebaseCredentials as any; // 💩
 };
@@ -268,9 +265,8 @@ export const cfaSignInPhone = async <
   }
 
   // web sign in
-  const firebaseCredentials: SignInCredential<PhoneSignInResult> = await cfaFirebaseSignIn(
-    nativeCrendentials
-  );
+  const firebaseCredentials: SignInCredential<PhoneSignInResult> =
+    await cfaFirebaseSignIn(nativeCrendentials);
 
   return firebaseCredentials as any; // 💩
 };

@@ -16,7 +16,8 @@ import { FirebaseItems } from './firebase-items';
 
 export abstract class FirebaseItemsAbstractService<
   T extends IKeyable | IFirebaseData
-> implements FirebaseItems<T> {
+> implements FirebaseItems<T>
+{
   itemsCollection: AngularFirestoreCollection<T>;
   items: Observable<T[]>;
   filteredCollection: AngularFirestoreCollection<T>;

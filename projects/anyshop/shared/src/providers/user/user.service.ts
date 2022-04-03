@@ -249,7 +249,7 @@ export class UserService extends ArxisUser {
     isNewUser?: boolean
   ): Promise<boolean> {
     // let path = `users/${this.currentUserId}`; // Endpoint on firebase
-    user = user || ((this.currentUser as unknown) as TUser);
+    user = user || (this.currentUser as unknown as TUser);
 
     if (!user) {
       return Promise.reject({ code: 'user-no-auth', message: 'user-no-auth' });

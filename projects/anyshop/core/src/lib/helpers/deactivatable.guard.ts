@@ -17,7 +17,8 @@ import { IDeactivatablePage } from './deactivatable-page';
   providedIn: 'root',
 })
 export class DeactivatablePageGuard
-  implements CanDeactivate<IDeactivatablePage> {
+  implements CanDeactivate<IDeactivatablePage>
+{
   async canDeactivate(
     component: IDeactivatablePage,
     currentRoute: ActivatedRouteSnapshot,

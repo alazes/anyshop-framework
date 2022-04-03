@@ -71,9 +71,10 @@ export class MyCartService {
     if (this.order.businessData.delivery_methods) {
       this.order.businessData.delivery_methods.forEach(
         (deliveryMethod, index) => {
-          this.order.businessData.delivery_methods[
-            index
-          ] = _.omit(deliveryMethod, ['polygon_area', 'price_zones']);
+          this.order.businessData.delivery_methods[index] = _.omit(
+            deliveryMethod,
+            ['polygon_area', 'price_zones']
+          );
         }
       );
     }

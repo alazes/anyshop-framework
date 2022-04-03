@@ -90,9 +90,9 @@ export class OrdersService extends FirebaseItemsAbstractService<Order> {
 
     // console.log('Data a enviar', simplifiedData);
 
-    const result = ((await this.api
+    const result = (await this.api
       .post(this.endpoint, _.omitBy(simplifiedData, _.isUndefined))
-      .toPromise()) as unknown) as {
+      .toPromise()) as unknown as {
       id: string;
     };
 

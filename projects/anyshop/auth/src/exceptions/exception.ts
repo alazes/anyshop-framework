@@ -5,7 +5,8 @@ import { Exceptionable, IExceptionInfo } from './contracts';
  */
 export default class Exception<TData = unknown>
   extends Error
-  implements Exceptionable<TData> {
+  implements Exceptionable<TData>
+{
   public readonly message: string;
   public readonly code: string | number | undefined;
   public readonly innerError: Error | Exception | unknown | undefined;

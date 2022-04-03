@@ -16,7 +16,8 @@ import { ArxisFirestoreAuthAbstractInterface } from './firestore-auth-abstract.i
 @Injectable()
 export class ArxisFireStoreAuthService
   extends ArxisFireAuthService
-  implements ArxisFirestoreAuthAbstractInterface<any> {
+  implements ArxisFirestoreAuthAbstractInterface<any>
+{
   userFireStoreDoc: AngularFirestoreDocument<any> | undefined;
 
   constructor(public afAuth: AngularFireAuth, public afs: AngularFirestore) {

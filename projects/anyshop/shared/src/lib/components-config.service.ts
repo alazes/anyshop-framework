@@ -18,7 +18,8 @@ export interface IComponentsModuleConfig {
 }
 
 export class ComponentsModuleConfig
-  implements Required<IComponentsModuleConfig> {
+  implements Required<IComponentsModuleConfig>
+{
   googleMapsApiKey: string;
   googleMapsStaticUrl: string;
   defaultCurrency: 'USD' | 'PEN' | string;

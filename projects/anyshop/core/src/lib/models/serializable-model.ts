@@ -21,7 +21,8 @@ export type IUnserializable = new (data: IFirebaseData) => ISerializable;
  * @author Nelson Martell <nelson6e65[at]gmail.com>
  */
 export abstract class SerializableModel<T extends IFirebaseData>
-  implements ISerializable {
+  implements ISerializable
+{
   /**
    * Almacén en crudo de la data de firestore.
    */

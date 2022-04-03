@@ -217,7 +217,8 @@ export class OrderProductCardComponent implements OnInit {
 
     await modal.present();
 
-    const result = (await modal.onDidDismiss()) as OverlayEventDetail<IOrderItemModalData>;
+    const result =
+      (await modal.onDidDismiss()) as OverlayEventDetail<IOrderItemModalData>;
 
     // console.log(result);
 

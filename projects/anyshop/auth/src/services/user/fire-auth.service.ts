@@ -420,15 +420,10 @@ export class ArxisFireAuthService extends ArxisAuthAbstractService {
 
       // console.log(`Falló algo antes: `, JSON.stringify(err, null, 2));
 
-      const {
-        oauthAccessToken,
-        message,
-        email,
-        displayName,
-        phoneNumber,
-      } = JSON.parse(JSON.stringify(err)) as {
-        [i: string]: string | undefined;
-      };
+      const { oauthAccessToken, message, email, displayName, phoneNumber } =
+        JSON.parse(JSON.stringify(err)) as {
+          [i: string]: string | undefined;
+        };
 
       let result: SignInResult | undefined;
 
