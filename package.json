@@ -72,7 +72,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@ionic-native/core": "^5.12.0",
     "@ionic-native/local-notifications": "^5.28.0",
-    "@ionic/angular": "^5.5.5",
+    "@ionic/angular": "^6.0.14",
     "@ngx-translate/core": "^13.0.0",
     "angular-svg-round-progressbar": "^7.0.0",
     "capacitor-firebase-auth": "^3.0.0",

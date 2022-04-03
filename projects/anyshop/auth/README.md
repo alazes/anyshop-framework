@@ -1,6 +1,6 @@
 # `@anyshop/auth`
 
-Firebase authentication module with generic pages, guards and resolvers for an Ionic 5 application.
+Firebase authentication module with generic pages, guards and resolvers for an Ionic 5/6 application.
 
 <!-- WIP -->
 
