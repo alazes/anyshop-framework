@@ -29,6 +29,7 @@
   "peerDependencies": {
     "@angular/common": "^12.2.16",
     "@angular/core": "~12.2.16",
+    "@angular/fire": "^6.1.5",
     "@capacitor/core": "^3.4.3",
     "@capacitor/device": "^1.1.2",
     "@capacitor/push-notifications": "^1.0.9",

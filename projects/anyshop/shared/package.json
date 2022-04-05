@@ -31,6 +31,7 @@
   "peerDependencies": {
     "@angular/common": "^12.2.16",
     "@angular/core": "~12.2.16",
+    "@angular/fire": "^6.1.5",
     "@arxis/api": "^1.1.1",
     "@fortawesome/angular-fontawesome": "^0.9.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
