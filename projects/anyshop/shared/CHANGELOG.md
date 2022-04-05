@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.1](https://github.com/alazes/anyshop-framework/compare/@anyshop/shared@2.2.0...@anyshop/shared@2.2.1) (2022-04-05)
+
+### Bug Fixes
+
+- **deps:** missing @angular/fire peer ([199799c](https://github.com/alazes/anyshop-framework/commit/199799c08f9fde27558987abebb01a0909a226cc))
+
 # [2.2.0](https://github.com/alazes/anyshop-framework/compare/@anyshop/shared@2.1.1...@anyshop/shared@2.2.0) (2022-04-03)
 
 ### Features

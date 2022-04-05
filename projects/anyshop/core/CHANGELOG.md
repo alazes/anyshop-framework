@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://github.com/alazes/anyshop-framework/compare/@anyshop/core@2.1.1...@anyshop/core@2.1.2) (2022-04-05)
+
+### Bug Fixes
+
+- **deps:** missing @angular/fire peer ([199799c](https://github.com/alazes/anyshop-framework/commit/199799c08f9fde27558987abebb01a0909a226cc))
+
 ## [2.1.1](https://github.com/alazes/anyshop-framework/compare/@anyshop/core@2.1.0...@anyshop/core@2.1.1) (2022-04-03)
 
 **Note:** Version bump only for package @anyshop/core
