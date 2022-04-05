@@ -39,10 +39,14 @@
     "@fortawesome/free-regular-svg-icons": "^5.9.0",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@ionic/angular": "^5.0.5 || ^6.0.0",
+    "@ngx-translate/core": "^13.0.0",
     "lodash": "*",
     "moment": "^2.24.0",
     "ngx-ionic-image-viewer": "^0.7.4",
     "rxjs": "^6.6.3"
+  },
+  "optionalDependencies": {
+    "@ngx-translate/http-loader": "^6.0.0"
   },
   "publishConfig": {
     "access": "public",
