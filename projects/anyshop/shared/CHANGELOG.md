@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.2](https://github.com/alazes/anyshop-framework/compare/@anyshop/shared@2.2.1...@anyshop/shared@2.2.2) (2022-04-05)
+
+### Bug Fixes
+
+- **deps:** missing @ngx-translate/core ([bc6587a](https://github.com/alazes/anyshop-framework/commit/bc6587ac2971be2c169f55cafd591af1d02a9f76))
+
 ## [2.2.1](https://github.com/alazes/anyshop-framework/compare/@anyshop/shared@2.2.0...@anyshop/shared@2.2.1) (2022-04-05)
 
 ### Bug Fixes
