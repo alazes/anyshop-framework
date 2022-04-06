@@ -5,7 +5,7 @@ import {
 } from '@angular/fire/firestore';
 import { Order, OrderStatus, Rate } from '@anyshop/core';
 import { ApiService } from '@arxis/api';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { LocalNotifications, Schedule } from '@capacitor/local-notifications';
 import * as _ from 'lodash';
 
 import { FirebaseItemsAbstractService } from '../firebase/firebase-items-abstract.service';
@@ -16,11 +16,7 @@ export class OrdersService extends FirebaseItemsAbstractService<Order> {
     return 'api/orders';
   }
 
-  constructor(
-    public db: AngularFirestore,
-    private localNotifications: LocalNotifications,
-    private api: ApiService
-  ) {
+  constructor(public db: AngularFirestore, private api: ApiService) {
     super('/orders', db);
   }
 
@@ -123,9 +119,9 @@ export class OrdersService extends FirebaseItemsAbstractService<Order> {
       order.delivered = true;
       order.deliveredAt = dateOfDelivery;
       // Temporal se borran todas con Id 1
-      this.localNotifications.clear(1);
+      LocalNotifications.cancel({ notifications: [{ id: 1 }] });
 
-      console.log('Pedido Entregado', order.key);
+      // console.log('Pedido Entregado', order.key);
     });
   }
 
@@ -146,15 +142,22 @@ export class OrdersService extends FirebaseItemsAbstractService<Order> {
       // Temporal se borran todas con Id 1
       // this.localNotifications.clear(1);
 
-      this.localNotifications.schedule({
-        id: 1,
-        text: '¡Te estan esperando!',
-        trigger: { at: new Date(new Date().getTime() + 15 * 60 * 1000) },
-        sound: 'res://phone.wav',
-        // sound: 'false',
-        data: {
-          orderID: order.key,
-        },
+      LocalNotifications.schedule({
+        notifications: [
+          {
+            id: 1,
+            title: '¡Te estan esperando!',
+            body: '',
+            schedule: {
+              at: new Date(new Date().getTime() + 15 * 60 * 1000),
+            },
+            sound: 'res://phone.wav',
+            // sound: 'false',
+            extra: {
+              orderID: order.key,
+            },
+          },
+        ],
       });
 
       console.log('Pedido Aceptado', order.key);
