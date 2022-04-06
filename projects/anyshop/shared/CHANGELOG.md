@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/alazes/anyshop-framework/compare/@anyshop/shared@2.2.2...@anyshop/shared@2.3.0) (2022-04-06)
+
+### Features
+
+- use @capacitor/local-notifications ([cf35259](https://github.com/alazes/anyshop-framework/commit/cf352599146799144857734708ad7f4ccdda9165))
+
 ## [2.2.2](https://github.com/alazes/anyshop-framework/compare/@anyshop/shared@2.2.1...@anyshop/shared@2.2.2) (2022-04-05)
 
 ### Bug Fixes
