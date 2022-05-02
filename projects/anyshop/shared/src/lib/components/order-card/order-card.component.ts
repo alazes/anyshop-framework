@@ -35,11 +35,11 @@ export class OrderCardComponent implements OnInit {
   }
 
   @Input()
-  public set routerLink(link: string | string[]) {
+  public set link(link: string | string[]) {
     this._link = link;
   }
 
-  public get routerLink() {
+  public get link() {
     return this._link;
   }
 
