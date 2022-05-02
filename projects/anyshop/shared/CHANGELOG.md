@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.1](https://github.com/alazes/anyshop-framework/compare/@anyshop/shared@2.4.0...@anyshop/shared@2.4.1) (2022-05-02)
+
+### Bug Fixes
+
+- **components:** collision name if input in OrderCard ([b9b0490](https://github.com/alazes/anyshop-framework/commit/b9b0490644582f45258db3165294440f998491de))
+
 # [2.4.0](https://github.com/alazes/anyshop-framework/compare/@anyshop/shared@2.3.0...@anyshop/shared@2.4.0) (2022-05-02)
 
 ### Features
