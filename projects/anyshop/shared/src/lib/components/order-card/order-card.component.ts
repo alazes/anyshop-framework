@@ -14,6 +14,7 @@ export class OrderCardComponent implements OnInit {
   private _unitOfTime = 'm';
   private _fixedUnitOfTime = false;
   private _order!: Order;
+  private _link: string | string[] = [];
 
   steps: IStatusStepInfo[] = [];
 
@@ -25,10 +26,21 @@ export class OrderCardComponent implements OnInit {
 
     this._order = value;
 
+    this._link = ['/orders/', this._order.key];
+
     this.syncSteps();
   }
   get order() {
     return this._order;
+  }
+
+  @Input()
+  public set routerLink(link: string | string[]) {
+    this._link = link;
+  }
+
+  public get routerLink() {
+    return this._link;
   }
 
   @Input()

@@ -1,4 +1,4 @@
-<ion-card [button]="true" [routerLink]="['/orders', key]" [class]="classes">
+<ion-card [button]="true" [routerLink]="routerLink" [class]="classes">
   <ion-progress-bar
     *ngIf="!rated"
     [color]="rejected ? 'danger' : 'success'"
