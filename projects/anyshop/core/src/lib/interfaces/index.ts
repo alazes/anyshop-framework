@@ -1,6 +1,5 @@
 import Country from './country';
 import CountryCode from './country-code';
-import { IFirebaseData, IFirebaseFieldType } from './firebase-data.interface';
 // import FirebaseItems from './firebase-items';
 import GeoIpResponse from './geo-ip-response';
 import IonColor from './ion-color';
@@ -19,6 +18,5 @@ export {
   IKeyable,
   IonColor,
   UserAccountInterface,
-  IFirebaseData,
-  IFirebaseFieldType,
 };
+export * from './firebase-data.interface';
