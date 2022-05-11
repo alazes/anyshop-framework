@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/alazes/anyshop-framework/compare/@anyshop/core@2.1.2...@anyshop/core@2.2.0) (2022-05-11)
+
+### Features
+
+- improve IFirebaseData and export more firebase types ([2dc465a](https://github.com/alazes/anyshop-framework/commit/2dc465acb2dc0183695ac96517c61f8053a0e6cc))
+
 ## [2.1.2](https://github.com/alazes/anyshop-framework/compare/@anyshop/core@2.1.1...@anyshop/core@2.1.2) (2022-04-05)
 
 ### Bug Fixes

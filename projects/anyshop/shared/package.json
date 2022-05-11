@@ -1,6 +1,6 @@
 {
   "name": "@anyshop/shared",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "homepage": "https://github.com/alazes/anyshop-framework/tree/main/projects/anyshop/shared#readme",
   "bugs": {
     "url": "https://github.com/alazes/anyshop-framework/issues"
@@ -23,8 +23,8 @@
     }
   ],
   "dependencies": {
-    "@anyshop/auth": "^2.2.1",
-    "@anyshop/core": "^2.1.2",
+    "@anyshop/auth": "^2.2.2",
+    "@anyshop/core": "^2.2.0",
     "angular-svg-round-progressbar": "^7.0.0",
     "tslib": "^2.3.1"
   },
