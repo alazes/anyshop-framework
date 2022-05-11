@@ -1,10 +1,6 @@
 import { DocumentData, DocumentReference } from '@angular/fire/firestore';
 import firebase from 'firebase/app';
 
-export declare type Timestamp = firebase.firestore.Timestamp;
-export declare type GeoPoint = firebase.firestore.GeoPoint;
-export declare type FieldValue = firebase.firestore.FieldValue;
-
 /**
  * Datos en crudo desde Firebase, restringido a los compatibles.
  *
@@ -29,9 +25,9 @@ export type FirebaseDataType =
   | boolean
   | DocumentReference<IFirebaseData>
   | Date
-  | Timestamp
-  | GeoPoint
-  | FieldValue
+  | firebase.firestore.Timestamp
+  | firebase.firestore.GeoPoint
+  | firebase.firestore.FieldValue
   | IFirebaseData
   | Array<
       | string
@@ -39,9 +35,9 @@ export type FirebaseDataType =
       | boolean
       | DocumentReference<IFirebaseData>
       | Date
-      | Timestamp
-      | GeoPoint
-      | FieldValue
+      | firebase.firestore.Timestamp
+      | firebase.firestore.GeoPoint
+      | firebase.firestore.FieldValue
       | IFirebaseData
     >;
 
