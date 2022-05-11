@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.1](https://github.com/alazes/anyshop-framework/compare/@anyshop/core@2.2.0...@anyshop/core@2.2.1) (2022-05-11)
+
+### Bug Fixes
+
+- exported as type instead of classes ([45fe9d5](https://github.com/alazes/anyshop-framework/commit/45fe9d5975bdebc780304ea03687cbb2a5b181d7))
+
 # [2.2.0](https://github.com/alazes/anyshop-framework/compare/@anyshop/core@2.1.2...@anyshop/core@2.2.0) (2022-05-11)
 
 ### Features
