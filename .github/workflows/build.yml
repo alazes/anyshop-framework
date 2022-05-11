@@ -59,21 +59,21 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "16"
-          cache: "npm"
+          # cache: "npm"
 
-      # - name: Get npm cache directory
-      #   id: npm-cache
-      #   run: |
-      #     echo "::set-output name=npm_cache_dir::$(npm config get cache)"
-      #
-      # - uses: actions/cache@v3
-      #   name: Setup npm cache
-      #   if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
-      #   with:
-      #     path: ${{ steps.npm-cache.outputs.npm_cache_dir }}
-      #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-node-
+      - name: Get npm cache directory
+        id: npm-cache
+        run: |
+          echo "::set-output name=npm_cache_dir::$(npm config get cache)"
+
+      - uses: actions/cache@v3
+        name: Setup npm cache
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
+        with:
+          path: ${{ steps.npm-cache.outputs.npm_cache_dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Install dependencies
         if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
