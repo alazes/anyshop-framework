@@ -29,17 +29,7 @@ export type FirebaseDataType =
   | firebase.firestore.GeoPoint
   | firebase.firestore.FieldValue
   | IFirebaseData
-  | Array<
-      | string
-      | number
-      | boolean
-      | DocumentReference<IFirebaseData>
-      | Date
-      | firebase.firestore.Timestamp
-      | firebase.firestore.GeoPoint
-      | firebase.firestore.FieldValue
-      | IFirebaseData
-    >;
+  | Array<FirebaseDataType>;
 
 /**
  * @deprecated Use FirebaseDataType directly instead
