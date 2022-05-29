@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/alazes/anyshop-framework/compare/@anyshop/core@2.2.1...@anyshop/core@2.3.0) (2022-05-29)
+
+### Features
+
+- improve FirebaseDataType to use Array<FirebaseDataType> ([83b75a6](https://github.com/alazes/anyshop-framework/commit/83b75a6c0332728c604f512ce5195550d0edcfc1))
+
 ## [2.2.1](https://github.com/alazes/anyshop-framework/compare/@anyshop/core@2.2.0...@anyshop/core@2.2.1) (2022-05-11)
 
 ### Bug Fixes

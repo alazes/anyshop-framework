@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.4](https://github.com/alazes/anyshop-framework/compare/@anyshop/shared@2.4.3...@anyshop/shared@2.4.4) (2022-05-29)
+
+**Note:** Version bump only for package @anyshop/shared
+
 ## [2.4.3](https://github.com/alazes/anyshop-framework/compare/@anyshop/shared@2.4.2...@anyshop/shared@2.4.3) (2022-05-11)
 
 **Note:** Version bump only for package @anyshop/shared
