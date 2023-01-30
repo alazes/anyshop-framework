@@ -105,7 +105,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsdoc": "^31.0.7",
+    "eslint-plugin-jsdoc": "^39.7.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-arrow": "1.2.3",
     "husky": "^7.0.0",
